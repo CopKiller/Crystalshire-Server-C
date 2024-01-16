@@ -1,10 +1,8 @@
-﻿
-using System.Net.Sockets;
-using LoginServer.Communication;
-using SharedLibrary.Communication;
+﻿using LoginServer.Communication;
 using SharedLibrary.Network;
 using SharedLibrary.Network.Interface;
 using SharedLibrary.Util;
+using System.Net.Sockets;
 
 namespace LoginServer.Network
 {
@@ -21,11 +19,11 @@ namespace LoginServer.Network
         public string IpAddress { get; set; }
 
         private Socket Client;
+
         private ByteBuffer msg;
 
         public Connection(Socket tcpClient, string ipAddress, string uniqueKey)
         {
-
             msg = new ByteBuffer();
 
             IpAddress = ipAddress;
@@ -34,22 +32,46 @@ namespace LoginServer.Network
             Client = tcpClient;
 
             Connected = true;
-
             Add(this);
         }
 
-        public Connection()
+        public static bool Remove(int index)
         {
+            var connection = Connections[index];
+
+            if (Connections.ContainsKey(index))
+            {
+                Connections.Remove(index);
+                connection.Connected = false;
+
+                return true;
+            }
+            return false;
         }
 
-        public void Disconnect()
+        private static void Add(Connection connection)
+        {
+
+            if (Connections.Count == 0)
+            {
+                ++HighIndex;
+                Connections.Add(HighIndex, connection);
+            }
+        }
+
+        public bool Disconnect()
         {
             if (Connected)
             {
-                Global.WriteLog(LogType.System, $"{IpAddress} Key {UniqueKey} is disconnected", ConsoleColor.Red);
                 Client.Close();
                 Connected = false;
+
+                Global.WriteLog(LogType.System, $"{IpAddress} Key {UniqueKey} is disconnected", ConsoleColor.Red);
+
+                return true;
             }
+
+            return false;
         }
 
         public void ReceiveData()
@@ -101,7 +123,6 @@ namespace LoginServer.Network
                 }
                 catch (SocketException ex)
                 {
-                    //Global.WriteLog(LogType.System, $"Receive Data Error: Class {GetType().Name}", ConsoleColor.Red);
                     Global.WriteLog(LogType.System, $"Receive Data Error: Class {GetType().Name}", ConsoleColor.Red);
                     Global.WriteLog(LogType.System, $"Message: {ex.Message}", ConsoleColor.Red);
                     Disconnect();
@@ -167,8 +188,6 @@ namespace LoginServer.Network
 
             msg.Clear();
         }
-
-
         public void Send(ByteBuffer msg, string className)
         {
             var buffer = new byte[msg.Length() + 4];
@@ -198,27 +217,6 @@ namespace LoginServer.Network
             else
             {
                 Disconnect();
-            }
-        }
-
-        public static void Remove(int index)
-        {
-            var connection = Connections[index];
-
-            if (Connections.ContainsKey(index))
-            {
-                Connections.Remove(index);
-                connection.Connected = false;
-            }
-        }
-
-        private static void Add(Connection connection)
-        {
-
-            if (Connections.Count == 0)
-            {
-                ++HighIndex;
-                Connections.Add(HighIndex, connection);
             }
         }
     }

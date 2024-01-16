@@ -16,3 +16,4 @@ C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\LoginServer\bin\
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\LoginServer\bin\Debug\net8.0\SharedLibrary.pdb
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\LoginServer\obj\Debug\net8.0\LoginServer.csproj.AssemblyReference.cache
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\LoginServer\obj\Debug\net8.0\LoginServer.csproj.CopyComplete
+C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\LoginServer\obj\Debug\net8.0\LoginServer.sourcelink.json

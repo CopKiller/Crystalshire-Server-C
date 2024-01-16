@@ -9,7 +9,7 @@ namespace LoginServer.Network {
 
         public static void InitOpCode() {
             // Fluxo Receive
-            RecvPacket.Add((int)Packet.CNewAccount, typeof(ServerPacket.CReceiveNewAccount));
+            RecvPacket.Add((int)Packet.CNewAccount, typeof(CReceiveNewAccount));
 
             // Fluxo Send
             // Enviando um ping, pra saber o status da conexão!

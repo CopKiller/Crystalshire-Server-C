@@ -18,7 +18,6 @@ namespace LoginServer.Network {
         }
 
         public async Task InitServer() {
-            //server = new TcpListener(IPAddress.Any, Port);
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             server.Bind(new IPEndPoint(IPAddress.Any, Port));
             server.Listen(10);

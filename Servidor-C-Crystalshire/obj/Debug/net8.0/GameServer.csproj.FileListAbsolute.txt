@@ -12,3 +12,4 @@ C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Servidor-C-Cryst
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Servidor-C-Crystalshire\obj\Debug\net8.0\GameServer.pdb
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Servidor-C-Crystalshire\obj\Debug\net8.0\GameServer.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Servidor-C-Crystalshire\obj\Debug\net8.0\ref\GameServer.dll
+C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Servidor-C-Crystalshire\obj\Debug\net8.0\GameServer.sourcelink.json

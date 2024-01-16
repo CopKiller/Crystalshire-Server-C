@@ -12,7 +12,7 @@ namespace LoginServer.Server
             await Global.InitLogs();
 
             Global.Server = new DataServer();
-            Global.Server.UpdateUps += ups => Console.Title = $"Event Server @ {ups} Ups";
+            Global.Server.UpdateUps += ups => Console.Title = $"Login Server @ {ups} Ups";
             Global.Server.InitServer();
         }
     }

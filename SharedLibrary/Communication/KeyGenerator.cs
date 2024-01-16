@@ -17,7 +17,7 @@ namespace SharedLibrary.Communication
             char[] chars = Words.ToCharArray();
             byte[] data = new byte[Size];
 
-            using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
+            using (var crypto = new RNGCryptoServiceProvider())
             {
                 crypto.GetBytes(data);
             }

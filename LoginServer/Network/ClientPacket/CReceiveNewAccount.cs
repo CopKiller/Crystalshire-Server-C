@@ -14,12 +14,13 @@ namespace LoginServer.Network.ClientPacket
 
             var code = msg.ReadString();
 
-            //if (name.Length <= 3 || )
-            //{
 
-            //}
+        }
 
-            //new CReceiveNewAccount().Send(connection);
+        public bool CheckAccount()
+        {
+
+            return true;
         }
     }
 }
