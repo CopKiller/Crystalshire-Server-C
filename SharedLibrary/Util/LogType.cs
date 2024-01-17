@@ -1,7 +1,8 @@
-﻿namespace SharedLibrary.Util {
-    public enum LogType {
-        System,
-        Player,
-        Debug
-    }
+﻿namespace SharedLibrary.Util;
+
+public enum LogType
+{
+    System,
+    Player,
+    Debug
 }

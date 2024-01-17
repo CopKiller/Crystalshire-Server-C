@@ -1,19 +1,19 @@
-﻿
-using LoginServer.Network.ClientPacket;
-using LoginServer.Network.ServerPacket;
+﻿using LoginServer.Network.ClientPacket;
 
-namespace LoginServer.Network {
-    public sealed class OpCode {
-        public static Dictionary<int, Type> RecvPacket = new Dictionary<int, Type>();
-        public static Dictionary<Type, int> SendPacket = new Dictionary<Type, int>();
+namespace LoginServer.Network;
 
-        public static void InitOpCode() {
-            // Fluxo Receive
-            RecvPacket.Add((int)Packet.CNewAccount, typeof(CReceiveNewAccount));
+public sealed class OpCode
+{
+    public static Dictionary<int, Type> RecvPacket = new();
+    public static Dictionary<Type, int> SendPacket = new();
 
-            // Fluxo Send
-            // Enviando um ping, pra saber o status da conexão!
-            //SendPacket.Add(typeof(SpPing), (int)Packet.SSendPing);
-        }
+    public static void InitOpCode()
+    {
+        // Fluxo Receive
+        RecvPacket.Add((int)Packet.CNewAccount, typeof(CReceiveNewAccount));
+
+        // Fluxo Send
+        // Enviando um ping, pra saber o status da conexão!
+        //SendPacket.Add(typeof(SpPing), (int)Packet.SSendPing);
     }
 }

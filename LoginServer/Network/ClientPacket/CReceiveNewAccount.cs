@@ -1,26 +1,23 @@
 ﻿using SharedLibrary.Network;
 using SharedLibrary.Network.Interface;
 
-namespace LoginServer.Network.ClientPacket
+namespace LoginServer.Network.ClientPacket;
+
+public sealed class CReceiveNewAccount : IRecvPacket
 {
-    public sealed class CReceiveNewAccount : IRecvPacket  {
-        public void Process(byte[] buffer, IConnection connection) {
+    public void Process(byte[] buffer, IConnection connection)
+    {
+        var msg = new ByteBuffer(buffer);
 
-            var msg = new ByteBuffer(buffer);
+        var name = msg.ReadString();
 
-            var name = msg.ReadString();
+        var pass = msg.ReadString();
 
-            var pass = msg.ReadString();
+        var code = msg.ReadString();
+    }
 
-            var code = msg.ReadString();
-
-
-        }
-
-        public bool CheckAccount()
-        {
-
-            return true;
-        }
+    public bool CheckAccount()
+    {
+        return true;
     }
 }

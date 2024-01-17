@@ -1,7 +1,6 @@
-﻿namespace SharedLibrary.Network.Interface
+﻿namespace SharedLibrary.Network.Interface;
+
+public interface IRecvPacket
 {
-    public interface IRecvPacket
-    {
-        void Process(byte[] buffer, IConnection connection);
-    }
+    void Process(byte[] buffer, IConnection connection);
 }

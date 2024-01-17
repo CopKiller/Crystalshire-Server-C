@@ -1,21 +1,19 @@
-﻿using System;
+﻿namespace SharedLibrary.Util;
 
-namespace SharedLibrary.Util
+public static class ExtensaoString
 {
-    public static class ExtensaoString
+    public static string ParseHome(this string path)
     {
-        public static string ParseHome(this string path)
-        {
-            string home = (Environment.OSVersion.Platform == PlatformID.Unix ||
-                Environment.OSVersion.Platform == PlatformID.MacOSX)
-                ? Environment.GetEnvironmentVariable("HOME")
-                : Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
-            return path.Replace("~", home);
-        }
-        public static string MyDir(this string path)
-        {
-            string home = Environment.CurrentDirectory;
-            return path.Replace("~", home);
-        }
+        var home = Environment.OSVersion.Platform == PlatformID.Unix ||
+                   Environment.OSVersion.Platform == PlatformID.MacOSX
+            ? Environment.GetEnvironmentVariable("HOME")
+            : Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
+        return path.Replace("~", home);
+    }
+
+    public static string MyDir(this string path)
+    {
+        var home = Environment.CurrentDirectory;
+        return path.Replace("~", home);
     }
 }

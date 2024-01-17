@@ -4,75 +4,81 @@ using LoginServer.Communication;
 using SharedLibrary.Communication;
 using SharedLibrary.Util;
 
-namespace LoginServer.Network {
-    public sealed class TcpServer {
-        public int Port { get; set; }
+namespace LoginServer.Network;
 
-        private bool accept;
-        private Socket server;
+public sealed class TcpServer
+{
+    private bool accept;
+    private Socket server;
 
-        public TcpServer() { }
+    public TcpServer()
+    {
+    }
 
-        public TcpServer(int port) {
-            Port = port;
-        }
+    public TcpServer(int port)
+    {
+        Port = port;
+    }
 
-        public async Task InitServer() {
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            server.Bind(new IPEndPoint(IPAddress.Any, Port));
-            server.Listen(10);
+    public int Port { get; set; }
 
-            Global.WriteLog(LogType.System, $"TCP Protocol Initialized...", ConsoleColor.Green);
+    public async Task InitServer()
+    {
+        server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        server.Bind(new IPEndPoint(IPAddress.Any, Port));
+        server.Listen(10);
 
-            accept = true;
+        Global.WriteLog(LogType.System, "TCP Protocol Initialized...", ConsoleColor.Green);
 
-            await Task.CompletedTask;
-        }
+        accept = true;
 
-        public void AcceptClient() {
-            if (accept) {
-                if (server.Poll(0, SelectMode.SelectRead))
-                    {
-                    var client = server.Accept();
-                    var ipAddress = client.RemoteEndPoint.ToString();
+        await Task.CompletedTask;
+    }
 
-                    if (IsValidIpAddress(ipAddress)) {
-                        var uniqueKey = new KeyGenerator().GetUniqueKey();
+    public void AcceptClient()
+    {
+        if (accept)
+            if (server.Poll(0, SelectMode.SelectRead))
+            {
+                var client = server.Accept();
+                var ipAddress = client.RemoteEndPoint.ToString();
 
-                        new Connection(client, ipAddress, uniqueKey);
-                        Global.WriteLog(LogType.System, $"{ipAddress} Key {uniqueKey} is connected",ConsoleColor.Green);
-                    }
-                    else {
-                        client.Close();
-                        Global.WriteLog(LogType.System, $"Hacking Attempt: Invalid IpAddress {ipAddress}",ConsoleColor.Red);
-                    }
+                if (IsValidIpAddress(ipAddress))
+                {
+                    var uniqueKey = new KeyGenerator().GetUniqueKey();
+
+                    new Connection(client, ipAddress, uniqueKey);
+                    Global.WriteLog(LogType.System, $"{ipAddress} Key {uniqueKey} is connected", ConsoleColor.Green);
+                }
+                else
+                {
+                    client.Close();
+                    Global.WriteLog(LogType.System, $"Hacking Attempt: Invalid IpAddress {ipAddress}",
+                        ConsoleColor.Red);
                 }
             }
-        }
+    }
 
 
-        public void Stop() {
-            accept = false;
-            server.Close();
-        }
+    public void Stop()
+    {
+        accept = false;
+        server.Close();
+    }
 
-        private bool IsValidIpAddress(string ipAddress) {
-            const int IpAddressArraySplit = 4;
-            const int Last = 3;
+    private bool IsValidIpAddress(string ipAddress)
+    {
+        const int IpAddressArraySplit = 4;
+        const int Last = 3;
 
-            if (string.IsNullOrWhiteSpace(ipAddress) || string.IsNullOrEmpty(ipAddress)) {
-                return false;
-            }
+        if (string.IsNullOrWhiteSpace(ipAddress) || string.IsNullOrEmpty(ipAddress)) return false;
 
-            var values = ipAddress.Split('.');
-            if (values.Length != IpAddressArraySplit) {
-                return false;
-            }
+        var values = ipAddress.Split('.');
+        if (values.Length != IpAddressArraySplit) return false;
 
-            // Retira o número da porta.
-            values[Last] = values[Last].Remove(values[Last].IndexOf(':'));
+        // Retira o número da porta.
+        values[Last] = values[Last].Remove(values[Last].IndexOf(':'));
 
-            return values.All(r => byte.TryParse(r, out byte parsing));
-        }
+        return values.All(r => byte.TryParse(r, out var parsing));
     }
 }

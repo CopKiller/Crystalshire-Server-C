@@ -1,96 +1,91 @@
 ﻿using LoginServer.Communication;
 using LoginServer.Network;
 
-namespace LoginServer.Server
+namespace LoginServer.Server;
+
+public class DataServer
 {
-    public class DataServer
+    private int count;
+    private TcpServer Server;
+
+    private int tick;
+    public Action<int> UpdateUps;
+    private int ups;
+    public bool ServerRunning { get; set; } = true;
+
+    public async void InitServer()
     {
-        public Action<int> UpdateUps;
-        public bool ServerRunning { get; set; } = true;
+        Server = new TcpServer(Constants.Port);
 
-        private int tick;
-        private int count;
-        private int ups;
-        private TcpServer Server;
+        await Server.InitServer();
 
-        public async void InitServer()
-        {
-            Server = new TcpServer(Constants.Port);
+        OpCode.InitOpCode();
 
-            await Server.InitServer();
-
-            OpCode.InitOpCode();
-
-            while (true)
+        while (true)
+            if (Server != null)
             {
-                if (Server != null)
+                ServerLoop();
+
+                Thread.Sleep(1);
+
+                if (!ServerRunning)
                 {
-                    ServerLoop();
-
-                    Thread.Sleep(1);
-
-                    if (!ServerRunning)
-                    {
-                        StopServer();
-                        Environment.Exit(0);
-                    }
+                    StopServer();
+                    Environment.Exit(0);
                 }
             }
-        }
+    }
 
-        public void ServerLoop()
+    public void ServerLoop()
+    {
+        Server.AcceptClient();
+
+        ReceiveSocketData();
+
+        CountUps();
+    }
+
+    public void StopServer()
+    {
+        Server.Stop();
+        Connection.Connections.Clear();
+    }
+
+    private void CountUps()
+    {
+        if (Environment.TickCount >= tick + 1000)
         {
-            Server.AcceptClient();
+            ups = count;
+            count = 0;
+            tick = Environment.TickCount;
 
-            ReceiveSocketData();
-
-            CountUps();
+            UpdateUps?.Invoke(ups);
         }
-
-        public void StopServer()
+        else
         {
-            Server.Stop();
-            Connection.Connections.Clear();
+            count++;
         }
+    }
 
-        private void CountUps()
-        {
-            if (Environment.TickCount >= tick + 1000)
+    private void ReceiveSocketData()
+    {
+        for (var n = 1; n <= Connection.HighIndex; n++)
+            if (Connection.Connections.ContainsKey(n))
             {
-                ups = count;
-                count = 0;
-                tick = Environment.TickCount;
+                Connection.Connections[n].ReceiveData();
 
-                UpdateUps?.Invoke(ups);
+                RemoveWhenNotConnected(n);
             }
-            else
-            {
-                count++;
-            }
-        }
+    }
 
-        private void ReceiveSocketData()
+    private void RemoveWhenNotConnected(int index)
+    {
+        // Verifica se há dados disponíveis sem bloquear.
+
+        if (!Connection.Connections[index].Connected)
         {
-            for (int n = 1; n <= Connection.HighIndex; n++)
-            {
-                if (Connection.Connections.ContainsKey(n))
-                {
-                    Connection.Connections[n].ReceiveData();
-
-                    RemoveWhenNotConnected(n);
-                }
-            }
-        }
-
-        private void RemoveWhenNotConnected(int index)
-        {
-            // Verifica se há dados disponíveis sem bloquear.
-
-            if (!Connection.Connections[index].Connected)
-            {
-                Connection.Connections[index].Disconnect();
-                Connection.Remove(index);
-            }
+            Connection.Connections[index].Disconnect();
+            Connection.Remove(index);
         }
     }
 }

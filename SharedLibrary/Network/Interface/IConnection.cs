@@ -1,9 +1,7 @@
-﻿
-namespace SharedLibrary.Network.Interface
+﻿namespace SharedLibrary.Network.Interface;
+
+public interface IConnection
 {
-    public interface IConnection
-    {
-        void Send(ByteBuffer msg, string className);
-        void ReceiveData();
-    }
+    void Send(ByteBuffer msg, string className);
+    void ReceiveData();
 }

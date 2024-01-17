@@ -1,35 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace SharedLibrary.Communication
+namespace SharedLibrary.Communication;
+
+public sealed class KeyGenerator
 {
-    public sealed class KeyGenerator
+    private const string Words = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    private const int Size = 15;
+
+    public string GetUniqueKey()
     {
-        private const string Words = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        private const int Size = 15;
+        var chars = Words.ToCharArray();
+        var data = new byte[Size];
 
-        public string GetUniqueKey()
+        using (var crypto = new RNGCryptoServiceProvider())
         {
-            char[] chars = Words.ToCharArray();
-            byte[] data = new byte[Size];
-
-            using (var crypto = new RNGCryptoServiceProvider())
-            {
-                crypto.GetBytes(data);
-            }
-
-            StringBuilder result = new StringBuilder(Size);
-
-            foreach (byte b in data)
-            {
-                result.Append(chars[b % (chars.Length)]);
-            }
-
-            return result.ToString();
+            crypto.GetBytes(data);
         }
+
+        var result = new StringBuilder(Size);
+
+        foreach (var b in data) result.Append(chars[b % chars.Length]);
+
+        return result.ToString();
     }
 }

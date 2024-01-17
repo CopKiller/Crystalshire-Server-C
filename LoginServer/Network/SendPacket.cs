@@ -1,20 +1,22 @@
 ﻿using SharedLibrary.Network;
 using SharedLibrary.Network.Interface;
 
-namespace LoginServer.Network
+namespace LoginServer.Network;
+
+public abstract class SendPacket
 {
-    public abstract class SendPacket {
-        protected ByteBuffer msg;
+    protected ByteBuffer msg;
 
-        public SendPacket() {
-            msg = new ByteBuffer();
-        }
+    public SendPacket()
+    {
+        msg = new ByteBuffer();
+    }
 
-        public void Send(IConnection connection) {
-            ((Connection)connection).Send(msg, GetType().Name);
+    public void Send(IConnection connection)
+    {
+        ((Connection)connection).Send(msg, GetType().Name);
 
-            msg.Clear();
-            msg = null;
-        }
+        msg.Clear();
+        msg = null;
     }
 }

@@ -1,19 +1,16 @@
-﻿
+﻿using LoginServer.Communication;
 
-using LoginServer.Communication;
+namespace LoginServer.Server;
 
-namespace LoginServer.Server
+public class InitServer
 {
-    public class InitServer
+    public async Task InitServerAsync()
     {
-        public async Task InitServerAsync()
-        {
-            //Inicializações estáticas
-            await Global.InitLogs();
+        //Inicializações estáticas
+        await Global.InitLogs();
 
-            Global.Server = new DataServer();
-            Global.Server.UpdateUps += ups => Console.Title = $"Login Server @ {ups} Ups";
-            Global.Server.InitServer();
-        }
+        Global.Server = new DataServer();
+        Global.Server.UpdateUps += ups => Console.Title = $"Login Server @ {ups} Ups";
+        Global.Server.InitServer();
     }
 }
