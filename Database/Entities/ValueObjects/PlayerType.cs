@@ -29,7 +29,7 @@ public enum EntidadeType
 }
 public enum EquipmentType
 {
-    Weapon,
+    Weapon = 1,
     Armor,
     Helmet,
     Shield,

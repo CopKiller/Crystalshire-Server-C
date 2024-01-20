@@ -1,17 +1,17 @@
 ﻿using Database.Entities.ValueObjects;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Database.Entities.Player;
 
-public class PlayerEntity
+public class PlayerEntity : BaseEntity
 {
-    // General Data
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; } = 0;
+    public const byte MaxNameCaracteres = 20;
 
+
+    [MaxLength(MaxNameCaracteres)]
     public string Name { get; set; } = string.Empty;
+
     public SexType Sexo { get; set; } = SexType.None;
     public ClassType ClassType { get; set; } = ClassType.None;
     public AccessType AccessType { get; set; } = AccessType.Player;
@@ -26,15 +26,13 @@ public class PlayerEntity
     public Stat Stat { get; set; } = new Stat();
     public Vital Vital { get; set; } = new Vital();
 
-    //Aguardando implementações anteriores
+    public List<Equipment> Equipment { get; set; } = new List<Equipment>();
 
-    //public Equipment[] Equipment { get; set;} = new Equipment[Enum.GetValues(typeof(EquipmentType)).Length];
-
-    //public PlayerEntity()
-    //{
-    //    for (int i = 1; i <= Equipment.Length; i++)
-    //    {
-    //        Equipment[i] = new Equipment();
-    //    }
-    //}
+    public PlayerEntity()
+    {
+        for (var i = 1; i <= Enum.GetValues(typeof(EquipmentType)).Length; i++)
+        {
+            Equipment.Add(new Equipment());
+        }
+    }
 }

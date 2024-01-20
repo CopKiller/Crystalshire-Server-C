@@ -8,7 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj"/>
+        <ProjectReference Include="..\Database\Database.csproj" />
+        <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj" />
     </ItemGroup>
 
 </Project>

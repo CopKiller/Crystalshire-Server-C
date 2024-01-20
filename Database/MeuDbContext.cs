@@ -3,37 +3,65 @@ using Database.Entities.Account;
 using Database.Entities.Player;
 using Database.Entities.ValueObjects;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using SQLitePCL;
 
 namespace Database;
 
-public class SeuDbContext : DbContext
+public class MeuDbContext : DbContext
 {
     public DbSet<AccountEntity> AccountEntities { get; set; }
     public DbSet<PlayerEntity> PlayerEntities { get; set; }
-    //public DbSet<Position> Positions { get; set; }
-    //public DbSet<Stat> Stat { get; set; }
+
+    public MeuDbContext()
+    {
+        Batteries.Init();
+    }
+
+    public MeuDbContext(DbContextOptions<MeuDbContext> options) : base(options)
+    {
+        Batteries.Init();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //Configuração da exclusão em cascata para todas as relações
+        foreach (var relationship in modelBuilder.Model.GetEntityTypes()
+            .SelectMany(e => e.GetForeignKeys()))
+        {
+            relationship.DeleteBehavior = DeleteBehavior.Cascade;
+        }
+
+        // Configuração de relações específicas
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(p => p.Position)
+            .WithOne()
+            .HasForeignKey<Position>(p => p.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(p => p.Stat)
+            .WithOne()
+            .HasForeignKey<Stat>(s => s.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(p => p.Vital)
+            .WithOne()
+            .HasForeignKey<Vital>(v => v.Id)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Adicione outras configurações de modelo, se necessário...
-
         base.OnModelCreating(modelBuilder);
-
-        // Obtém todas as entidades no modelo
-        //var entityTypes = modelBuilder.Model.GetEntityTypes();
-
-        //// Aplica HasNoKey para cada entidade
-        //foreach (var entityType in entityTypes)
-        //{
-        //    modelBuilder.Entity(entityType.ClrType).HasNoKey();
-        //}
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=DatabaseSqlite.db");
-        Batteries.Init();
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlite(@"Data Source=DatabaseSqlite.db");
+        }
+
+        base.OnConfiguring(optionsBuilder);
     }
 }

@@ -1,8 +1,8 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using LoginServer.Communication;
+﻿using LoginServer.Communication;
 using SharedLibrary.Communication;
 using SharedLibrary.Util;
+using System.Net;
+using System.Net.Sockets;
 
 namespace LoginServer.Network;
 
