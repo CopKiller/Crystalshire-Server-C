@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Database.Entities.ValueObjects
+namespace Database.Entities.ValueObjects.Player
 {
     public class Stat : BaseEntity
     {

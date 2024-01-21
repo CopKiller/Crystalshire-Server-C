@@ -41,7 +41,12 @@ namespace Database.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(20)
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -94,7 +99,32 @@ namespace Database.Migrations
                     b.ToTable("PlayerEntities");
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Equipment", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Bank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<byte>("Bounding")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ItemAmount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("PlayerEntityId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlayerEntityId");
+
+                    b.ToTable("Bank");
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Equipment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,9 +146,52 @@ namespace Database.Migrations
                     b.ToTable("Equipment");
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Position", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Inventory", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<byte>("Bounding")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ItemAmount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("PlayerEntityId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlayerEntityId");
+
+                    b.ToTable("Inventory");
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Penalty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isBanned")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isMuted")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Penalty");
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Position", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("MapNum")
@@ -135,9 +208,32 @@ namespace Database.Migrations
                     b.ToTable("Position");
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Stat", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Skill", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("PlayerEntityId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SkillUses")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlayerEntityId");
+
+                    b.ToTable("Skill");
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Stat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Agility")
@@ -160,9 +256,10 @@ namespace Database.Migrations
                     b.ToTable("Stat");
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Vital", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Vital", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CurEnergy")
@@ -190,7 +287,15 @@ namespace Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Equipment", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Bank", b =>
+                {
+                    b.HasOne("Database.Entities.Player.PlayerEntity", null)
+                        .WithMany("Bank")
+                        .HasForeignKey("PlayerEntityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Equipment", b =>
                 {
                     b.HasOne("Database.Entities.Player.PlayerEntity", null)
                         .WithMany("Equipment")
@@ -198,29 +303,54 @@ namespace Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Position", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Inventory", b =>
+                {
+                    b.HasOne("Database.Entities.Player.PlayerEntity", null)
+                        .WithMany("Inventory")
+                        .HasForeignKey("PlayerEntityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Penalty", b =>
+                {
+                    b.HasOne("Database.Entities.Player.PlayerEntity", null)
+                        .WithOne("Penalty")
+                        .HasForeignKey("Database.Entities.ValueObjects.Player.Penalty", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Position", b =>
                 {
                     b.HasOne("Database.Entities.Player.PlayerEntity", null)
                         .WithOne("Position")
-                        .HasForeignKey("Database.Entities.ValueObjects.Position", "Id")
+                        .HasForeignKey("Database.Entities.ValueObjects.Player.Position", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Stat", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Skill", b =>
+                {
+                    b.HasOne("Database.Entities.Player.PlayerEntity", null)
+                        .WithMany("Skill")
+                        .HasForeignKey("PlayerEntityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Stat", b =>
                 {
                     b.HasOne("Database.Entities.Player.PlayerEntity", null)
                         .WithOne("Stat")
-                        .HasForeignKey("Database.Entities.ValueObjects.Stat", "Id")
+                        .HasForeignKey("Database.Entities.ValueObjects.Player.Stat", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Database.Entities.ValueObjects.Vital", b =>
+            modelBuilder.Entity("Database.Entities.ValueObjects.Player.Vital", b =>
                 {
                     b.HasOne("Database.Entities.Player.PlayerEntity", null)
                         .WithOne("Vital")
-                        .HasForeignKey("Database.Entities.ValueObjects.Vital", "Id")
+                        .HasForeignKey("Database.Entities.ValueObjects.Player.Vital", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -232,10 +362,19 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Entities.Player.PlayerEntity", b =>
                 {
+                    b.Navigation("Bank");
+
                     b.Navigation("Equipment");
+
+                    b.Navigation("Inventory");
+
+                    b.Navigation("Penalty")
+                        .IsRequired();
 
                     b.Navigation("Position")
                         .IsRequired();
+
+                    b.Navigation("Skill");
 
                     b.Navigation("Stat")
                         .IsRequired();

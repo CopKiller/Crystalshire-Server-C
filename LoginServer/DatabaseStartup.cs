@@ -5,31 +5,31 @@ using Database.Entities.Player;
 using Database.Repositories.Account;
 using Database.Repositories.Interface;
 using Database.Repositories.Player;
+using Database.Repositories.ValidateData;
 using LoginServer.Communication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SharedLibrary.Util;
+using System;
 
 namespace LoginServer.Database;
 
 public class DatabaseStartup
 {
-    private readonly IServiceProvider _serviceProvider;
+    private static IServiceProvider _serviceProvider { get; set; }
 
     public DatabaseStartup(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }
 
-    public static IServiceProvider Configure()
+    public static async Task Configure()
     {
         var serviceCollection = new ServiceCollection();
 
         // Configuração do DbContext e outros serviços
         var connectionString = @"Data Source=DatabaseSqlite.db";
         serviceCollection.AddDbContext<MeuDbContext>(options => options.UseSqlite(connectionString));
-
-        Console.WriteLine(connectionString);
 
         // Configuração dos repositórios
         serviceCollection.AddScoped<IRepository<AccountEntity>, AccountRepository>();
@@ -39,26 +39,17 @@ public class DatabaseStartup
 
         Global.WriteLog(LogType.Player, $"[DATABASE] Configurada com sucesso! {connectionString}", ConsoleColor.Yellow);
 
-        using (var scope = provider.CreateScope())
-        {
-            // Resolvendo o serviço necessário dentro do escopo
-            var migration = 0;
+        _serviceProvider = provider;
 
-            if (migration > 0)
-            {
-                var scp = scope.ServiceProvider.GetRequiredService<MeuDbContext>();
-                scp.Database.Migrate();
+        await Task.CompletedTask;
 
-                migration = 0;
-            }
-
-            Global.WriteLog(LogType.System, "[DATABASE] Banco de dados migrado com sucesso!", ConsoleColor.Yellow);
-        }
-
-        return provider;
+        //Criação do banco de dados, caso não existir
+        //using (var scope = provider.CreateScope())
+        //{ var scp = scope.ServiceProvider.GetRequiredService<MeuDbContext>();
+        //  scp.Database.Migrate(); }
     }
 
-    public async Task AdicionarConta(string _Login, string _Password, string _Email)
+    public static async Task<OperationResult> AdicionarConta(string _Login, string _Password, string _Email)
     {
         using (var scope = _serviceProvider.CreateScope())
         {
@@ -75,21 +66,17 @@ public class DatabaseStartup
                 Email = _Email
             };
 
-            var adicionouComSucesso = await accountRepo.AdicionarContaAsync(novaConta);
+            // Adicionando a conta e obtendo o resultado
+            var resultadoAdicao = await accountRepo.AddPlayerAccountAsync(novaConta);
 
-            if (adicionouComSucesso)
-            {
-                Global.WriteLog(LogType.Player, $"[DATABASE] Conta adicionada com sucesso!", ConsoleColor.Yellow);
-            }
-            else
-            {
-                Console.WriteLine("Erro ao adicionar a conta.");
-                Global.WriteLog(LogType.Player, $"[DATABASE] Erro ao adicionar a conta.", ConsoleColor.Red);
-            }
+            Global.WriteLog(LogType.Database, resultadoAdicao.Message, resultadoAdicao.Color);
+
+            // Retorna true se a adição foi bem-sucedida, caso contrário, retorna false
+            return resultadoAdicao;
         }
     }
 
-    public async Task RecuperarConta(string _Login)
+    public static async Task Login(string _Login, string _Password)
     {
         using (var scope = _serviceProvider.CreateScope())
         {
@@ -99,20 +86,13 @@ public class DatabaseStartup
             var accountRepo = (AccountRepository)accountService;
 
             // Recupera a conta recém-adicionada por login
-            var contaRecuperada = await accountRepo.ObterContaPorLoginAsync(_Login);
+            var contaRecuperada = await accountRepo.CheckPlayerAccountAsync(_Login, _Password);
 
-            if (contaRecuperada != null)
-            {
-                Global.WriteLog(LogType.Player, $"[DATABASE] Conta recuperada: {contaRecuperada.Login}, {contaRecuperada.Email}", ConsoleColor.Yellow);
-            }
-            else
-            {
-                Global.WriteLog(LogType.Player, $"[DATABASE] Erro ao recuperar a conta.", ConsoleColor.Red);
-            }
+            Global.WriteLog(LogType.Database, contaRecuperada.Message, contaRecuperada.Color);
         }
     }
 
-    public async Task ExcluirConta(string _Login)
+    public static async Task ExcluirConta(string _Login)
     {
         using (var scope = _serviceProvider.CreateScope())
         {
@@ -130,12 +110,12 @@ public class DatabaseStartup
             }
             else
             {
-                Global.WriteLog(LogType.Player, $"[DATABASE] Erro ao recuperar a conta.", ConsoleColor.Red);
+                Global.WriteLog(LogType.Player, $"[DATABASE] Erro ao excluir a conta.", ConsoleColor.Red);
             }
         }
     }
 
-    public async Task AtualizarContas()
+    public static async Task AtualizarContas()
     {
         using (var scope = _serviceProvider.CreateScope())
         {

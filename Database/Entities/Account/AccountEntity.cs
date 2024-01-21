@@ -9,12 +9,16 @@ public class AccountEntity : BaseEntity
     public const byte MaxChar = 3;
     public const byte MaxAccountCaracteres = 20;
     public const byte MaxEmailCaracteres = Byte.MaxValue;
+    public const byte MaxCriptographyCaracteres = 50;
 
     [MaxLength(MaxAccountCaracteres)] // Defina o tamanho máximo desejado aqui
     public string Login { get; set; } = string.Empty;
 
-    [MaxLength(MaxAccountCaracteres)] // Defina o tamanho máximo desejado aqui
+    [MaxLength(MaxCriptographyCaracteres)] // Defina o tamanho máximo desejado aqui
     public string Password { get; set; } = string.Empty;
+
+    [MaxLength(MaxCriptographyCaracteres)] // Defina o tamanho máximo desejado aqui
+    public string Salt { get; set; } = string.Empty;
 
     [MaxLength(MaxEmailCaracteres)]
     public string Email { get; set; } = string.Empty;

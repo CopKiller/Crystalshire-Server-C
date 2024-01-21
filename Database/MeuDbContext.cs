@@ -1,7 +1,7 @@
 
 using Database.Entities.Account;
 using Database.Entities.Player;
-using Database.Entities.ValueObjects;
+using Database.Entities.ValueObjects.Player;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using SQLitePCL;
@@ -49,6 +49,12 @@ public class MeuDbContext : DbContext
             .HasOne(p => p.Vital)
             .WithOne()
             .HasForeignKey<Vital>(v => v.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(p => p.Penalty)
+            .WithOne()
+            .HasForeignKey<Penalty>(v => v.Id)
             .OnDelete(DeleteBehavior.Cascade);
 
         // Adicione outras configurações de modelo, se necessário...

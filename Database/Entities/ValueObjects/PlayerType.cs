@@ -36,3 +36,10 @@ public enum EquipmentType
     Legs,
     Boots
 }
+
+public enum HotbarSlotType
+{
+    Clear = 0,
+    Inventory,
+    Skill
+}

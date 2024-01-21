@@ -11,6 +11,7 @@ public static class Global
     public static Log? PlayerLogs { get; set; }
     public static Log? SystemLogs { get; set; }
     public static Log? DebugLogs { get; set; }
+    public static Log? DatabaseLogs { get; set; }
 
     public static void WriteLog(LogType type, string text, ConsoleColor color)
     {
@@ -24,6 +25,9 @@ public static class Global
                 break;
             case LogType.Debug:
                 DebugLogs.Write(text, color);
+                break;
+            case LogType.Database:
+                DatabaseLogs.Write(text, color);
                 break;
         }
     }
@@ -48,6 +52,12 @@ public static class Global
             Index = 2
         };
 
+        //Database
+        DatabaseLogs = new Log("Database")
+        {
+            Index = 3
+        };
+
         //System
         var result = SystemLogs.OpenFile();
         if (result)
@@ -68,8 +78,16 @@ public static class Global
             DebugLogs.Enabled = true;
         else
             WriteLog(LogType.System, "An error ocurred when trying to open the file log.", ConsoleColor.Red);
+        //Database
+        result = DatabaseLogs.OpenFile();
+
+        if (result)
+            DatabaseLogs.Enabled = true;
+        else
+            WriteLog(LogType.System, "An error ocurred when trying to open the file log.", ConsoleColor.Red);
 
         WriteLog(LogType.System, "Logs Initialized...", ConsoleColor.Green);
+
         return Task.CompletedTask;
     }
 }

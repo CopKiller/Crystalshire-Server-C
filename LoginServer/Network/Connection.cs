@@ -120,7 +120,7 @@ public sealed class Connection : IConnection
                 {
                     ((IRecvPacket)Activator.CreateInstance(OpCode.RecvPacket[header])).Process(msg.ReadBytes(pLength),
                         this);
-                    Global.WriteLog(LogType.System, $"Recebido: {Enum.GetName(typeof(Packet), header)}",
+                    Global.WriteLog(LogType.System, $"Recebido: {Enum.GetName(typeof(ClientPacketEnum), header)}",
                         ConsoleColor.Black);
                 }
                 else

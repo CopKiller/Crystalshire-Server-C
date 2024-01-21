@@ -1,5 +1,8 @@
-﻿using Database.Entities.Account;
+﻿using Database.Client;
+using Database.Entities.Account;
+using Database.Repositories.ValidateData;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Database.Repositories.Account
 {
@@ -14,19 +17,154 @@ namespace Database.Repositories.Account
             _dbContext = dbContext;
         }
 
-        public async Task<bool> AdicionarContaAsync(AccountEntity account)
+        public async Task<OperationResult> AddPlayerAccountAsync(AccountEntity account)
         {
-            try
+            var login = InputValidator.IsValidLogin(account.Login);
+            var password = InputValidator.IsValidPassword(account.Password);
+            var email = InputValidator.IsValidEmail(account.Email);
+
+            if (login.Success && password.Success && email.Success)
             {
+
+                var verifyAccountExists = await CheckPlayerAccountAsync(account.Login, account.Password);
+
+                if (verifyAccountExists.Success == false)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = $"[DATABASE] Account {account.Login} already exists!",
+                        Color = ConsoleColor.Red,
+                        ClientMenu = ClientMenu.MenuRegister,
+                        ClientMSG = ClientMessages.NameTaken
+                    };
+                }
+
+                //SHA256 Criptography of password -> Set on Database
+                Hash.CreatePasswordHash(account.Password, out string passwordHash, out string salt);
+                account.Password = passwordHash;
+                account.Salt = salt;
+
                 await _dbContext.AccountEntities.AddAsync(account);
-                var result = await _dbContext.SaveChangesAsync();
-                return result > 0;
+
+                if (await _dbContext.SaveChangesAsync() > 0)
+                {
+                    return new OperationResult
+                    {
+                        Success = true,
+                        Message = $"[DATABASE] Account {account.Login} has been addeded!",
+                        Color = ConsoleColor.Green,
+                        ClientMenu = ClientMenu.MenuLogin,
+                        ClientMSG = ClientMessages.AccountCreated
+                    };
+                }
+                else
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = $"[DATABASE] Account {account.Login} has not been addeded!",
+                        Color = ConsoleColor.Red,
+                        ClientMenu = ClientMenu.MenuMain,
+                        ClientMSG = ClientMessages.Connection
+                    };
+                }
             }
-            catch (Exception ex)
+            else // Tratamentos de erros
             {
-                Console.WriteLine($"Erro ao adicionar conta: {ex.Message}");
-                return false;
+                if (!login.Success)
+                {
+                    return login;
+                }
+                else if (!password.Success)
+                {
+                    return password;
+                }
+                else if (!email.Success)
+                {
+                    return email;
+                }
+                else
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = $"[DATABASE] Account {account.Login} has not been addeded!",
+                        Color = ConsoleColor.Red,
+                        ClientMenu = ClientMenu.MenuMain,
+                        ClientMSG = ClientMessages.Connection
+                    };
+                }
             }
+        }
+
+
+        //Normalmente utilizado ao criar uma conta, verificando se existe alguma conta com o mesmo login
+        //Esta sendo utilizado como login para testes!
+        public async Task<OperationResult> CheckPlayerAccountAsync(string login, string password)
+        {
+            var operationResult = new OperationResult();
+            var conta = await _dbContext.AccountEntities
+                .FirstOrDefaultAsync(e => e.Login == login);
+
+            if (conta == null)
+            {
+                operationResult.Success = true;
+                return operationResult;
+            }
+            else
+            {
+                operationResult.Success = false;
+                operationResult.Message = $"[DATABASE] Account {login} already exists!";
+                operationResult.Color = ConsoleColor.Red;
+                operationResult.ClientMSG = ClientMessages.NameTaken;
+                operationResult.ClientMenu = ClientMenu.MenuRegister;
+                return operationResult;
+            }
+        }
+        //public async Task<OperationResult> CheckPlayerAccountAsync(string login, string password)
+        //{
+        //    var operationResult = new OperationResult();
+        //    var conta = await _dbContext.AccountEntities
+        //        .FirstOrDefaultAsync(e => e.Login == login);
+
+        //    if (conta == null)
+        //    {
+        //        operationResult.Success = false;
+        //        operationResult.Message = $"[DATABASE] Account {login} not found!";
+        //        operationResult.Color = ConsoleColor.Red;
+        //        return operationResult;
+        //    }
+        //    if (Hash.VerifyPassword(password, conta.Password, conta.Salt))
+        //    {
+        //        operationResult.Success = true;
+        //        operationResult.Message = $"[DATABASE] Account {login} has been logged in!";
+        //        operationResult.Color = ConsoleColor.Green;
+        //        return operationResult;
+        //    }
+        //    else
+        //    {
+        //        operationResult.Success = false;
+        //        operationResult.Message = $"[DATABASE] Account {login} invalid credentials!";
+        //        operationResult.Color = ConsoleColor.Red;
+        //        return operationResult;
+        //    }
+        //}
+
+        //Normalmente utilizado para envio da conta ao servidor do jogo
+        public async Task<AccountEntity?> GivePlayerAccountAsync(string login, string password)
+        {
+            var conta = await _dbContext.AccountEntities
+                .FirstOrDefaultAsync(e => e.Login == login);
+
+            if (conta == null) { return null; }
+
+            if (Hash.VerifyPassword(password, conta.Salt, conta.Password))
+            {
+                return conta;
+            }
+
+            return null;
         }
 
         public async Task<int> AtualizarContaAsync()
@@ -42,14 +180,6 @@ namespace Database.Repositories.Account
                 Console.WriteLine($"Erro ao atualizar conta: {ex.Message}");
                 return 0;
             }
-        }
-
-        public async Task<AccountEntity> ObterContaPorLoginAsync(string login)
-        {
-            var conta = await _dbContext.AccountEntities
-                .FirstOrDefaultAsync(e => e.Login == login);
-
-            return conta;
         }
 
         public async Task<int> ExcluirContaPorLoginAsync(string login)

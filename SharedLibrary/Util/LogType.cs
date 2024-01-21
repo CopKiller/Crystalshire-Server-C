@@ -4,5 +4,6 @@ public enum LogType
 {
     System,
     Player,
-    Debug
+    Debug,
+    Database,
 }

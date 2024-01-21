@@ -1,0 +1,7 @@
+21/01/2024 01:40:04: [DATABASE] Account eae has been addeded!
+21/01/2024 01:46:19: [DATABASE] Account eae has been addeded!
+21/01/2024 01:49:04: [DATABASE] Account eae has been addeded!
+21/01/2024 02:27:18: [DATABASE] Account eae already exists!
+21/01/2024 02:32:51: [DATABASE] Account rola has been addeded!
+21/01/2024 02:33:53: [DATABASE] Account eae already exists!
+21/01/2024 02:34:44: [DATABASE] Valid Caracteres: a-z, A-Z, 0-9, _

@@ -1,4 +1,5 @@
 ﻿using LoginServer.Network.ClientPacket;
+using LoginServer.Network.ServerPacket;
 
 namespace LoginServer.Network;
 
@@ -10,10 +11,9 @@ public sealed class OpCode
     public static void InitOpCode()
     {
         // Fluxo Receive
-        RecvPacket.Add((int)Packet.CNewAccount, typeof(CReceiveNewAccount));
+        RecvPacket.Add((int)ClientPacketEnum.CNewAccount, typeof(CReceiveNewAccount));
 
         // Fluxo Send
-        // Enviando um ping, pra saber o status da conexão!
-        //SendPacket.Add(typeof(SpPing), (int)Packet.SSendPing);
+        SendPacket.Add(typeof(SAlertMsg), (int)ServerPacketEnum.SAlertMsg);
     }
 }
