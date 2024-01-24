@@ -673,10 +673,16 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.1",
           "Microsoft.EntityFrameworkCore.Sqlite.Core": "8.0.1",
-          "SQLitePCLRaw.bundle_e_sqlite3": "2.1.7"
+          "SQLitePCLRaw.bundle_e_sqlite3": "2.1.7",
+          "SharedLibrary": "1.0.0"
         },
         "runtime": {
           "Database.dll": {}
+        }
+      },
+      "SharedLibrary/1.0.0": {
+        "runtime": {
+          "SharedLibrary.dll": {}
         }
       },
       "Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions/14.0.0.0": {
@@ -927,6 +933,11 @@
       "hashPath": "system.text.json.8.0.0.nupkg.sha512"
     },
     "Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharedLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

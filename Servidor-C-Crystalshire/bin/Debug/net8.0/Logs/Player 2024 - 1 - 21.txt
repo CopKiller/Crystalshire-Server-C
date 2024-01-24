@@ -1,0 +1,6 @@
+21/01/2024 17:42:38: [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+21/01/2024 17:55:18: [Client] Login: tester | UniqueKey: 1231
+21/01/2024 18:17:01: [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+21/01/2024 18:22:20: [Client] Login: tester | UniqueKey: test123
+21/01/2024 18:23:22: [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+21/01/2024 18:23:43: [Client] Login: tester | UniqueKey: QYIDUhgidtv7C1X

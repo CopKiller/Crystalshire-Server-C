@@ -152,3 +152,5 @@ C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Tests\obj\Debug\
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Tests\obj\Debug\net8.0\Tests.pdb
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Tests\obj\Debug\net8.0\Tests.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Tests\obj\Debug\net8.0\ref\Tests.dll
+C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Tests\bin\Debug\net8.0\SharedLibrary.dll
+C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Tests\bin\Debug\net8.0\SharedLibrary.pdb

@@ -1,16 +1,13 @@
 ﻿using LoginServer.Communication;
-using LoginServer.Database;
 
 namespace LoginServer.Server;
 
 public class InitServer
 {
-    public async Task InitServerAsync()
+    public void InitializeServer()
     {
         //Inicializações estáticas
-        await Global.InitLogs();
-
-        await DatabaseStartup.Configure();
+        Global.InitLogs();
 
         Global.Server = new DataServer();
         Global.Server.UpdateUps += ups => Console.Title = $"Login Server @ {ups} Ups";

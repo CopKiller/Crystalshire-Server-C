@@ -1,3 +1,23 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+using GameServer.Network;
 
-Console.WriteLine("Hello, World!");
+namespace Program;
+
+public static class Program
+{
+    /// <summary>
+    ///     The main entry point for the application.
+    /// </summary>
+    private static void Main()
+    {
+        var initServer = new InitServer();
+        // Iniciar uma tarefa em segundo plano
+        var backgroundTask = Task.Run(() => initServer.InitializeServer());
+
+
+        while (true)
+        {
+            Console.ReadLine();
+        }
+    }
+}

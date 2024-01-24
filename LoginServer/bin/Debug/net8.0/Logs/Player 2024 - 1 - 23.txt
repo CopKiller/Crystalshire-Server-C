@@ -1,0 +1,75 @@
+[23/01/24 - 22:14] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:14] [Player] Incoming connection 127.0.0.1:60334
+[23/01/24 - 22:19] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:22] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:22] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:24] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:27] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:27] [Player] Incoming connection 127.0.0.1:60422
+[23/01/24 - 22:27] [Player] Index: 1 Key 127.0.0.1:60422 127.0.0.1:60422 is connected
+[23/01/24 - 22:27] [Player] Index: 1 Key 127.0.0.1:60422 127.0.0.1:60422 is disconnected
+[23/01/24 - 22:28] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:28] [Player] Incoming connection 127.0.0.1:60435
+[23/01/24 - 22:28] [Player] Index: 1 Key 127.0.0.1:60435 127.0.0.1:60435 is connected
+[23/01/24 - 22:28] [Player] Index: 1 Key 127.0.0.1:60435 127.0.0.1:60435 is disconnected
+[23/01/24 - 22:30] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:30] [Player] Incoming connection 127.0.0.1:60453
+[23/01/24 - 22:30] [Player] Index: 1 Key 127.0.0.1:60453 127.0.0.1:60453 is connected
+[23/01/24 - 22:30] [Player] Index: 1 Key 127.0.0.1:60453 127.0.0.1:60453 is disconnected
+[23/01/24 - 22:31] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:31] [Player] Incoming connection 127.0.0.1:60457
+[23/01/24 - 22:31] [Player] Index: 1 Key 127.0.0.1:60457 127.0.0.1:60457 is connected
+[23/01/24 - 22:31] [Player] Index: 1 Key 127.0.0.1:60457 127.0.0.1:60457 is disconnected
+[23/01/24 - 22:41] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:42] [Player] Incoming connection 127.0.0.1:60503
+[23/01/24 - 22:43] [Player] Index: 1 Key 127.0.0.1:60503 127.0.0.1:60503 is connected
+[23/01/24 - 22:43] [Player] Index: 1 Key 127.0.0.1:60503 127.0.0.1:60503 is disconnected
+[23/01/24 - 22:43] [Player] Incoming connection 127.0.0.1:60527
+[23/01/24 - 22:44] [Player] Index: 2 Key 127.0.0.1:60527 127.0.0.1:60527 is connected
+[23/01/24 - 22:49] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 22:49] [Player] Incoming connection 127.0.0.1:60569
+[23/01/24 - 22:49] [Player] Index: 1 Key 127.0.0.1:60569 127.0.0.1:60569 is connected
+[23/01/24 - 22:49] [Player] Index: 1 Key 127.0.0.1:60569 127.0.0.1:60569 is disconnected
+[23/01/24 - 22:49] [Player] Incoming connection 127.0.0.1:60572
+[23/01/24 - 22:50] [Player] Index: 2 Key 127.0.0.1:60572 127.0.0.1:60572 is connected
+[23/01/24 - 22:50] [Player] Index: 2 Key 127.0.0.1:60572 127.0.0.1:60572 is disconnected
+[23/01/24 - 22:50] [Player] Incoming connection 127.0.0.1:60579
+[23/01/24 - 22:50] [Player] Index: 1 Key 127.0.0.1:60579 127.0.0.1:60579 is connected
+[23/01/24 - 22:50] [Player] Index: 1 Key 127.0.0.1:60579 127.0.0.1:60579 is disconnected
+[23/01/24 - 23:10] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:10] [Player] Incoming connection 127.0.0.1:60667
+[23/01/24 - 23:10] [Player] Index: 1 Key 127.0.0.1:60667 127.0.0.1:60667 is connected
+[23/01/24 - 23:10] [Player] Index: 1 Key 127.0.0.1:60667 127.0.0.1:60667 is disconnected
+[23/01/24 - 23:13] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:13] [Player] Incoming connection 127.0.0.1:60686
+[23/01/24 - 23:13] [Player] Index: 1 Key 127.0.0.1:60686 127.0.0.1:60686 is connected
+[23/01/24 - 23:13] [Player] Index: 1 Key 127.0.0.1:60686 127.0.0.1:60686 is disconnected
+[23/01/24 - 23:15] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:15] [Player] Incoming connection 127.0.0.1:60698
+[23/01/24 - 23:15] [Player] Index: 1 Key 127.0.0.1:60698 127.0.0.1:60698 is connected
+[23/01/24 - 23:15] [Player] Index: 1 Key 127.0.0.1:60698 127.0.0.1:60698 is disconnected
+[23/01/24 - 23:21] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:22] [Player] Incoming connection 127.0.0.1:60737
+[23/01/24 - 23:22] [Player] Index: 1 Key 127.0.0.1:60737 127.0.0.1:60737 is connected
+[23/01/24 - 23:22] [Player] Index: 1 Key 127.0.0.1:60737 127.0.0.1:60737 is disconnected
+[23/01/24 - 23:22] [Player] Incoming connection 127.0.0.1:60739
+[23/01/24 - 23:22] [Player] Index: 1 Key 127.0.0.1:60739 127.0.0.1:60739 is connected
+[23/01/24 - 23:22] [Player] Index: 1 Key 127.0.0.1:60739 127.0.0.1:60739 is disconnected
+[23/01/24 - 23:22] [Player] Incoming connection 127.0.0.1:60742
+[23/01/24 - 23:22] [Player] Index: 1 Key 127.0.0.1:60742 127.0.0.1:60742 is connected
+[23/01/24 - 23:22] [Player] Index: 1 Key 127.0.0.1:60742 127.0.0.1:60742 is disconnected
+[23/01/24 - 23:25] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:27] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:28] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:29] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:39] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:43] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[23/01/24 - 23:43] [Player] Incoming connection 127.0.0.1:60859
+[23/01/24 - 23:43] [Player] Index: 1 Key 127.0.0.1:60859 127.0.0.1:60859 is connected
+[23/01/24 - 23:44] [Player] Index: 1 Key 127.0.0.1:60859 127.0.0.1:60859 is disconnected
+[23/01/24 - 23:44] [Player] Incoming connection 127.0.0.1:60861
+[23/01/24 - 23:44] [Player] Index: 1 Key 127.0.0.1:60861 127.0.0.1:60861 is connected
+[23/01/24 - 23:44] [Player] Index: 1 Key 127.0.0.1:60861 127.0.0.1:60861 is disconnected
+[23/01/24 - 23:44] [Player] Incoming connection 127.0.0.1:60875
+[23/01/24 - 23:44] [Player] Index: 1 Key 127.0.0.1:60875 127.0.0.1:60875 is connected
+[23/01/24 - 23:44] [Player] Index: 1 Key 127.0.0.1:60875 127.0.0.1:60875 is disconnected

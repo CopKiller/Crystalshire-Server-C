@@ -1,0 +1,3 @@
+[24/01/24 - 00:02] [Database] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:05] [Database] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:09] [Database] Configurada com sucesso! Data Source=DatabaseSqlite.db

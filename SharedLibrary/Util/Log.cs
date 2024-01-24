@@ -47,15 +47,17 @@ public sealed class Log
     {
         if (Enabled)
         {
-            writer.WriteLine($"{DateTime.Now}: {text}");
+            writer.WriteLine($"{text}");
             writer.Flush();
         }
     }
 
-    public void Write(string text, ConsoleColor color)
+    public void Write(LogType logType,string text, ConsoleColor color)
     {
+        text = $"[{DateTime.Now.ToString("dd/MM/yy - HH:mm")}] [{Enum.GetName(typeof(LogType), logType)}] {text}";
+
         Console.ForegroundColor = color;
-        Console.WriteLine(text);
+        Console.WriteLine($"{text}");
         Console.ResetColor();
 
         Write(text);

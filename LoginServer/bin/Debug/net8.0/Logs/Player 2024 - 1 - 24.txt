@@ -1,0 +1,15 @@
+[24/01/24 - 00:02] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:03] [Player] Incoming connection 127.0.0.1:60968
+[24/01/24 - 00:03] [Player] Index: 1 Key 127.0.0.1:60968 127.0.0.1:60968 is connected
+[24/01/24 - 00:03] [Player] Index: 1 Key 127.0.0.1:60968 127.0.0.1:60968 is disconnected
+[24/01/24 - 00:05] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:06] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:07] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:08] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:08] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:08] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:09] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:09] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 00:10] [Player] Incoming connection 127.0.0.1:61005
+[24/01/24 - 00:10] [Player] Index: 1 Key 127.0.0.1:61005 127.0.0.1:61005 is connected
+[24/01/24 - 00:10] [Player] Index: 1 Key 127.0.0.1:61005 127.0.0.1:61005 is disconnected

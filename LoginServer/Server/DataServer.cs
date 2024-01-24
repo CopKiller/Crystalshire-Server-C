@@ -1,54 +1,95 @@
 ﻿using LoginServer.Communication;
+using LoginServer.Database;
 using LoginServer.Network;
+using Microsoft.Extensions.Configuration;
+using SharedLibrary.Network;
+using SharedLibrary.Util;
 
 namespace LoginServer.Server;
 
 public class DataServer
 {
-    private int count;
+    public Action<int> UpdateUps { get; set; }
+
     private TcpServer Server;
 
+    private TcpGameServer GameServer;
+
+    public IpFiltering IpFiltering { get; set; }
+
+    // Fps Variaveis.
+    private int count;
     private int tick;
-    public Action<int> UpdateUps;
     private int ups;
-    public bool ServerRunning { get; set; } = true;
 
-    public async void InitServer()
+    public void InitServer()
     {
-        Server = new TcpServer(Constants.Port);
 
-        await Server.InitServer();
+        IpBlockList.Enabled = true;
+        IpBlockList.IpBlockTime = Constants.IpBlockTime;
+        IpBlockList.Initialize();
+
+        IpFiltering = new IpFiltering()
+        {
+            CheckAccessTime = Constants.CheckAccessTime,
+            IpLifetime = Constants.IpLifetime,
+            IpMaxAccessCount = Constants.IpMaxAccessCount,
+            IpMaxAttempt = Constants.IpMaxAttempt
+        };
 
         OpCode.InitOpCode();
 
-        while (true)
-            if (Server != null)
-            {
-                ServerLoop();
+        DatabaseStartup.Configure();
 
-                Thread.Sleep(1);
+        GameServer = new TcpGameServer()
+        {
+            GameIpAddress = Constants.IpGameServer,
+            GamePort = Constants.GameServerReceiveLoginPort
+        };
 
-                if (!ServerRunning)
-                {
-                    StopServer();
-                    Environment.Exit(0);
-                }
-            }
+        GameServer.InitClient();
+        Global.WriteLog(LogType.System, "Trying to connect to Game Server...", ConsoleColor.Magenta);
+
+        Server = new TcpServer() { Port = Constants.LoginServerPort, IpFiltering = IpFiltering };
+        Server.InitServer();
+
+        // Delegate 
+        Global.SendGameServerPacket = SendGameServerData;
+
+        Global.WriteLog(LogType.System, "Login Server started", ConsoleColor.Green);
+
+        ServerLoop();
     }
 
     public void ServerLoop()
     {
-        Server.AcceptClient();
+        while (true)
+            if (Server != null)
+            {
+                GameServer.Connect();
 
-        ReceiveSocketData();
+                Server.AcceptClient();
+                Server.ProcessClients();
 
-        CountUps();
+                IpBlockList.RemoveExpiredIpAddress();
+                IpFiltering.RemoveExpiredIpAddress();
+
+                CountUps();
+            }
     }
 
     public void StopServer()
     {
         Server.Stop();
-        Connection.Connections.Clear();
+
+        GameServer.Disconnect();
+        GameServer = null;
+
+        IpFiltering.Clear();
+
+        IpBlockList.Clear();
+
+        Global.CloseLog();
     }
 
     private void CountUps()
@@ -67,25 +108,11 @@ public class DataServer
         }
     }
 
-    private void ReceiveSocketData()
+    private void SendGameServerData(ByteBuffer msg)
     {
-        for (var n = 1; n <= Connection.HighIndex; n++)
-            if (Connection.Connections.ContainsKey(n))
-            {
-                Connection.Connections[n].ReceiveData();
-
-                RemoveWhenNotConnected(n);
-            }
-    }
-
-    private void RemoveWhenNotConnected(int index)
-    {
-        // Verifica se há dados disponíveis sem bloquear.
-
-        if (!Connection.Connections[index].Connected)
+        if (GameServer.Connected)
         {
-            Connection.Connections[index].Disconnect();
-            Connection.Remove(index);
+            GameServer.Send(msg);
         }
     }
 }

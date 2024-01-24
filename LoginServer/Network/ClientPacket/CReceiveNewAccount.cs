@@ -1,8 +1,9 @@
-﻿using Database.Client;
+﻿using SharedLibrary.Client;
 using LoginServer.Database;
 using LoginServer.Network.ServerPacket;
 using SharedLibrary.Network;
 using SharedLibrary.Network.Interface;
+using LoginServer.Server;
 
 namespace LoginServer.Network.ClientPacket;
 
@@ -23,12 +24,9 @@ public sealed class CReceiveNewAccount : IRecvPacket
 
         var resultIsComplete = result.Result;
 
-        new SAlertMsg(resultIsComplete.ClientMSG, ClientMenu.MenuLogin).Send(connection);
-
-        //Busca o index do player para desconectá-lo
-        int playerIndex = Connection.Connections.FirstOrDefault(x => x.Value == (Connection)connection).Key;
+        new SAlertMsg(resultIsComplete.ClientMessages, ClientMenu.MenuLogin).Send(connection);
 
         //Desconecta o player
-        Connection.Connections[playerIndex].Disconnect();
+        connection.Disconnect();
     }
 }

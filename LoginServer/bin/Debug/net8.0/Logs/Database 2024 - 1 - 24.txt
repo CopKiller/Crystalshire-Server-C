@@ -1,0 +1,2 @@
+[24/01/24 - 00:03] [Database] [DATABASE] Account tester has been authenticated!
+[24/01/24 - 00:10] [Database] [DATABASE] Account tester has been authenticated!

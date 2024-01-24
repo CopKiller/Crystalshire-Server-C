@@ -5,12 +5,11 @@ using Database.Entities.Player;
 using Database.Repositories.Account;
 using Database.Repositories.Interface;
 using Database.Repositories.Player;
-using Database.Repositories.ValidateData;
 using LoginServer.Communication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SharedLibrary.Client;
 using SharedLibrary.Util;
-using System;
 
 namespace LoginServer.Database;
 
@@ -23,7 +22,7 @@ public class DatabaseStartup
         _serviceProvider = serviceProvider;
     }
 
-    public static async Task Configure()
+    public static void Configure()
     {
         var serviceCollection = new ServiceCollection();
 
@@ -40,8 +39,6 @@ public class DatabaseStartup
         Global.WriteLog(LogType.Player, $"[DATABASE] Configurada com sucesso! {connectionString}", ConsoleColor.Yellow);
 
         _serviceProvider = provider;
-
-        await Task.CompletedTask;
 
         //Criação do banco de dados, caso não existir
         //using (var scope = provider.CreateScope())
@@ -76,7 +73,7 @@ public class DatabaseStartup
         }
     }
 
-    public static async Task Login(string _Login, string _Password)
+    public static async Task<CombinedOperationResult<AccountEntity>> Authenticate(string _Login, string _Password)
     {
         using (var scope = _serviceProvider.CreateScope())
         {
@@ -86,9 +83,11 @@ public class DatabaseStartup
             var accountRepo = (AccountRepository)accountService;
 
             // Recupera a conta recém-adicionada por login
-            var contaRecuperada = await accountRepo.CheckPlayerAccountAsync(_Login, _Password);
+            var contaRecuperada = await accountRepo.AuthenticateAccount(_Login, _Password);
 
             Global.WriteLog(LogType.Database, contaRecuperada.Message, contaRecuperada.Color);
+
+            return contaRecuperada;
         }
     }
 

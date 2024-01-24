@@ -480,7 +480,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.1",
           "Microsoft.EntityFrameworkCore.Sqlite.Core": "8.0.1",
-          "SQLitePCLRaw.bundle_e_sqlite3": "2.1.7"
+          "SQLitePCLRaw.bundle_e_sqlite3": "2.1.7",
+          "SharedLibrary": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Database.dll": {}

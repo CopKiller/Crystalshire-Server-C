@@ -1,0 +1,379 @@
+20/01/2024 00:04:04: Logs Initialized...
+20/01/2024 00:04:04: TCP Protocol Initialized...
+20/01/2024 00:04:04: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 00:04:04: <<Menu>>
+20/01/2024 00:04:04: 1 - adicionar conta
+20/01/2024 00:04:04: 2 - atualizar contas
+20/01/2024 00:04:04: 3 - recuperar conta
+20/01/2024 00:04:04: 4 - excluir conta
+20/01/2024 00:04:04: 
+20/01/2024 00:04:15: [DATABASE] Digite o login:
+20/01/2024 00:04:17: [DATABASE] Digite a senha:
+20/01/2024 00:04:18: [DATABASE] Digite o email:
+20/01/2024 00:04:23: <<Menu>>
+20/01/2024 00:04:23: 1 - adicionar conta
+20/01/2024 00:04:23: 2 - atualizar contas
+20/01/2024 00:04:23: 3 - recuperar conta
+20/01/2024 00:04:23: 4 - excluir conta
+20/01/2024 00:04:23: 
+20/01/2024 00:04:44: [DATABASE] Digite o login:
+20/01/2024 00:04:47: <<Menu>>
+20/01/2024 00:04:47: 1 - adicionar conta
+20/01/2024 00:04:47: 2 - atualizar contas
+20/01/2024 00:04:47: 3 - recuperar conta
+20/01/2024 00:04:47: 4 - excluir conta
+20/01/2024 00:04:47: 
+20/01/2024 00:08:51: Logs Initialized...
+20/01/2024 00:08:51: TCP Protocol Initialized...
+20/01/2024 00:08:51: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 00:08:51: <<Menu>>
+20/01/2024 00:08:51: 1 - adicionar conta
+20/01/2024 00:08:51: 2 - atualizar contas
+20/01/2024 00:08:51: 3 - recuperar conta
+20/01/2024 00:08:51: 4 - excluir conta
+20/01/2024 00:08:51: 
+20/01/2024 00:10:15: Logs Initialized...
+20/01/2024 00:10:15: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 00:10:15: <<Menu>>
+20/01/2024 00:10:15: 1 - adicionar conta
+20/01/2024 00:10:15: 2 - atualizar contas
+20/01/2024 00:10:15: TCP Protocol Initialized...
+20/01/2024 00:10:15: 3 - recuperar conta
+20/01/2024 00:10:15: 4 - excluir conta
+20/01/2024 00:10:15: 
+20/01/2024 00:10:23: [DATABASE] Digite o login:
+20/01/2024 00:10:25: [DATABASE] Digite a senha:
+20/01/2024 00:10:26: [DATABASE] Digite o email:
+20/01/2024 00:10:30: <<Menu>>
+20/01/2024 00:10:30: 1 - adicionar conta
+20/01/2024 00:10:30: 2 - atualizar contas
+20/01/2024 00:10:30: 3 - recuperar conta
+20/01/2024 00:10:30: 4 - excluir conta
+20/01/2024 00:10:30: 
+20/01/2024 00:10:38: [DATABASE] Digite o login:
+20/01/2024 00:10:40: <<Menu>>
+20/01/2024 00:10:40: 1 - adicionar conta
+20/01/2024 00:10:40: 2 - atualizar contas
+20/01/2024 00:10:40: 3 - recuperar conta
+20/01/2024 00:10:40: 4 - excluir conta
+20/01/2024 00:10:40: 
+20/01/2024 00:26:10: Logs Initialized...
+20/01/2024 00:26:11: TCP Protocol Initialized...
+20/01/2024 00:26:11: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 00:26:11: <<Menu>>
+20/01/2024 00:26:11: 1 - adicionar conta
+20/01/2024 00:26:11: 2 - atualizar contas
+20/01/2024 00:26:11: 3 - recuperar conta
+20/01/2024 00:26:11: 4 - excluir conta
+20/01/2024 00:26:11: 
+20/01/2024 00:26:12: [DATABASE] Digite o login:
+20/01/2024 00:26:14: [DATABASE] Digite a senha:
+20/01/2024 00:26:15: [DATABASE] Digite o email:
+20/01/2024 00:26:19: <<Menu>>
+20/01/2024 00:26:19: 1 - adicionar conta
+20/01/2024 00:26:19: 2 - atualizar contas
+20/01/2024 00:26:19: 3 - recuperar conta
+20/01/2024 00:26:19: 4 - excluir conta
+20/01/2024 00:26:19: 
+20/01/2024 00:27:11: [DATABASE] Digite o login:
+20/01/2024 00:27:14: <<Menu>>
+20/01/2024 00:27:14: 1 - adicionar conta
+20/01/2024 00:27:14: 2 - atualizar contas
+20/01/2024 00:27:14: 3 - recuperar conta
+20/01/2024 00:27:14: 4 - excluir conta
+20/01/2024 00:27:14: 
+20/01/2024 00:34:57: Logs Initialized...
+20/01/2024 00:34:57: TCP Protocol Initialized...
+20/01/2024 00:34:57: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 00:34:57: <<Menu>>
+20/01/2024 00:34:57: 1 - adicionar conta
+20/01/2024 00:34:57: 2 - atualizar contas
+20/01/2024 00:34:57: 3 - recuperar conta
+20/01/2024 00:34:57: 4 - excluir conta
+20/01/2024 00:34:57: 
+20/01/2024 00:35:20: [DATABASE] Digite o login:
+20/01/2024 00:35:21: [DATABASE] Digite a senha:
+20/01/2024 00:35:22: [DATABASE] Digite o email:
+20/01/2024 00:35:26: <<Menu>>
+20/01/2024 00:35:26: 1 - adicionar conta
+20/01/2024 00:35:26: 2 - atualizar contas
+20/01/2024 00:35:26: 3 - recuperar conta
+20/01/2024 00:35:26: 4 - excluir conta
+20/01/2024 00:35:26: 
+20/01/2024 00:36:54: [DATABASE] Digite o login:
+20/01/2024 00:36:56: <<Menu>>
+20/01/2024 00:36:56: 1 - adicionar conta
+20/01/2024 00:36:56: 2 - atualizar contas
+20/01/2024 00:36:56: 3 - recuperar conta
+20/01/2024 00:36:56: 4 - excluir conta
+20/01/2024 00:36:56: 
+20/01/2024 00:44:46: Logs Initialized...
+20/01/2024 00:44:46: TCP Protocol Initialized...
+20/01/2024 00:44:46: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 00:44:46: <<Menu>>
+20/01/2024 00:44:46: 1 - adicionar conta
+20/01/2024 00:44:46: 2 - atualizar contas
+20/01/2024 00:44:46: 3 - recuperar conta
+20/01/2024 00:44:46: 4 - excluir conta
+20/01/2024 00:44:46: 
+20/01/2024 00:44:53: [DATABASE] Digite o login:
+20/01/2024 00:44:54: [DATABASE] Digite a senha:
+20/01/2024 00:44:55: [DATABASE] Digite o email:
+20/01/2024 00:45:00: <<Menu>>
+20/01/2024 00:45:00: 1 - adicionar conta
+20/01/2024 00:45:00: 2 - atualizar contas
+20/01/2024 00:45:00: 3 - recuperar conta
+20/01/2024 00:45:00: 4 - excluir conta
+20/01/2024 00:45:00: 
+20/01/2024 00:46:23: [DATABASE] Digite o login:
+20/01/2024 00:46:25: <<Menu>>
+20/01/2024 00:46:25: 1 - adicionar conta
+20/01/2024 00:46:25: 2 - atualizar contas
+20/01/2024 00:46:25: 3 - recuperar conta
+20/01/2024 00:46:25: 4 - excluir conta
+20/01/2024 00:46:25: 
+20/01/2024 00:46:37: [DATABASE] Digite o login:
+20/01/2024 00:46:42: [DATABASE] Digite a senha:
+20/01/2024 00:46:44: [DATABASE] Digite o email:
+20/01/2024 00:46:46: <<Menu>>
+20/01/2024 00:46:46: 1 - adicionar conta
+20/01/2024 00:46:46: 2 - atualizar contas
+20/01/2024 00:46:46: 3 - recuperar conta
+20/01/2024 00:46:46: 4 - excluir conta
+20/01/2024 00:46:46: 
+20/01/2024 00:57:31: Logs Initialized...
+20/01/2024 00:57:32: TCP Protocol Initialized...
+20/01/2024 00:57:32: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 00:57:32: <<Menu>>
+20/01/2024 00:57:32: 1 - adicionar conta
+20/01/2024 00:57:32: 2 - atualizar contas
+20/01/2024 00:57:32: 3 - recuperar conta
+20/01/2024 00:57:32: 4 - excluir conta
+20/01/2024 00:57:32: 
+20/01/2024 00:57:33: [DATABASE] Digite o login:
+20/01/2024 00:57:35: [DATABASE] Digite a senha:
+20/01/2024 00:57:40: [DATABASE] Digite o email:
+20/01/2024 00:57:46: <<Menu>>
+20/01/2024 00:57:46: 1 - adicionar conta
+20/01/2024 00:57:46: 2 - atualizar contas
+20/01/2024 00:57:46: 3 - recuperar conta
+20/01/2024 00:57:46: 4 - excluir conta
+20/01/2024 00:57:46: 
+20/01/2024 00:57:47: [DATABASE] Digite o login:
+20/01/2024 00:57:49: [DATABASE] Digite a senha:
+20/01/2024 00:57:50: [DATABASE] Digite o email:
+20/01/2024 00:57:53: <<Menu>>
+20/01/2024 00:57:53: 1 - adicionar conta
+20/01/2024 00:57:53: 2 - atualizar contas
+20/01/2024 00:57:53: 3 - recuperar conta
+20/01/2024 00:57:53: 4 - excluir conta
+20/01/2024 00:57:53: 
+20/01/2024 01:09:14: [DATABASE] Digite o login:
+20/01/2024 01:09:18: <<Menu>>
+20/01/2024 01:09:18: 1 - adicionar conta
+20/01/2024 01:09:18: 2 - atualizar contas
+20/01/2024 01:09:18: 3 - recuperar conta
+20/01/2024 01:09:18: 4 - excluir conta
+20/01/2024 01:09:18: 
+20/01/2024 01:09:41: [DATABASE] Digite o login:
+20/01/2024 01:09:43: <<Menu>>
+20/01/2024 01:09:43: 1 - adicionar conta
+20/01/2024 01:09:43: 2 - atualizar contas
+20/01/2024 01:09:43: 3 - recuperar conta
+20/01/2024 01:09:43: 4 - excluir conta
+20/01/2024 01:09:43: 
+20/01/2024 01:11:24: [DATABASE] Digite o login:
+20/01/2024 01:11:28: <<Menu>>
+20/01/2024 01:11:28: 1 - adicionar conta
+20/01/2024 01:11:28: 2 - atualizar contas
+20/01/2024 01:11:28: 3 - recuperar conta
+20/01/2024 01:11:28: 4 - excluir conta
+20/01/2024 01:11:28: 
+20/01/2024 01:11:36: [DATABASE] Digite o login:
+20/01/2024 01:11:38: [DATABASE] Digite a senha:
+20/01/2024 01:11:39: [DATABASE] Digite o email:
+20/01/2024 01:11:42: <<Menu>>
+20/01/2024 01:11:42: 1 - adicionar conta
+20/01/2024 01:11:42: 2 - atualizar contas
+20/01/2024 01:11:42: 3 - recuperar conta
+20/01/2024 01:11:42: 4 - excluir conta
+20/01/2024 01:11:42: 
+20/01/2024 01:26:55: Logs Initialized...
+20/01/2024 01:26:56: TCP Protocol Initialized...
+20/01/2024 01:26:56: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 01:26:56: <<Menu>>
+20/01/2024 01:26:56: 1 - adicionar conta
+20/01/2024 01:26:56: 2 - atualizar contas
+20/01/2024 01:26:56: 3 - recuperar conta
+20/01/2024 01:26:56: 4 - excluir conta
+20/01/2024 01:26:56: 
+20/01/2024 01:27:01: [DATABASE] Digite o login:
+20/01/2024 01:27:04: [DATABASE] Digite a senha:
+20/01/2024 01:27:05: [DATABASE] Digite o email:
+20/01/2024 01:27:11: <<Menu>>
+20/01/2024 01:27:11: 1 - adicionar conta
+20/01/2024 01:27:11: 2 - atualizar contas
+20/01/2024 01:27:11: 3 - recuperar conta
+20/01/2024 01:27:11: 4 - excluir conta
+20/01/2024 01:27:11: 
+20/01/2024 01:27:35: [DATABASE] Digite o login:
+20/01/2024 01:27:38: <<Menu>>
+20/01/2024 01:27:38: 1 - adicionar conta
+20/01/2024 01:27:38: 2 - atualizar contas
+20/01/2024 01:27:38: 3 - recuperar conta
+20/01/2024 01:27:38: 4 - excluir conta
+20/01/2024 01:27:38: 
+20/01/2024 01:39:02: Logs Initialized...
+20/01/2024 01:39:03: TCP Protocol Initialized...
+20/01/2024 01:39:03: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 01:39:03: <<Menu>>
+20/01/2024 01:39:03: 1 - adicionar conta
+20/01/2024 01:39:03: 2 - atualizar contas
+20/01/2024 01:39:03: 3 - recuperar conta
+20/01/2024 01:39:03: 4 - excluir conta
+20/01/2024 01:39:03: 
+20/01/2024 01:39:04: [DATABASE] Digite o login:
+20/01/2024 01:39:05: [DATABASE] Digite a senha:
+20/01/2024 01:39:07: [DATABASE] Digite o email:
+20/01/2024 01:39:11: <<Menu>>
+20/01/2024 01:39:11: 1 - adicionar conta
+20/01/2024 01:39:11: 2 - atualizar contas
+20/01/2024 01:39:11: 3 - recuperar conta
+20/01/2024 01:39:11: 4 - excluir conta
+20/01/2024 01:39:11: 
+20/01/2024 01:43:51: Logs Initialized...
+20/01/2024 01:43:51: TCP Protocol Initialized...
+20/01/2024 01:43:51: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 01:43:51: <<Menu>>
+20/01/2024 01:43:51: 1 - adicionar conta
+20/01/2024 01:43:51: 2 - atualizar contas
+20/01/2024 01:43:51: 3 - recuperar conta
+20/01/2024 01:43:51: 4 - excluir conta
+20/01/2024 01:43:51: 
+20/01/2024 01:43:52: [DATABASE] Digite o login:
+20/01/2024 01:43:54: [DATABASE] Digite a senha:
+20/01/2024 01:43:56: [DATABASE] Digite o email:
+20/01/2024 01:44:01: <<Menu>>
+20/01/2024 01:44:01: 1 - adicionar conta
+20/01/2024 01:44:01: 2 - atualizar contas
+20/01/2024 01:44:01: 3 - recuperar conta
+20/01/2024 01:44:01: 4 - excluir conta
+20/01/2024 01:44:01: 
+20/01/2024 01:44:50: [DATABASE] Digite o login:
+20/01/2024 01:44:52: <<Menu>>
+20/01/2024 01:44:52: 1 - adicionar conta
+20/01/2024 01:44:52: 2 - atualizar contas
+20/01/2024 01:44:52: 3 - recuperar conta
+20/01/2024 01:44:52: 4 - excluir conta
+20/01/2024 01:44:52: 
+20/01/2024 22:17:52: Logs Initialized...
+20/01/2024 22:17:54: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 22:17:54: TCP Protocol Initialized...
+20/01/2024 22:17:54: <<Menu>>
+20/01/2024 22:17:54: 1 - Realizar Cadastro
+20/01/2024 22:17:54: 2 - Realizar Login
+20/01/2024 22:17:54: 3 - Excluir Conta
+20/01/2024 22:17:54: 
+20/01/2024 22:27:03: Logs Initialized...
+20/01/2024 22:27:03: TCP Protocol Initialized...
+20/01/2024 22:27:03: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 22:27:03: <<Menu>>
+20/01/2024 22:27:03: 1 - Realizar Cadastro
+20/01/2024 22:27:03: 2 - Realizar Login
+20/01/2024 22:27:03: 3 - Excluir Conta
+20/01/2024 22:27:03: 
+20/01/2024 22:27:07: [DATABASE] Digite o login:
+20/01/2024 22:27:10: [DATABASE] Digite a senha:
+20/01/2024 22:27:13: [DATABASE] Digite o email:
+20/01/2024 22:27:25: <<Menu>>
+20/01/2024 22:27:25: 1 - Realizar Cadastro
+20/01/2024 22:27:25: 2 - Realizar Login
+20/01/2024 22:27:25: 3 - Excluir Conta
+20/01/2024 22:27:25: 
+20/01/2024 22:28:53: Logs Initialized...
+20/01/2024 22:28:53: TCP Protocol Initialized...
+20/01/2024 22:28:53: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 22:28:53: <<Menu>>
+20/01/2024 22:28:53: 1 - Realizar Cadastro
+20/01/2024 22:28:53: 2 - Realizar Login
+20/01/2024 22:28:53: 3 - Excluir Conta
+20/01/2024 22:28:53: 
+20/01/2024 22:28:58: [DATABASE] Digite o login:
+20/01/2024 22:29:01: [DATABASE] Digite a senha:
+20/01/2024 22:29:03: [DATABASE] Digite o email:
+20/01/2024 22:29:08: <<Menu>>
+20/01/2024 22:29:08: 1 - Realizar Cadastro
+20/01/2024 22:29:08: 2 - Realizar Login
+20/01/2024 22:29:08: 3 - Excluir Conta
+20/01/2024 22:29:08: 
+20/01/2024 22:29:11: [DATABASE] Digite o login:
+20/01/2024 22:29:18: [DATABASE] Digite a senha:
+20/01/2024 22:29:24: <<Menu>>
+20/01/2024 22:29:24: 1 - Realizar Cadastro
+20/01/2024 22:29:24: 2 - Realizar Login
+20/01/2024 22:29:24: 3 - Excluir Conta
+20/01/2024 22:29:24: 
+20/01/2024 22:29:31: [DATABASE] Digite o login:
+20/01/2024 22:29:35: [DATABASE] Digite a senha:
+20/01/2024 22:29:37: <<Menu>>
+20/01/2024 22:29:37: 1 - Realizar Cadastro
+20/01/2024 22:29:37: 2 - Realizar Login
+20/01/2024 22:29:37: 3 - Excluir Conta
+20/01/2024 22:29:37: 
+20/01/2024 22:30:35: [DATABASE] Digite o login:
+20/01/2024 22:30:38: [DATABASE] Digite a senha:
+20/01/2024 22:33:04: <<Menu>>
+20/01/2024 22:33:04: 1 - Realizar Cadastro
+20/01/2024 22:33:04: 2 - Realizar Login
+20/01/2024 22:33:04: 3 - Excluir Conta
+20/01/2024 22:33:04: 
+20/01/2024 22:34:49: Logs Initialized...
+20/01/2024 22:34:49: TCP Protocol Initialized...
+20/01/2024 22:34:49: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 22:34:49: <<Menu>>
+20/01/2024 22:34:50: 1 - Realizar Cadastro
+20/01/2024 22:34:50: 2 - Realizar Login
+20/01/2024 22:34:50: 3 - Excluir Conta
+20/01/2024 22:34:50: 
+20/01/2024 22:34:51: [DATABASE] Digite o login:
+20/01/2024 22:35:05: <<Menu>>
+20/01/2024 22:35:05: 1 - Realizar Cadastro
+20/01/2024 22:35:05: 2 - Realizar Login
+20/01/2024 22:35:05: 3 - Excluir Conta
+20/01/2024 22:35:05: 
+20/01/2024 22:35:32: [DATABASE] Digite o login:
+20/01/2024 22:35:34: <<Menu>>
+20/01/2024 22:35:34: 1 - Realizar Cadastro
+20/01/2024 22:35:34: 2 - Realizar Login
+20/01/2024 22:35:34: 3 - Excluir Conta
+20/01/2024 22:35:34: 
+20/01/2024 22:37:24: Logs Initialized...
+20/01/2024 22:37:24: TCP Protocol Initialized...
+20/01/2024 22:37:24: [DATABASE] Banco de dados migrado com sucesso!
+20/01/2024 22:37:24: <<Menu>>
+20/01/2024 22:37:24: 1 - Realizar Cadastro
+20/01/2024 22:37:24: 2 - Realizar Login
+20/01/2024 22:37:24: 3 - Excluir Conta
+20/01/2024 22:37:24: 
+20/01/2024 22:37:27: [DATABASE] Digite o login:
+20/01/2024 22:37:33: [DATABASE] Digite a senha:
+20/01/2024 22:37:34: [DATABASE] Digite o email:
+20/01/2024 22:37:41: <<Menu>>
+20/01/2024 22:37:41: 1 - Realizar Cadastro
+20/01/2024 22:37:41: 2 - Realizar Login
+20/01/2024 22:37:41: 3 - Excluir Conta
+20/01/2024 22:37:41: 
+20/01/2024 22:37:44: [DATABASE] Digite o login:
+20/01/2024 22:37:49: [DATABASE] Digite a senha:
+20/01/2024 22:37:56: <<Menu>>
+20/01/2024 22:37:56: 1 - Realizar Cadastro
+20/01/2024 22:37:56: 2 - Realizar Login
+20/01/2024 22:37:56: 3 - Excluir Conta
+20/01/2024 22:37:56: 
+20/01/2024 22:38:12: [DATABASE] Digite o login:
+20/01/2024 22:38:16: [DATABASE] Digite a senha:
+20/01/2024 22:38:20: <<Menu>>
+20/01/2024 22:38:20: 1 - Realizar Cadastro
+20/01/2024 22:38:20: 2 - Realizar Login
+20/01/2024 22:38:20: 3 - Excluir Conta
+20/01/2024 22:38:20: 

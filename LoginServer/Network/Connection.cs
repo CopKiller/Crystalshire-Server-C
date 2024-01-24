@@ -1,4 +1,6 @@
-﻿using LoginServer.Communication;
+﻿using Database.Entities.Account;
+using LoginServer.Communication;
+using LoginServer.Network.ClientPacket;
 using SharedLibrary.Network;
 using SharedLibrary.Network.Interface;
 using SharedLibrary.Util;
@@ -8,32 +10,59 @@ namespace LoginServer.Network;
 
 public sealed class Connection : IConnection
 {
-    private readonly Socket Client;
 
-    private readonly ByteBuffer msg;
+    public Action<int> OnDisconnect { get; set; }
 
-    public Connection(Socket tcpClient, string ipAddress, string uniqueKey)
-    {
-        msg = new ByteBuffer();
-
-        IpAddress = ipAddress;
-        UniqueKey = uniqueKey;
-
-        Client = tcpClient;
-
-        Connected = true;
-        Add(this);
-    }
-
-    public static Dictionary<int, Connection> Connections { get; set; } = new();
-
-    // Maior indice da lista de usuários.
-    public static int HighIndex { get; set; }
-
+    // Chave única de identificação no sistema.
     public string UniqueKey { get; set; }
-    public bool Connected { get; set; }
+
+    // Id de indice de conexão.
+    public int Index { get; set; }
+
+    // Tempo de conexão em segundos.
+    public int ConnectedTime { get; set; }
+
+    public bool Connected { get; private set; }
 
     public string IpAddress { get; set; }
+
+    private Socket Client;
+    private ByteBuffer msg;
+
+    private bool lastState;
+    private int timeTick;
+    private const int OneSecond = 1000;
+
+    public string GetUniqueKey()
+    {
+        return UniqueKey;
+    }
+
+    public Connection(int index, Socket tcpClient, string uniqueKey)
+    {
+        timeTick = Environment.TickCount;
+        msg = new ByteBuffer();
+
+        Index = index;
+        Client = tcpClient;
+        Client.NoDelay = true;
+
+        UniqueKey = uniqueKey;
+        Connected = true;
+
+        IpAddress = tcpClient.RemoteEndPoint.ToString();
+        ChangeState();
+    }
+
+    public void Disconnect()
+    {
+        Connected = false;
+        Client.Close();
+        ChangeState();
+        msg.Clear();
+
+        OnDisconnect?.Invoke(Index);
+    }
 
     public void ReceiveData()
     {
@@ -169,42 +198,31 @@ public sealed class Connection : IConnection
             Disconnect();
     }
 
-    public static bool Remove(int index)
+    public void CountConnectionTime()
     {
-        var connection = Connections[index];
-
-        if (Connections.ContainsKey(index))
+        if (Environment.TickCount >= timeTick + OneSecond)
         {
-            Connections.Remove(index);
-            connection.Connected = false;
-
-            return true;
-        }
-
-        return false;
-    }
-
-    private static void Add(Connection connection)
-    {
-        if (Connections.Count == 0)
-        {
-            ++HighIndex;
-            Connections.Add(HighIndex, connection);
+            ConnectedTime++;
+            timeTick = Environment.TickCount;
         }
     }
 
-    public bool Disconnect()
+    // Exibe a alteração no log quando o estado de conexão é alterado.
+    private void ChangeState()
     {
-        if (Connected)
+        if (Connected != lastState)
         {
-            Client.Close();
-            Connected = false;
 
-            Global.WriteLog(LogType.System, $"{IpAddress} Key {UniqueKey} is disconnected", ConsoleColor.Red);
+            if (Connected)
+            {
+                Global.WriteLog(LogType.Player, $"Index: {Index} Key {UniqueKey} {IpAddress} is connected", ConsoleColor.Green);
+            }
+            else
+            {
+                Global.WriteLog(LogType.Player, $"Index: {Index} Key {UniqueKey} {IpAddress} is disconnected", ConsoleColor.Red);
+            }
 
-            return true;
+            lastState = Connected;
         }
-
-        return false;
     }
 }

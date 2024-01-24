@@ -1,8 +1,9 @@
-﻿using Database.Client;
-using Database.Entities.Account;
+﻿using Database.Entities.Account;
+using Database.Entities.Player;
 using Database.Repositories.ValidateData;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
+using SharedLibrary.Client;
+
 
 namespace Database.Repositories.Account
 {
@@ -36,7 +37,7 @@ namespace Database.Repositories.Account
                         Message = $"[DATABASE] Account {account.Login} already exists!",
                         Color = ConsoleColor.Red,
                         ClientMenu = ClientMenu.MenuRegister,
-                        ClientMSG = ClientMessages.NameTaken
+                        ClientMessages = ClientMessages.NameTaken
                     };
                 }
 
@@ -55,7 +56,7 @@ namespace Database.Repositories.Account
                         Message = $"[DATABASE] Account {account.Login} has been addeded!",
                         Color = ConsoleColor.Green,
                         ClientMenu = ClientMenu.MenuLogin,
-                        ClientMSG = ClientMessages.AccountCreated
+                        ClientMessages = ClientMessages.AccountCreated
                     };
                 }
                 else
@@ -66,7 +67,7 @@ namespace Database.Repositories.Account
                         Message = $"[DATABASE] Account {account.Login} has not been addeded!",
                         Color = ConsoleColor.Red,
                         ClientMenu = ClientMenu.MenuMain,
-                        ClientMSG = ClientMessages.Connection
+                        ClientMessages = ClientMessages.Connection
                     };
                 }
             }
@@ -92,7 +93,7 @@ namespace Database.Repositories.Account
                         Message = $"[DATABASE] Account {account.Login} has not been addeded!",
                         Color = ConsoleColor.Red,
                         ClientMenu = ClientMenu.MenuMain,
-                        ClientMSG = ClientMessages.Connection
+                        ClientMessages = ClientMessages.MySql
                     };
                 }
             }
@@ -117,39 +118,50 @@ namespace Database.Repositories.Account
                 operationResult.Success = false;
                 operationResult.Message = $"[DATABASE] Account {login} already exists!";
                 operationResult.Color = ConsoleColor.Red;
-                operationResult.ClientMSG = ClientMessages.NameTaken;
+                operationResult.ClientMessages = ClientMessages.NameTaken;
                 operationResult.ClientMenu = ClientMenu.MenuRegister;
                 return operationResult;
             }
         }
-        //public async Task<OperationResult> CheckPlayerAccountAsync(string login, string password)
-        //{
-        //    var operationResult = new OperationResult();
-        //    var conta = await _dbContext.AccountEntities
-        //        .FirstOrDefaultAsync(e => e.Login == login);
 
-        //    if (conta == null)
-        //    {
-        //        operationResult.Success = false;
-        //        operationResult.Message = $"[DATABASE] Account {login} not found!";
-        //        operationResult.Color = ConsoleColor.Red;
-        //        return operationResult;
-        //    }
-        //    if (Hash.VerifyPassword(password, conta.Password, conta.Salt))
-        //    {
-        //        operationResult.Success = true;
-        //        operationResult.Message = $"[DATABASE] Account {login} has been logged in!";
-        //        operationResult.Color = ConsoleColor.Green;
-        //        return operationResult;
-        //    }
-        //    else
-        //    {
-        //        operationResult.Success = false;
-        //        operationResult.Message = $"[DATABASE] Account {login} invalid credentials!";
-        //        operationResult.Color = ConsoleColor.Red;
-        //        return operationResult;
-        //    }
-        //}
+        public async Task<CombinedOperationResult<AccountEntity>> AuthenticateAccount(string login, string password)
+        {
+            var combinedOperations = new CombinedOperationResult<AccountEntity>();
+
+            var conta = await _dbContext.AccountEntities
+                .FirstOrDefaultAsync(e => e.Login == login);
+
+            combinedOperations.Entity = conta;
+
+            if (combinedOperations.Entity == null)
+            {
+                combinedOperations.Success = false;
+                combinedOperations.Message = $"[DATABASE] Account {login} not found!";
+                combinedOperations.Color = ConsoleColor.Red;
+                combinedOperations.ClientMessages = ClientMessages.WrongPass;
+                combinedOperations.ClientMenu = ClientMenu.MenuLogin;
+                return combinedOperations;
+
+            }
+
+            if (Hash.VerifyPassword(password, conta.Password, conta.Salt))
+            {
+                combinedOperations.Success = true;
+                combinedOperations.Message = $"[DATABASE] Account {login} has been authenticated!";
+                combinedOperations.Color = ConsoleColor.Green;
+            }
+            else
+            {
+                combinedOperations.Success = false;
+                combinedOperations.Message = $"[DATABASE] Account {login} has not been authenticated!";
+                combinedOperations.Color = ConsoleColor.Red;
+                combinedOperations.ClientMessages = ClientMessages.WrongPass;
+                combinedOperations.ClientMenu = ClientMenu.MenuLogin;
+            }
+
+            return combinedOperations;
+            
+        }
 
         //Normalmente utilizado para envio da conta ao servidor do jogo
         public async Task<AccountEntity?> GivePlayerAccountAsync(string login, string password)
@@ -165,6 +177,35 @@ namespace Database.Repositories.Account
             }
 
             return null;
+        }
+
+        public async Task<CombinedOperationResult<List<PlayerEntity>>> GetCharactersByIdAccountAsync(int accountId)
+        {
+            var combinedOperations = new CombinedOperationResult<List<PlayerEntity>>();
+
+            var account = await GetByIdAsync(accountId);
+
+            if (account != null)
+            {
+                var characters = account.Players;
+
+                combinedOperations.Success = true;
+                combinedOperations.Message = $"Account {account.Login} has {characters.Count} chars!";
+                combinedOperations.Color = ConsoleColor.Green;
+                combinedOperations.Entity = characters;
+ 
+                return combinedOperations;
+            }else
+            {
+                combinedOperations.Success = false;
+                combinedOperations.Message = $"Account {account.Login} not exists with id {accountId}!";
+                combinedOperations.Color = ConsoleColor.Red;
+                combinedOperations.ClientMenu = ClientMenu.MenuMain;
+
+                return combinedOperations;
+            }
+
+
         }
 
         public async Task<int> AtualizarContaAsync()

@@ -13,3 +13,6 @@ C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Database\obj\Deb
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Database\obj\Debug\net8.0\Database.pdb
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Database\obj\Debug\net8.0\ref\Database.dll
+C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Database\bin\Debug\net8.0\SharedLibrary.dll
+C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Database\bin\Debug\net8.0\SharedLibrary.pdb
+C:\Users\felip\OneDrive\Área de Trabalho\CrystalShire-Server-C\Database\obj\Debug\net8.0\Database.csproj.CopyComplete

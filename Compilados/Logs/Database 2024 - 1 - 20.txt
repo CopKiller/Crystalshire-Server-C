@@ -1,0 +1,8 @@
+20/01/2024 22:27:25: [DATABASE] Valid Caracteres: a-z, A-Z, 0-9, _
+20/01/2024 22:29:08: [DATABASE] Account Peixonalta has been addeded!
+20/01/2024 22:29:24: [DATABASE] Account PeixoTest not found!
+20/01/2024 22:29:37: [DATABASE] Account Peixonalta invalid credentials!
+20/01/2024 22:33:04: [DATABASE] Account Peixonalta has been logged in!
+20/01/2024 22:37:41: [DATABASE] Account Peixonalta has been addeded!
+20/01/2024 22:37:56: [DATABASE] Account Peixonalta invalid credentials!
+20/01/2024 22:38:20: [DATABASE] Account Peixonalta has been logged in!

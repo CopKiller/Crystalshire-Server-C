@@ -1,5 +1,5 @@
-﻿using Database.Client;
-using Database.Entities.Account;
+﻿using Database.Entities.Account;
+using SharedLibrary.Client;
 using System.Text.RegularExpressions;
 
 namespace Database.Repositories.ValidateData
@@ -13,8 +13,8 @@ namespace Database.Repositories.ValidateData
                 return new OperationResult
                 {
                     Success = false,
-                    Message = $"[DATABASE] Login out of range, Max caracteres is {AccountEntity.MaxAccountCaracteres}.",
-                    ClientMSG = ClientMessages.UserLength,
+                    Message = $"Login out of range, Max caracteres is {AccountEntity.MaxAccountCaracteres}.",
+                    ClientMessages = ClientMessages.UserLength,
                     Color = ConsoleColor.Red
                 };
 
@@ -24,8 +24,8 @@ namespace Database.Repositories.ValidateData
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "[DATABASE] Valid Caracteres: a-z, A-Z, 0-9, _",
-                    ClientMSG = ClientMessages.IllegalName,
+                    Message = "Valid Caracteres: a-z, A-Z, 0-9, _",
+                    ClientMessages = ClientMessages.IllegalName,
                     Color = ConsoleColor.Red
                 };
             }
@@ -37,11 +37,11 @@ namespace Database.Repositories.ValidateData
         {
             if (String.IsNullOrEmpty(senha) || (senha.Length > AccountEntity.MaxAccountCaracteres))
             {
-                return new OperationResult 
-                { 
-                    Success = false, 
-                    Message = $"[DATABASE] Password out of range, Max caracteres is {AccountEntity.MaxAccountCaracteres}.",
-                    ClientMSG = ClientMessages.WrongPass,
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = $"Password out of range, Max caracteres is {AccountEntity.MaxAccountCaracteres}.",
+                    ClientMessages = ClientMessages.WrongPass,
                     Color = ConsoleColor.Red
                 };
             }
@@ -53,27 +53,35 @@ namespace Database.Repositories.ValidateData
         {
             if (String.IsNullOrEmpty(email) || (email.Length > AccountEntity.MaxEmailCaracteres))
             {
-                return new OperationResult 
-                { 
-                    Success = false, 
-                    Message = $"[DATABASE] Email out of range, Max caracteres is {AccountEntity.MaxEmailCaracteres}.",
-                    ClientMSG = ClientMessages.IllegalName};
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = $"Email out of range, Max caracteres is {AccountEntity.MaxEmailCaracteres}.",
+                    ClientMessages = ClientMessages.InvalidEmail
+                };
             }
 
-            var addr = new System.Net.Mail.MailAddress(email);
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
 
-            if (addr.Address == email && email.Contains('@'))
-            {
-                return new OperationResult { Success = true };
+                if (addr.Address == email && email.Contains('@'))
+                {
+                    return new OperationResult { Success = true };
+                }
             }
-            else
+            catch
             {
-                return new OperationResult 
-                { 
-                    Success = false, 
-                    Message = $"[DATABASE] Email format invalid, format (####@#######.com)",
-                    ClientMSG = ClientMessages.IllegalName};
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = $"Email format invalid, format (####@#######.com)",
+                    ClientMessages = ClientMessages.InvalidEmail, 
+                    Color = ConsoleColor.Red,
+                };
             }
+
+            return new OperationResult { Success = true };
         }
     }
 }
