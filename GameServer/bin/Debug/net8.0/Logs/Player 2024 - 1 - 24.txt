@@ -1,0 +1,91 @@
+[24/01/24 - 17:56] [Player] Index: 0  is connected
+[24/01/24 - 17:56] [Player] Index: 0  is disconnected
+[24/01/24 - 18:02] [Player] Index: 0  is connected
+[24/01/24 - 18:02] [Player] Index: 0  is disconnected
+[24/01/24 - 18:04] [Player] Index: 0  is connected
+[24/01/24 - 18:04] [Player] Index: 0  is disconnected
+[24/01/24 - 18:22] [Player] Index: 0  is connected
+[24/01/24 - 18:23] [Player] Index: 0  is disconnected
+[24/01/24 - 18:29] [Player] Index: 0  is connected
+[24/01/24 - 18:30] [Player] Index: 0  is disconnected
+[24/01/24 - 18:39] [Player] Index: 0 127.0.0.1 is connected
+[24/01/24 - 20:48] [Player] UniqueKey: tester
+[24/01/24 - 20:50] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 20:50] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 20:51] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 20:51] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 20:52] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 20:52] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:08] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:08] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:09] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:09] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:15] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:16] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:16] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:16] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:17] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:17] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:19] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:19] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:20] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:20] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:48] [Player] Received Key nXo0I9bqLghJAS9 Username tester
+[24/01/24 - 21:48] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:51] [Player] Received Key n9fQJQvTGmsGjpK Username tester
+[24/01/24 - 21:51] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:54] [Player] Received Key 3Qj8oVzKJgPC6fI Username tester
+[24/01/24 - 21:54] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:54] [Player] Authenticated user tester 3Qj8oVzKJgPC6fI
+[24/01/24 - 21:55] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 21:57] [Player] Received Key BXo4REQpLjIGwfa Username tester
+[24/01/24 - 21:57] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 21:57] [Player] Authenticated user tester BXo4REQpLjIGwfa
+[24/01/24 - 22:04] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:04] [Player] Received Key OpBfjI3HBjwbTxl Username tester
+[24/01/24 - 22:04] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:04] [Player] Authenticated user tester OpBfjI3HBjwbTxl
+[24/01/24 - 22:04] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:05] [Player] Received Key l14YZIrlMKucNcR Username tester
+[24/01/24 - 22:05] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:05] [Player] Authenticated user tester l14YZIrlMKucNcR
+[24/01/24 - 22:05] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:09] [Player] Received Key RnSZKXNGfwPQYrF Username tester
+[24/01/24 - 22:09] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:10] [Player] Authenticated user tester RnSZKXNGfwPQYrF
+[24/01/24 - 22:11] [Player] Received Key F8fj9WIoEWU4rkh Username tester
+[24/01/24 - 22:11] [Player] Index: 2 127.0.0.1 is connected
+[24/01/24 - 22:11] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:12] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:12] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:13] [Player] Received Key NdDim0kNWAETIQ2 Username tester
+[24/01/24 - 22:13] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:13] [Player] Authenticated user tester NdDim0kNWAETIQ2
+[24/01/24 - 22:14] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:15] [Player] Received Key e1eb35XHlGIHdjv Username tester
+[24/01/24 - 22:15] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:17] [Player] Authenticated user tester e1eb35XHlGIHdjv
+[24/01/24 - 22:20] [Player] Received Key RZ8vicQ84pZcACQ Username tester
+[24/01/24 - 22:20] [Player] Index: 2 127.0.0.1 is connected
+[24/01/24 - 22:20] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:23] [Player] Received Key NixinBfTHTikytL Username tester
+[24/01/24 - 22:23] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:25] [Player] Authenticated user tester NixinBfTHTikytL
+[24/01/24 - 22:26] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:28] [Player] Received Key 5fMCFIea2afYyc8 Username tester
+[24/01/24 - 22:28] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:28] [Player] Authenticated user tester 5fMCFIea2afYyc8
+[24/01/24 - 22:35] [Player] Received Key 2uxLiXdrCckd9lc Username tester
+[24/01/24 - 22:35] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:36] [Player] Authenticated user tester 2uxLiXdrCckd9lc
+[24/01/24 - 22:36] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:39] [Player] Received Key cl7Ym9G8Vc6CMdm Username tester
+[24/01/24 - 22:39] [Player] Index: 1 127.0.0.1 is connected
+[24/01/24 - 22:41] [Player] Authenticated user tester cl7Ym9G8Vc6CMdm
+[24/01/24 - 22:41] [Player] Index: 2 127.0.0.1 is connected
+[24/01/24 - 22:41] [Player] Index: 2 127.0.0.1 is disconnected
+[24/01/24 - 22:41] [Player] Received Key WvkvafTH5QoCAee Username tester
+[24/01/24 - 22:41] [Player] Index: 2 127.0.0.1 is connected
+[24/01/24 - 22:41] [Player] Index: 1 127.0.0.1 is disconnected
+[24/01/24 - 22:53] [Player] Received Key 9N50LyPk89aFmHZ Username tester
+[24/01/24 - 22:53] [Player] Index: 1 127.0.0.1 is connected

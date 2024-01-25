@@ -12,9 +12,9 @@ public static class Program
     /// </summary>
     private static void Main()
     {
-        var initServer = new InitServer();
-        // Iniciar uma tarefa em segundo plano
-        var backgroundTask = Task.Run(() => initServer.InitializeServer());
+        Global.Server = new DataServer();
+        Global.Server.UpdateUps += ups => Console.Title = $"Login Server @ {ups} Ups";
+        Global.Server.InitializeServer();
 
         while (true) 
         {            

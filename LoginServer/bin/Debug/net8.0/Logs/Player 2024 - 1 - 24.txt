@@ -13,3 +13,331 @@
 [24/01/24 - 00:10] [Player] Incoming connection 127.0.0.1:61005
 [24/01/24 - 00:10] [Player] Index: 1 Key 127.0.0.1:61005 127.0.0.1:61005 is connected
 [24/01/24 - 00:10] [Player] Index: 1 Key 127.0.0.1:61005 127.0.0.1:61005 is disconnected
+[24/01/24 - 16:10] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:22] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:23] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:30] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:31] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:32] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:32] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:32] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:33] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:34] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:34] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:46] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:46] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:47] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:47] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:48] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:49] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:49] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:50] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:51] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:52] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:53] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:57] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:58] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 16:58] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:08] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:08] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:09] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:16] [Player] Incoming connection 127.0.0.1:61336
+[24/01/24 - 17:16] [Player] Index: 1 Key 127.0.0.1:61336 127.0.0.1:61336 is connected
+[24/01/24 - 17:16] [Player] Index: 1 Key 127.0.0.1:61336 127.0.0.1:61336 is disconnected
+[24/01/24 - 17:17] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:18] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:44] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:44] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:45] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:56] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:57] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:57] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:58] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:59] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 17:59] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:02] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:04] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:22] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:29] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:37] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:38] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:39] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:40] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:46] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:47] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 18:49] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 19:32] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 19:43] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 19:57] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 19:59] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 19:59] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:00] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:20] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:21] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:23] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:26] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:29] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:29] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:30] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:33] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:35] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:36] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:38] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:48] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:49] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:50] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:51] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 20:51] [Player] Index: 1 Key 127.0.0.1 127.0.0.1:64230 is connected
+[24/01/24 - 20:51] [Player] Index: 1 Key 127.0.0.1 127.0.0.1:64230 is disconnected
+[24/01/24 - 20:52] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:53] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 20:55] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:00] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:01] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:01] [Player] Index: 1 Key 127.0.0.1 127.0.0.1:64276 is connected
+[24/01/24 - 21:01] [Player] UniqueKey: 127.0.0.1
+[24/01/24 - 21:01] [Player] Index: 1 Key 127.0.0.1 127.0.0.1:64276 is disconnected
+[24/01/24 - 21:02] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:03] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:03] [Player] Index: 1 Key 127.0.0.1 127.0.0.1:64282 is connected
+[24/01/24 - 21:03] [Player] Login: tester
+[24/01/24 - 21:03] [Player] Password: test123
+[24/01/24 - 21:03] [Player] UniqueKey: 127.0.0.1
+[24/01/24 - 21:03] [Player] Index: 1 Key 127.0.0.1 127.0.0.1:64282 is disconnected
+[24/01/24 - 21:08] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:09] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:09] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:09] [Player] Index: 1 Key mlgLPaMkxR0oX4n 127.0.0.1:64313 is connected
+[24/01/24 - 21:09] [Player] Login: tester
+[24/01/24 - 21:09] [Player] Password: test123
+[24/01/24 - 21:09] [Player] UniqueKey: mlgLPaMkxR0oX4n
+[24/01/24 - 21:09] [Player] Index: 1 Key mlgLPaMkxR0oX4n 127.0.0.1:64313 is disconnected
+[24/01/24 - 21:15] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:15] [Player] Index: 1 Key oL9xs0kL1c9Bc5z 127.0.0.1:64337 is connected
+[24/01/24 - 21:15] [Player] Login: tester
+[24/01/24 - 21:15] [Player] Password: test123
+[24/01/24 - 21:15] [Player] UniqueKey: oL9xs0kL1c9Bc5z
+[24/01/24 - 21:15] [Player] Index: 1 Key oL9xs0kL1c9Bc5z 127.0.0.1:64337 is disconnected
+[24/01/24 - 21:16] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:17] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:17] [Player] Index: 1 Key XvLJ301LYRxuWEi 127.0.0.1:64343 is connected
+[24/01/24 - 21:17] [Player] Login: tester
+[24/01/24 - 21:17] [Player] Password: test123
+[24/01/24 - 21:17] [Player] UniqueKey: XvLJ301LYRxuWEi
+[24/01/24 - 21:17] [Player] Index: 1 Key XvLJ301LYRxuWEi 127.0.0.1:64343 is disconnected
+[24/01/24 - 21:18] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:18] [Player] Index: 1 Key jQrvRO2xQVGBuBk 127.0.0.1:64346 is connected
+[24/01/24 - 21:18] [Player] Login: tester
+[24/01/24 - 21:18] [Player] Password: test123
+[24/01/24 - 21:18] [Player] UniqueKey: jQrvRO2xQVGBuBk
+[24/01/24 - 21:18] [Player] Index: 1 Key jQrvRO2xQVGBuBk 127.0.0.1:64346 is disconnected
+[24/01/24 - 21:20] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:20] [Player] Index: 1 Key dDldfjcpyJCHHIf 127.0.0.1:64358 is connected
+[24/01/24 - 21:20] [Player] Login: tester
+[24/01/24 - 21:20] [Player] Password: test123
+[24/01/24 - 21:20] [Player] UniqueKey: dDldfjcpyJCHHIf
+[24/01/24 - 21:20] [Player] Index: 1 Key dDldfjcpyJCHHIf 127.0.0.1:64358 is disconnected
+[24/01/24 - 21:20] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:20] [Player] Index: 1 Key 5dJ1YYb19aqw9Wn 127.0.0.1:64369 is connected
+[24/01/24 - 21:20] [Player] Login: tester
+[24/01/24 - 21:20] [Player] Password: test123
+[24/01/24 - 21:20] [Player] UniqueKey: 5dJ1YYb19aqw9Wn
+[24/01/24 - 21:20] [Player] Index: 1 Key 5dJ1YYb19aqw9Wn 127.0.0.1:64369 is disconnected
+[24/01/24 - 21:28] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:28] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:28] [Player] Index: 1 Key Nkw2gQsb94lcV9u 127.0.0.1:64406 is connected
+[24/01/24 - 21:28] [Player] Login: tester
+[24/01/24 - 21:28] [Player] Password: test123
+[24/01/24 - 21:28] [Player] UniqueKey: Nkw2gQsb94lcV9u
+[24/01/24 - 21:28] [Player] Index: 1 Key Nkw2gQsb94lcV9u 127.0.0.1:64406 is disconnected
+[24/01/24 - 21:31] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:32] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:32] [Player] Index: 1 Key lWrfByOX5DwKkSo 127.0.0.1:64423 is connected
+[24/01/24 - 21:32] [Player] Login: tester
+[24/01/24 - 21:32] [Player] Password: test123
+[24/01/24 - 21:32] [Player] UniqueKey: lWrfByOX5DwKkSo
+[24/01/24 - 21:32] [Player] Index: 1 Key lWrfByOX5DwKkSo 127.0.0.1:64423 is disconnected
+[24/01/24 - 21:34] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:34] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:34] [Player] Index: 1 Key uWUkVht4FJA9Th7 127.0.0.1:64432 is connected
+[24/01/24 - 21:34] [Player] Login: tester
+[24/01/24 - 21:34] [Player] Password: test123
+[24/01/24 - 21:34] [Player] UniqueKey: uWUkVht4FJA9Th7
+[24/01/24 - 21:34] [Player] Index: 1 Key uWUkVht4FJA9Th7 127.0.0.1:64432 is disconnected
+[24/01/24 - 21:35] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:35] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:35] [Player] Index: 1 Key icYlB6Bpzy5C6c4 127.0.0.1:64440 is connected
+[24/01/24 - 21:35] [Player] Login: tester
+[24/01/24 - 21:35] [Player] Password: test123
+[24/01/24 - 21:35] [Player] UniqueKey: icYlB6Bpzy5C6c4
+[24/01/24 - 21:35] [Player] Index: 1 Key icYlB6Bpzy5C6c4 127.0.0.1:64440 is disconnected
+[24/01/24 - 21:36] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:36] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:36] [Player] Index: 1 Key IgrH35lPdRIVutp 127.0.0.1:64443 is connected
+[24/01/24 - 21:36] [Player] Login: tester
+[24/01/24 - 21:36] [Player] Password: test123
+[24/01/24 - 21:36] [Player] UniqueKey: IgrH35lPdRIVutp
+[24/01/24 - 21:36] [Player] Index: 1 Key IgrH35lPdRIVutp 127.0.0.1:64443 is disconnected
+[24/01/24 - 21:42] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:43] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:43] [Player] Index: 1 Key fmHcVAptNT5aqum 127.0.0.1:64487 is connected
+[24/01/24 - 21:43] [Player] Login: tester
+[24/01/24 - 21:43] [Player] Password: test123
+[24/01/24 - 21:43] [Player] UniqueKey: fmHcVAptNT5aqum
+[24/01/24 - 21:43] [Player] Index: 1 Key fmHcVAptNT5aqum 127.0.0.1:64487 is disconnected
+[24/01/24 - 21:44] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:45] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:45] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:45] [Player] Index: 1 Key IIN7y3Is9Bpu4UE 127.0.0.1:64501 is connected
+[24/01/24 - 21:45] [Player] Login: tester
+[24/01/24 - 21:45] [Player] Password: test123
+[24/01/24 - 21:45] [Player] UniqueKey: IIN7y3Is9Bpu4UE
+[24/01/24 - 21:45] [Player] Index: 1 Key IIN7y3Is9Bpu4UE 127.0.0.1:64501 is disconnected
+[24/01/24 - 21:46] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:46] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:46] [Player] Index: 1 Key sLhY88K6gMLad6K 127.0.0.1:64506 is connected
+[24/01/24 - 21:46] [Player] Login: tester
+[24/01/24 - 21:46] [Player] Password: test123
+[24/01/24 - 21:46] [Player] UniqueKey: sLhY88K6gMLad6K
+[24/01/24 - 21:46] [Player] Index: 1 Key sLhY88K6gMLad6K 127.0.0.1:64506 is disconnected
+[24/01/24 - 21:48] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:48] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:48] [Player] Index: 1 Key nXo0I9bqLghJAS9 127.0.0.1:64513 is connected
+[24/01/24 - 21:48] [Player] Login: tester
+[24/01/24 - 21:48] [Player] Password: test123
+[24/01/24 - 21:48] [Player] UniqueKey: nXo0I9bqLghJAS9
+[24/01/24 - 21:48] [Player] Index: 1 Key nXo0I9bqLghJAS9 127.0.0.1:64513 is disconnected
+[24/01/24 - 21:51] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:51] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:51] [Player] Index: 1 Key n9fQJQvTGmsGjpK 127.0.0.1:64537 is connected
+[24/01/24 - 21:51] [Player] Login: tester
+[24/01/24 - 21:51] [Player] Password: test123
+[24/01/24 - 21:51] [Player] UniqueKey: n9fQJQvTGmsGjpK
+[24/01/24 - 21:51] [Player] Index: 1 Key n9fQJQvTGmsGjpK 127.0.0.1:64537 is disconnected
+[24/01/24 - 21:53] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:54] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:54] [Player] Index: 1 Key m5Pu8CMaJsV2FTG 127.0.0.1:64547 is connected
+[24/01/24 - 21:54] [Player] Login: tester
+[24/01/24 - 21:54] [Player] Password: testandoo
+[24/01/24 - 21:54] [Player] Index: 1 Key m5Pu8CMaJsV2FTG 127.0.0.1:64547 is disconnected
+[24/01/24 - 21:54] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:54] [Player] Index: 1 Key 3Qj8oVzKJgPC6fI 127.0.0.1:64548 is connected
+[24/01/24 - 21:54] [Player] Login: tester
+[24/01/24 - 21:54] [Player] Password: test123
+[24/01/24 - 21:54] [Player] UniqueKey: 3Qj8oVzKJgPC6fI
+[24/01/24 - 21:54] [Player] Index: 1 Key 3Qj8oVzKJgPC6fI 127.0.0.1:64548 is disconnected
+[24/01/24 - 21:56] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 21:57] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 21:57] [Player] Index: 1 Key BXo4REQpLjIGwfa 127.0.0.1:64566 is connected
+[24/01/24 - 21:57] [Player] Login: tester
+[24/01/24 - 21:57] [Player] Password: test123
+[24/01/24 - 21:57] [Player] UniqueKey: BXo4REQpLjIGwfa
+[24/01/24 - 21:57] [Player] Index: 1 Key BXo4REQpLjIGwfa 127.0.0.1:64566 is disconnected
+[24/01/24 - 22:04] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:04] [Player] Index: 1 Key OpBfjI3HBjwbTxl 127.0.0.1:64592 is connected
+[24/01/24 - 22:04] [Player] Login: tester
+[24/01/24 - 22:04] [Player] Password: test123
+[24/01/24 - 22:04] [Player] UniqueKey: OpBfjI3HBjwbTxl
+[24/01/24 - 22:04] [Player] Index: 1 Key OpBfjI3HBjwbTxl 127.0.0.1:64592 is disconnected
+[24/01/24 - 22:05] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:05] [Player] Index: 1 Key l14YZIrlMKucNcR 127.0.0.1:64598 is connected
+[24/01/24 - 22:05] [Player] Login: tester
+[24/01/24 - 22:05] [Player] Password: test123
+[24/01/24 - 22:05] [Player] UniqueKey: l14YZIrlMKucNcR
+[24/01/24 - 22:05] [Player] Index: 1 Key l14YZIrlMKucNcR 127.0.0.1:64598 is disconnected
+[24/01/24 - 22:08] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:08] [Player] Index: 1 Key Z1xDP1Y6UPIsb79 127.0.0.1:64622 is connected
+[24/01/24 - 22:08] [Player] Login: tester
+[24/01/24 - 22:08] [Player] Password: test123
+[24/01/24 - 22:08] [Player] UniqueKey: Z1xDP1Y6UPIsb79
+[24/01/24 - 22:08] [Player] Index: 1 Key Z1xDP1Y6UPIsb79 127.0.0.1:64622 is disconnected
+[24/01/24 - 22:08] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:08] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:08] [Player] Index: 1 Key wxYCedVd28IsbWc 127.0.0.1:64632 is connected
+[24/01/24 - 22:08] [Player] Login: tester
+[24/01/24 - 22:08] [Player] Password: test123
+[24/01/24 - 22:08] [Player] UniqueKey: wxYCedVd28IsbWc
+[24/01/24 - 22:08] [Player] Index: 1 Key wxYCedVd28IsbWc 127.0.0.1:64632 is disconnected
+[24/01/24 - 22:09] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:09] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:09] [Player] Index: 1 Key RnSZKXNGfwPQYrF 127.0.0.1:64635 is connected
+[24/01/24 - 22:09] [Player] Login: tester
+[24/01/24 - 22:09] [Player] Password: test123
+[24/01/24 - 22:09] [Player] UniqueKey: RnSZKXNGfwPQYrF
+[24/01/24 - 22:09] [Player] Index: 1 Key RnSZKXNGfwPQYrF 127.0.0.1:64635 is disconnected
+[24/01/24 - 22:11] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:11] [Player] Index: 1 Key F8fj9WIoEWU4rkh 127.0.0.1:64660 is connected
+[24/01/24 - 22:11] [Player] Login: tester
+[24/01/24 - 22:11] [Player] Password: test123
+[24/01/24 - 22:11] [Player] UniqueKey: F8fj9WIoEWU4rkh
+[24/01/24 - 22:11] [Player] Index: 1 Key F8fj9WIoEWU4rkh 127.0.0.1:64660 is disconnected
+[24/01/24 - 22:12] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:13] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:13] [Player] Index: 1 Key NdDim0kNWAETIQ2 127.0.0.1:64670 is connected
+[24/01/24 - 22:13] [Player] Login: tester
+[24/01/24 - 22:13] [Player] Password: test123
+[24/01/24 - 22:13] [Player] UniqueKey: NdDim0kNWAETIQ2
+[24/01/24 - 22:13] [Player] Index: 1 Key NdDim0kNWAETIQ2 127.0.0.1:64670 is disconnected
+[24/01/24 - 22:15] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:15] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:15] [Player] Index: 1 Key e1eb35XHlGIHdjv 127.0.0.1:64688 is connected
+[24/01/24 - 22:15] [Player] Login: tester
+[24/01/24 - 22:15] [Player] Password: test123
+[24/01/24 - 22:15] [Player] UniqueKey: e1eb35XHlGIHdjv
+[24/01/24 - 22:15] [Player] Index: 1 Key e1eb35XHlGIHdjv 127.0.0.1:64688 is disconnected
+[24/01/24 - 22:20] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:20] [Player] Index: 1 Key RZ8vicQ84pZcACQ 127.0.0.1:64707 is connected
+[24/01/24 - 22:20] [Player] Login: tester
+[24/01/24 - 22:20] [Player] Password: test123
+[24/01/24 - 22:20] [Player] UniqueKey: RZ8vicQ84pZcACQ
+[24/01/24 - 22:20] [Player] Index: 1 Key RZ8vicQ84pZcACQ 127.0.0.1:64707 is disconnected
+[24/01/24 - 22:23] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:23] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:23] [Player] Index: 1 Key NixinBfTHTikytL 127.0.0.1:64721 is connected
+[24/01/24 - 22:23] [Player] Login: tester
+[24/01/24 - 22:23] [Player] Password: test123
+[24/01/24 - 22:23] [Player] UniqueKey: NixinBfTHTikytL
+[24/01/24 - 22:23] [Player] Index: 1 Key NixinBfTHTikytL 127.0.0.1:64721 is disconnected
+[24/01/24 - 22:27] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:27] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:27] [Player] Index: 1 Key 5fMCFIea2afYyc8 127.0.0.1:64765 is connected
+[24/01/24 - 22:27] [Player] Login: tester
+[24/01/24 - 22:27] [Player] Password: test123
+[24/01/24 - 22:28] [Player] UniqueKey: 5fMCFIea2afYyc8
+[24/01/24 - 22:28] [Player] Index: 1 Key 5fMCFIea2afYyc8 127.0.0.1:64765 is disconnected
+[24/01/24 - 22:34] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:35] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:35] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:35] [Player] Index: 1 Key 2uxLiXdrCckd9lc 127.0.0.1:64796 is connected
+[24/01/24 - 22:35] [Player] Login: tester
+[24/01/24 - 22:35] [Player] Password: test123
+[24/01/24 - 22:35] [Player] UniqueKey: 2uxLiXdrCckd9lc
+[24/01/24 - 22:35] [Player] Index: 1 Key 2uxLiXdrCckd9lc 127.0.0.1:64796 is disconnected
+[24/01/24 - 22:38] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:39] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:39] [Player] Index: 1 Key cl7Ym9G8Vc6CMdm 127.0.0.1:64812 is connected
+[24/01/24 - 22:39] [Player] Login: tester
+[24/01/24 - 22:39] [Player] Password: test123
+[24/01/24 - 22:39] [Player] UniqueKey: cl7Ym9G8Vc6CMdm
+[24/01/24 - 22:39] [Player] Index: 1 Key cl7Ym9G8Vc6CMdm 127.0.0.1:64812 is disconnected
+[24/01/24 - 22:41] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:41] [Player] Index: 1 Key zfB2H5j80LekjW5 127.0.0.1:64826 is connected
+[24/01/24 - 22:41] [Player] Login: tester
+[24/01/24 - 22:41] [Player] Password: 
+[24/01/24 - 22:41] [Player] Index: 1 Key zfB2H5j80LekjW5 127.0.0.1:64826 is disconnected
+[24/01/24 - 22:41] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:41] [Player] Index: 1 Key WvkvafTH5QoCAee 127.0.0.1:64827 is connected
+[24/01/24 - 22:41] [Player] Login: tester
+[24/01/24 - 22:41] [Player] Password: test123
+[24/01/24 - 22:41] [Player] UniqueKey: WvkvafTH5QoCAee
+[24/01/24 - 22:41] [Player] Index: 1 Key WvkvafTH5QoCAee 127.0.0.1:64827 is disconnected
+[24/01/24 - 22:41] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:53] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:53] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
+[24/01/24 - 22:53] [Player] Incoming connection 127.0.0.1
+[24/01/24 - 22:53] [Player] Index: 1 Key 9N50LyPk89aFmHZ 127.0.0.1:64867 is connected
+[24/01/24 - 22:53] [Player] Login: tester
+[24/01/24 - 22:53] [Player] Password: test123
+[24/01/24 - 22:53] [Player] UniqueKey: 9N50LyPk89aFmHZ
+[24/01/24 - 22:53] [Player] Index: 1 Key 9N50LyPk89aFmHZ 127.0.0.1:64867 is disconnected
+[24/01/24 - 23:01] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
