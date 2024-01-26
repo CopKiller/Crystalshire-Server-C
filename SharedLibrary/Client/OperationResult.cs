@@ -19,7 +19,7 @@ namespace SharedLibrary.Client
     public class CombinedOperationResult<T> : OperationResult
     {
         public OperationResult BaseOperationResult { get; set; } = new OperationResult();
-        public T Entity { get; set; } = default(T);
+        public T Entity { get; set; }
     }
 
 }

@@ -3,6 +3,7 @@ using System;
 using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    partial class MeuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240125232824_Newaq")]
+    partial class Newaq
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.1");
@@ -63,7 +66,7 @@ namespace Database.Migrations
                     b.Property<int>("AccessType")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AccountEntityId")
+                    b.Property<int?>("AccountEntityId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ClassType")
@@ -281,13 +284,10 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Entities.Player.PlayerEntity", b =>
                 {
-                    b.HasOne("Database.Entities.Account.AccountEntity", "AccountEntity")
+                    b.HasOne("Database.Entities.Account.AccountEntity", null)
                         .WithMany("Players")
                         .HasForeignKey("AccountEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AccountEntity");
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Database.Entities.ValueObjects.Player.Bank", b =>

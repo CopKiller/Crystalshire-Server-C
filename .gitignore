@@ -1,0 +1,12 @@
+Crystalshire Limpa/Client/Client.exe
+Crystalshire Limpa/Client/data files/logs
+Crystalshire Limpa/Client/data files/maps
+
+Crystalshire Limpa/Server/Server.exe
+Crystalshire Limpa/Server/data/*/
+
+Database/bin/
+GameServer/bin/
+LoginServer/bin/
+SharedLibrary/bin/
+Tests/bin/

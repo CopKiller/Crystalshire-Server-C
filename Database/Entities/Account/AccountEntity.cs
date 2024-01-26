@@ -25,7 +25,7 @@ public class AccountEntity : BaseEntity
 
     public DateTime CreatedDate { get; set; } = DateTime.Now;
     public DateTime LastLoginDate { get; set; } = DateTime.Now;
-    public List<PlayerEntity> Players { get; set; } = new List<PlayerEntity>();
+    public virtual List<PlayerEntity> Players { get; set; } = new List<PlayerEntity>();
 
     public AccountEntity()
     {   

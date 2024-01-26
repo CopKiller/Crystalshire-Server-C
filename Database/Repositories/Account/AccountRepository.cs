@@ -179,35 +179,6 @@ namespace Database.Repositories.Account
             return null;
         }
 
-        public async Task<CombinedOperationResult<List<PlayerEntity>>> GetCharactersByIdAccountAsync(int accountId)
-        {
-            var combinedOperations = new CombinedOperationResult<List<PlayerEntity>>();
-
-            var account = await GetByIdAsync(accountId);
-
-            if (account != null)
-            {
-                var characters = account.Players;
-
-                combinedOperations.Success = true;
-                combinedOperations.Message = $"Account {account.Login} has {characters.Count} chars!";
-                combinedOperations.Color = ConsoleColor.Green;
-                combinedOperations.Entity = characters;
- 
-                return combinedOperations;
-            }else
-            {
-                combinedOperations.Success = false;
-                combinedOperations.Message = $"Account {account.Login} not exists with id {accountId}!";
-                combinedOperations.Color = ConsoleColor.Red;
-                combinedOperations.ClientMenu = ClientMenu.MenuMain;
-
-                return combinedOperations;
-            }
-
-
-        }
-
         public async Task<int> AtualizarContaAsync()
         {
             try

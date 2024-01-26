@@ -7,7 +7,7 @@ public static class Global
 {
     public static int Environment;
 
-    public static DataServer Server;
+    //public static DataServer Server;
     public static Log? PlayerLogs { get; set; }
     public static Log? SystemLogs { get; set; }
     public static Log? DebugLogs { get; set; }

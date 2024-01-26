@@ -52,14 +52,20 @@ namespace GameServer.Server.Authentication
             }
         }
 
-        /// <summary>
-        /// Carrega os dados dos personages e envia as classes.
-        /// </summary>
+        // Carrega os chars e classes do usuário.
         private async void SendData()
         {
-            var chars = DatabaseStartup.GetAccountCharacters(Authentication.Players[Connection.Index].AccountEntityId);
+            var chars = await DatabaseStartup.GetAccountCharacters(Authentication.Players[Connection.Index].AccountEntityId);
 
-            var msgPlayerChars = new SPlayerChars(chars.Result);
+            if (chars == null)
+            {
+                Global.WriteLog(LogType.Player, $"Error loading characters from {Username}", ConsoleColor.Red);
+                var msg = new SAlertMsg(ClientMessages.Connection);
+                msg.Send(Connection);
+                return;
+            }
+
+            var msgPlayerChars = new SPlayerChars(chars);
             msgPlayerChars.Send(Authentication.Players[Connection.Index].Connection);
             
 

@@ -4,6 +4,8 @@ using GameServer.Network.PacketList;
 using GameServer.Network.PacketList.ServerPacket;
 using SharedLibrary.Network;
 using SharedLibrary.Util;
+using System;
+using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
@@ -165,8 +167,33 @@ namespace GameServer.Network.Tcp
             }
         }
 
+        static string FindKeyByValue<TKey, TValue>(Dictionary<TKey, TValue> dictionary, TValue targetValue)
+        {
+            foreach (var pair in dictionary)
+            {
+                if (EqualityComparer<TValue>.Default.Equals(pair.Value, targetValue))
+                {
+                    return pair.Key.ToString();
+                }
+            }
+
+            return null; // Valor não encontrado
+        }
+
         public void Send(ByteBuffer msg, string className)
         {
+            if (msg == null)
+            {
+                //ServerPacketEnum enumValue = (ServerPacketEnum)Enum.Parse(typeof(ServerPacketEnum), className);
+                //var index = OpCode.SendPacket.FirstOrDefault(x => x.Value == enumValue).Key;
+                Global.WriteLog(LogType.System, $"Message is null: Class {className}", ConsoleColor.Red); return;
+            }
+
+            if (Client == null)
+            {
+                Global.WriteLog(LogType.System, $"Client is null: Class {className}", ConsoleColor.Red); return;
+            }
+
             var buffer = new byte[msg.Length() + 4];
             var values = BitConverter.GetBytes(msg.Length());
 

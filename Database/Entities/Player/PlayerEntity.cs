@@ -1,4 +1,5 @@
-﻿using Database.Entities.ValueObjects.Player;
+﻿using Database.Entities.Account;
+using Database.Entities.ValueObjects.Player;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,6 +10,9 @@ public class PlayerEntity : BaseEntity
     public const byte MaxNameCaracteres = 20;
     public const byte MaxInventory = 35;
     public const byte MaxSkill = 35;
+
+    public int AccountEntityId { get; set; }
+    public virtual AccountEntity AccountEntity { get; set; }
 
     [MaxLength(MaxNameCaracteres)]
     public string Name { get; set; } = string.Empty;
@@ -21,16 +25,16 @@ public class PlayerEntity : BaseEntity
     public int Exp { get; set; } = 1;
     public int Points { get; set; } = 0;
     // Position
-    public Position Position { get; set; } = new Position();
+    public virtual Position Position { get; set; } = new Position();
     // Atributes
-    public Stat Stat { get; set; } = new Stat();
-    public Vital Vital { get; set; } = new Vital();
+    public virtual Stat Stat { get; set; } = new Stat();
+    public virtual Vital Vital { get; set; } = new Vital();
 
-    public List<Equipment> Equipment { get; set; } = new List<Equipment>();
-    public List<Inventory> Inventory { get; set; } = new List<Inventory>();
-    public List<Bank> Bank { get; set; } = new List<Bank>();
-    public List<Skill> Skill { get; set; } = new List<Skill>();
-    public Penalty Penalty { get; set; } = new Penalty();
+    public virtual List<Equipment> Equipment { get; set; } = new List<Equipment>();
+    public virtual List<Inventory> Inventory { get; set; } = new List<Inventory>();
+    public virtual List<Bank> Bank { get; set; } = new List<Bank>();
+    public virtual List<Skill> Skill { get; set; } = new List<Skill>();
+    public virtual Penalty Penalty { get; set; } = new Penalty();
 
     public PlayerEntity()
     {

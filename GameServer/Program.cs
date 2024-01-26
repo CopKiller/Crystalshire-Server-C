@@ -11,9 +11,13 @@ public static class Program
     /// </summary>
     private static void Main()
     {
-        Global.Server = new DataServer();
-        Global.Server.UpdateUps += ups => Console.Title = $"Game Server @ {ups} Ups";
-        Global.Server.InitializeServer();
+        var server = new DataServer();
+        server.UpdateUps += ups => Console.Title = $"Game Server @ {ups} Ups";
+        server.InitializeServer();
+
+        //Global.Server = new DataServer();
+        //Global.Server.UpdateUps += ups => Console.Title = $"Game Server @ {ups} Ups";
+        //Global.Server.InitializeServer();
 
 
         while (true)

@@ -33,6 +33,12 @@ public class MeuDbContext : DbContext
         }
 
         // Configuração de relações específicas
+
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(p => p.AccountEntity)
+            .WithMany(a => a.Players)
+            .HasForeignKey(p => p.AccountEntityId);
+
         modelBuilder.Entity<PlayerEntity>()
             .HasOne(p => p.Position)
             .WithOne()

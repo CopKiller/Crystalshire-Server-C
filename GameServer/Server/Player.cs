@@ -32,6 +32,8 @@ namespace GameServer.Server
         // Id da conta, para futuro acesso ao banco de dados.
         public int AccountEntityId { get; set; }
 
+        public string Login { get; set; }
+
         public Player(IConnection connection, WaitingUserData user)
         {
             Index = connection.Index;
@@ -39,6 +41,7 @@ namespace GameServer.Server
             AccountEntityId = user.AccountId;
             UniqueKey = user.UniqueKey;
             GameState = GameState.Characters;
+            Login = user.Username;
         }
 
         //public MapInstance GetMap()

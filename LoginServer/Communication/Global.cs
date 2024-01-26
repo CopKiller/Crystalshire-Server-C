@@ -11,7 +11,7 @@ public static class Global
 
     public static Action<ByteBuffer> SendGameServerPacket { get; set; }
 
-    public static DataServer Server;
+    //public static DataServer Server;
     public static Log? PlayerLogs { get; set; }
     public static Log? SystemLogs { get; set; }
     public static Log? DebugLogs { get; set; }

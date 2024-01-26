@@ -25,6 +25,7 @@ namespace GameServer.Server.Authentication
             Players.Add(index, pData);
 
             var highIndex = new SHighIndex(HighIndex);
+            Console.WriteLine($"HighIndex: {HighIndex}");
             highIndex.SendToAll();
         }
 
@@ -63,30 +64,21 @@ namespace GameServer.Server.Authentication
         public static Player FindByUsername(string username)
         {
 
-            // Vai trazer o player do banco de dados, pelo username. Falta implementar a lógica
-            // Talvez precise mudar a estrutura do banco, para salvar um login no playermodel do banco de dados.
+            // Procura pelo nome do usuário na lista de jogadores.
+            var pData = from player in Players.Values
+                        where (string.CompareOrdinal(player.Login, username) == 0)
+            select player;
 
-            //var pData = from player in Players.Values
-            //            where (string.CompareOrdinal(player.Username, username) == 0)
-            //select player;
-
-            //return pData.FirstOrDefault();
-
-            return null;
+            return pData.FirstOrDefault();
         }
 
         public static Player FindByCharacter(string character)
         {
-            // Implementar a busca no banco de dados, pelo nome do personagem.
+            var pData = from player in Players.Values
+                        where (string.CompareOrdinal(player.Name, character) == 0)
+                        select player;
 
-
-            //var pData = from player in Players.Values
-            //            where (string.CompareOrdinal(player.Character, character) == 0)
-            //            select player;
-
-            //return pData.FirstOrDefault();
-
-            return null;
+            return pData.FirstOrDefault();
         }
 
         public static void Quit(int index)

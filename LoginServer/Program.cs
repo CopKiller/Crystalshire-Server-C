@@ -12,9 +12,9 @@ public static class Program
     /// </summary>
     private static void Main()
     {
-        Global.Server = new DataServer();
-        Global.Server.UpdateUps += ups => Console.Title = $"Login Server @ {ups} Ups";
-        Global.Server.InitializeServer();
+        var Server = new DataServer();
+        Server.UpdateUps += ups => Console.Title = $"Login Server @ {ups} Ups";
+        Server.InitializeServer();
 
         while (true) 
         {            

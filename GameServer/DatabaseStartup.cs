@@ -45,33 +45,31 @@ public class DatabaseStartup
         //  scp.Database.Migrate(); }
     }
 
-    public static async Task<List<PlayerEntity>> GetAccountCharacters(int accountID)
+    public static async Task<List<PlayerEntity>>? GetAccountCharacters(int accountID)
     {
         using (var scope = _serviceProvider.CreateScope())
         {
             // Resolvendo o serviço necessário dentro do escopo
-            var accountService = scope.ServiceProvider.GetRequiredService<IRepository<AccountEntity>>();
+            var playerService = scope.ServiceProvider.GetRequiredService<IRepository<PlayerEntity>>();
 
-            var accountRepo = (AccountRepository)accountService;
+            var playerRepo = (PlayerRepository)playerService;
 
-            var charsAccount = await accountRepo.GetCharactersByIdAccountAsync(accountID);
+            var charsAccount = await playerRepo.GetPlayersByAccountIdAsync(accountID);
 
-            Global.WriteLog(LogType.Database, charsAccount.Message, charsAccount.Color);
-
-            if (charsAccount.Success)
+            if (charsAccount == null)
             {
-                foreach (var Char in charsAccount.Entity)
-                {
-                    
-                    Global.WriteLog(LogType.Database, $"Character {Char.Name} {Char.Level}", ConsoleColor.Green);
-                }
-
-                return charsAccount.Entity;
-            }
-            else
-            {
+                Global.WriteLog(LogType.Database, $"Account {accountID} not found!", ConsoleColor.Red);
                 return null;
             }
+
+            var counter = 0;
+            foreach (var Char in charsAccount)
+            {
+                counter++;
+                Global.WriteLog(LogType.Database, $"Character {counter} {Char.Name} {Char.Level}", ConsoleColor.Green);
+            }
+
+            return charsAccount;
         }
     }
 }
