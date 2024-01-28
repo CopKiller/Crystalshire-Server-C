@@ -44,10 +44,10 @@ public sealed class TcpServer
     {
         server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        server.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
-        server.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveTime, 5); // Tempo de inatividade em segundos
-        server.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveInterval, 1); // Intervalo de keep-alive em segundos
-        server.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveRetryCount, 3); // Número de tentativas de keep-alive
+        //server.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+        //server.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveTime, 5); // Tempo de inatividade em segundos
+        //server.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveInterval, 1); // Intervalo de keep-alive em segundos
+        //server.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveRetryCount, 3); // Número de tentativas de keep-alive
 
         server.Bind(new IPEndPoint(IPAddress.Any, Port));
         server.Listen(10);

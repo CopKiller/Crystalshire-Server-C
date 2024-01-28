@@ -1,5 +1,4 @@
 ﻿using GameServer.Communication;
-using GameServer.Database;
 using GameServer.Network.Interface;
 using GameServer.Network.PacketList.ServerPacket;
 using SharedLibrary.Client;
@@ -55,7 +54,9 @@ namespace GameServer.Server.Authentication
         // Carrega os chars e classes do usuário.
         private async void SendData()
         {
-            var chars = await DatabaseStartup.GetAccountCharacters(Authentication.Players[Connection.Index].AccountEntityId);
+            var character = new Character();
+
+            var chars = await character.GetAccountCharacters(Authentication.Players[Connection.Index].AccountEntityId);
 
             if (chars == null)
             {

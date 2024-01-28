@@ -1,12 +1,9 @@
 ﻿using LoginServer.Communication;
 using LoginServer.Database;
 using LoginServer.Network;
-using LoginServer.Network.GamePacket;
 using LoginServer.Network.Tcp;
-using Microsoft.Extensions.Configuration;
 using SharedLibrary.Network;
 using SharedLibrary.Util;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LoginServer.Server;
 
@@ -55,6 +52,7 @@ public class DataServer
             GameIpAddress = Constants.IpGameServer,
             GamePort = Constants.GameServerReceiveLoginPort
         };
+
         GameServer.InitClient();
 
         Server = new TcpServer() { Port = Constants.LoginServerPort, IpFiltering = IpFiltering };
@@ -80,6 +78,7 @@ public class DataServer
         while (ServerRunning)
         {
             GameServer.Connect();
+            GameServer.SendPing();
 
             Server.AcceptClient();
             Server.ProcessClients();

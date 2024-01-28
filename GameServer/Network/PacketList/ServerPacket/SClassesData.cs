@@ -7,7 +7,7 @@ public sealed class SClassesData : SendPacket
 {
     public SClassesData()
     {
-        msg = new ByteBuffer();
+        //msg = new ByteBuffer();
         msg.Write((int)OpCode.SendPacket[GetType()]);
 
         msg.Write(Configuration.ClassData.MaxClasses);

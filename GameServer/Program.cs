@@ -15,11 +15,6 @@ public static class Program
         server.UpdateUps += ups => Console.Title = $"Game Server @ {ups} Ups";
         server.InitializeServer();
 
-        //Global.Server = new DataServer();
-        //Global.Server.UpdateUps += ups => Console.Title = $"Game Server @ {ups} Ups";
-        //Global.Server.InitializeServer();
-
-
         while (true)
         {
             Console.ReadLine();

@@ -2,7 +2,6 @@
 
 public enum SexType
 {
-    None,
     Male,
     Female,
     Other
@@ -10,9 +9,10 @@ public enum SexType
 
 public enum ClassType
 {
-    None,
-    Knight,
-    Archer
+    None = 0,
+    DarkMage,
+    Whatever,
+    Warrior
 }
 public enum AccessType
 {

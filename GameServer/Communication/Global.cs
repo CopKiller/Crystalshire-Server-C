@@ -1,5 +1,12 @@
-﻿using GameServer.Server;
+﻿using Database.Entities.Account;
+using Database.Entities.Player;
+using Database.Repositories.Account;
+using Database.Repositories.Interface;
+using Database.Repositories.Player;
+using Database;
+using Microsoft.Extensions.DependencyInjection;
 using SharedLibrary.Util;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameServer.Communication;
 
@@ -12,6 +19,32 @@ public static class Global
     public static Log? SystemLogs { get; set; }
     public static Log? DebugLogs { get; set; }
     public static Log? DatabaseLogs { get; set; }
+
+    public static IServiceProvider _serviceProvider { get; set; }
+
+    public static void InitDatabase()
+    {
+        var serviceCollection = new ServiceCollection();
+
+        // Configuração do DbContext e outros serviços
+        var connectionString = @"Data Source=DatabaseSqlite.db";
+        serviceCollection.AddDbContext<MeuDbContext>(options => options.UseSqlite(connectionString));
+
+        // Configuração dos repositórios
+        serviceCollection.AddScoped<IRepository<AccountEntity>, AccountRepository>();
+        serviceCollection.AddScoped<IRepository<PlayerEntity>, PlayerRepository>();
+
+        var provider = serviceCollection.BuildServiceProvider();
+
+        Global.WriteLog(LogType.Database, $"Configurada com sucesso! {connectionString}", ConsoleColor.Green);
+
+        _serviceProvider = provider;
+
+        //Criação do banco de dados, caso não existir
+        //using (var scope = provider.CreateScope())
+        //{ var scp = scope.ServiceProvider.GetRequiredService<MeuDbContext>();
+        //  scp.Database.Migrate(); }
+    }
 
     public static void CloseLog()
     {

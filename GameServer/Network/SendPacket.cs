@@ -19,8 +19,10 @@ public abstract class SendPacket
         ((Connection)connection).Send(msg, GetType().Name);
 
         if (msg != null)
-        msg.Clear();
-        msg = null;
+        {
+            msg.Clear();
+            msg = null;
+        }
     }
 
     public void SendToAll()

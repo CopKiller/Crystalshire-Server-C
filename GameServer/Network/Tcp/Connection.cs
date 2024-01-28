@@ -140,7 +140,7 @@ namespace GameServer.Network.Tcp
                                 // A desconexão irá ocorrer.
                                 else
                                 {
-                                    ((IRecvPacket)Activator.CreateInstance(OpCode.RecvPacket[ClientPacketEnum.AuthLogin])).Process(msg.ReadBytes(pLength), this);
+                                    ((IRecvPacket)Activator.CreateInstance(OpCode.RecvPacket[ClientPacketEnum.CLogin])).Process(msg.ReadBytes(pLength), this);
                                 }
                             }
 
@@ -165,19 +165,6 @@ namespace GameServer.Network.Tcp
 
                 msg.Clear();
             }
-        }
-
-        static string FindKeyByValue<TKey, TValue>(Dictionary<TKey, TValue> dictionary, TValue targetValue)
-        {
-            foreach (var pair in dictionary)
-            {
-                if (EqualityComparer<TValue>.Default.Equals(pair.Value, targetValue))
-                {
-                    return pair.Key.ToString();
-                }
-            }
-
-            return null; // Valor não encontrado
         }
 
         public void Send(ByteBuffer msg, string className)
@@ -276,9 +263,7 @@ namespace GameServer.Network.Tcp
                 ping = new SPing();
 
                 if (Connected)
-                {
                     ping.Send(this);
-                }
 
                 pingTick = Environment.TickCount + Constants.PingTime;
             }

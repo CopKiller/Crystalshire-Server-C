@@ -27,7 +27,7 @@ namespace Database.Repositories.Account
             if (login.Success && password.Success && email.Success)
             {
 
-                var verifyAccountExists = await CheckPlayerAccountAsync(account.Login, account.Password);
+                var verifyAccountExists = await CheckPlayerAccountAsync(account.Login);
 
                 if (verifyAccountExists.Success == false)
                 {
@@ -102,7 +102,7 @@ namespace Database.Repositories.Account
 
         //Normalmente utilizado ao criar uma conta, verificando se existe alguma conta com o mesmo login
         //Esta sendo utilizado como login para testes!
-        public async Task<OperationResult> CheckPlayerAccountAsync(string login, string password)
+        public async Task<OperationResult> CheckPlayerAccountAsync(string login)
         {
             var operationResult = new OperationResult();
             var conta = await _dbContext.AccountEntities

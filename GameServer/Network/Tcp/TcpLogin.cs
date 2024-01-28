@@ -43,7 +43,6 @@ namespace GameServer.Network.Tcp
             if (Connection != null)
             {
                 Connection.SendPing();
-                ChangeState();
             }
         }
 

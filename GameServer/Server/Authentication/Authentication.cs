@@ -34,7 +34,7 @@ namespace GameServer.Server.Authentication
             if (Players.ContainsKey(index))
             {
 
-                SavePlayer(index);
+                Players[index].Save();
 
                 var msg = new SPlayerLeft(index);
                 msg.SendToMapBut(index, Players[index].Position.MapNum);
@@ -81,6 +81,16 @@ namespace GameServer.Server.Authentication
             return pData.FirstOrDefault();
         }
 
+        public static Player FindByIndex(int index)
+        {
+            if (Players.ContainsKey(index))
+            {
+                return Players[index];
+            }
+
+            return null;
+        }
+
         public static void Quit(int index)
         {
             if (Players.ContainsKey(index))
@@ -93,21 +103,11 @@ namespace GameServer.Server.Authentication
         {
             // Implementar a lógica para salvar um jogador no banco de dados.
 
-            //var pData = Players[index];
-            //var db = new CharacterDB();
-            //var dbError = db.Open();
+            if (Players.ContainsKey(index))
+            {
+                Players[index].Save();
+            }
 
-            //if (dbError.Number != 0)
-            //{
-            //    Global.WriteLog(LogType.System, $"Cannot connect to database", LogColor.Red);
-            //    Global.WriteLog(LogType.System, $"Error Number: {dbError.Number}", LogColor.Red);
-            //    Global.WriteLog(LogType.System, $"Error Message: {dbError.Message}", LogColor.Red);
-            //}
-            //else
-            //{
-            //    db.UpdateCharacter(pData);
-            //    db.Close();
-            //}
         }
     }
 }

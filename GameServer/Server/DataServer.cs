@@ -1,6 +1,5 @@
 ﻿using GameServer.Communication;
 using GameServer.Data.Configuration;
-using GameServer.Database;
 using GameServer.Network;
 using GameServer.Network.Tcp;
 using SharedLibrary.Util;
@@ -59,7 +58,7 @@ public class DataServer
         OpCode.InitOpCode();
 
         // Inicializa o banco de dados.
-        DatabaseStartup.Configure();
+        Global.InitDatabase();
 
         Global.WriteLog(LogType.System, "Waiting For Login Server Connection...", ConsoleColor.Yellow);
 

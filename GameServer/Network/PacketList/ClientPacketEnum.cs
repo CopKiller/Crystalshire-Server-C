@@ -2,11 +2,10 @@
 
 public enum ClientPacketEnum
 {
-    //LoginServer
-    CNewAccount = 1,
+
+    CNewAccount = 1, // Cria uma nova conta -> LoginServer
     CDelChar,
     CLogin,
-    //GameServer
     CAddChar,
     CUseChar,
     CSayMsg,
@@ -96,7 +95,5 @@ public enum ClientPacketEnum
     CRequestConvs,
     CFinishTutorial,
 
-
-    AuthLogin = 254,
-    UserData = 255,
+    UserData = 255,  // LoginServer -> GameServer
 }

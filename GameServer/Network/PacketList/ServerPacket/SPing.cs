@@ -11,7 +11,6 @@ namespace GameServer.Network.PacketList.ServerPacket
     {
         public SPing()
         {
-            var msg = new ByteBuffer();
             msg.Write((int)OpCode.SendPacket[GetType()]);
         }
     }

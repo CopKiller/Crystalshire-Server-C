@@ -13,12 +13,14 @@ public static class OpCode
     public static void InitOpCode()
     {
         // Fluxo Receive
-        RecvPacket.Add(ClientPacketEnum.CLogin, typeof(CReceiveLogin));
-
         RecvPacket.Add(ClientPacketEnum.UserData, typeof(CUserData));
 
         // Caso o jogador não esteja autenticado, recebe um direcionamento pro pacote abaixo.
-        RecvPacket.Add(ClientPacketEnum.AuthLogin, typeof(CAuthenticateLogin));
+        RecvPacket.Add(ClientPacketEnum.CLogin, typeof(CLogin));
+
+        RecvPacket.Add(ClientPacketEnum.CAddChar, typeof(CAddChar));
+
+        RecvPacket.Add(ClientPacketEnum.CDelChar, typeof(CDelChar));
 
 
         // Fluxo Send

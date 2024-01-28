@@ -1,9 +1,11 @@
 ﻿using LoginServer.Communication;
+using LoginServer.Network.PacketList.GamePacket;
 using SharedLibrary.Network;
 using SharedLibrary.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,9 @@ namespace LoginServer.Network.Tcp
         private bool lastState;
         private int tick;
 
+        private int pingTick;
+        private SPing ping;
+
         public void InitClient()
         {
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
@@ -32,12 +37,13 @@ namespace LoginServer.Network.Tcp
                 NoDelay = true
             };
 
+            ping = new SPing();
+
             tick = Environment.TickCount;
         }
 
         public void Connect()
         {
-            //Console.WriteLine($"Environment {Environment.TickCount} Tick {tick} ConnectTime {ConnectTime}");
 
             if (Environment.TickCount >= tick + ConnectTime)
             {
@@ -134,6 +140,18 @@ namespace LoginServer.Network.Tcp
                 }
 
                 lastState = Connected;
+            }
+        }
+
+        public void SendPing()
+        {
+            if (Environment.TickCount >= pingTick + Constants.PingTime)
+            {
+                if (Connected)
+                {
+                    pingTick = Environment.TickCount;
+                    ping.Send();
+                }
             }
         }
     }

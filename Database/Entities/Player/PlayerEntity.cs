@@ -16,7 +16,7 @@ public class PlayerEntity : BaseEntity
 
     [MaxLength(MaxNameCaracteres)]
     public string Name { get; set; } = string.Empty;
-    public SexType Sexo { get; set; } = SexType.None;
+    public SexType Sexo { get; set; } = SexType.Male;
     public ClassType ClassType { get; set; } = ClassType.None;
     public AccessType AccessType { get; set; } = AccessType.Player;
     public EntidadeType Entidade { get; set; } = EntidadeType.Normal;
