@@ -22,6 +22,8 @@ public static class OpCode
 
         RecvPacket.Add(ClientPacketEnum.CDelChar, typeof(CDelChar));
 
+        RecvPacket.Add(ClientPacketEnum.CUseChar, typeof(CUseChar));
+
 
         // Fluxo Send
         SendPacket.Add(typeof(SAlertMsg), ServerPacketEnum.SAlertMsg);
@@ -33,6 +35,10 @@ public static class OpCode
         SendPacket.Add(typeof(SPlayerChars), ServerPacketEnum.SPlayerChars);
 
         SendPacket.Add(typeof(SClassesData), ServerPacketEnum.SClassesData);
+
+        SendPacket.Add(typeof(SLoginOk), ServerPacketEnum.SLoginOk);
+
+        SendPacket.Add(typeof(SInGame), ServerPacketEnum.SInGame);
 
         // Ping para verificar conexão.
         SendPacket.Add(typeof(SPing), ServerPacketEnum.SSendPing);

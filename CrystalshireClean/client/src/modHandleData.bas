@@ -169,7 +169,7 @@ Sub HandleLoginOk(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As 
     ' Now we can receive game data
     MyIndex = Buffer.ReadLong
     ' player high index
-    Player_HighIndex = MAX_PLAYERS 'Buffer.ReadLong
+    Player_HighIndex = Buffer.ReadLong
     Set Buffer = Nothing
     Call SetStatus("Receiving game data.")
 End Sub
@@ -280,11 +280,16 @@ Sub HandleInGame(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As L
     InGame = True
     inMenu = False
     SetStatus vbNullString
+    
+    Debug.Print MyIndex
     ' show gui
     ShowWindow GetWindowIndex("winBars"), , False
     ShowWindow GetWindowIndex("winMenu"), , False
     ShowWindow GetWindowIndex("winHotbar"), , False
     ShowWindow GetWindowIndex("winChatSmall"), , False
+    
+    'Exit Sub
+    
     ' enter loop
     GameLoop
 End Sub
@@ -1614,7 +1619,7 @@ Private Sub HandleHighIndex(ByVal index As Long, ByRef data() As Byte, ByVal Sta
     Dim Buffer As clsBuffer
     Set Buffer = New clsBuffer
     Buffer.WriteBytes data()
-    Player_HighIndex = MAX_PLAYERS 'Buffer.ReadLong
+    Player_HighIndex = Buffer.ReadLong 'Buffer.ReadLong
 End Sub
 
 Private Sub HandleResetShopAction(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As Long, ByVal ExtraVar As Long)

@@ -5,6 +5,7 @@ using GameServer.Network.Interface;
 using GameServer.Network.PacketList.ServerPacket;
 using GameServer.Server;
 using GameServer.Server.Authentication;
+using GameServer.Server.PlayerData;
 using SharedLibrary.Client;
 using SharedLibrary.Network;
 using SharedLibrary.Util;

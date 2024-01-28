@@ -2,15 +2,12 @@
 using Database.Repositories.Interface;
 using Database.Repositories.Player;
 using GameServer.Communication;
-using GameServer.Network.Interface;
-using GameServer.Network.PacketList.ClientPacket;
 using GameServer.Network.PacketList.ServerPacket;
 using Microsoft.Extensions.DependencyInjection;
 using SharedLibrary.Client;
 using SharedLibrary.Util;
-using System.Text.RegularExpressions;
 
-namespace GameServer.Server
+namespace GameServer.Server.PlayerData
 {
     public class Character
     {
@@ -23,7 +20,9 @@ namespace GameServer.Server
 
         public async void Create(PlayerEntity player)
         {
-            var connection = Authentication.Authentication.FindByAccountId(player.AccountEntityId).Connection;
+            var playerAuthenticated = Authentication.Authentication.FindByAccountId(player.AccountEntityId);
+            var connection = playerAuthenticated.Connection;
+
             using (var scope = _serviceProvider.CreateScope())
             {
                 // Resolvendo o serviço necessário dentro do escopo
@@ -34,13 +33,13 @@ namespace GameServer.Server
                 var result = await playerRepo.AdicionarJogadorAsync(player);
 
                 // Caso seja um sucesso adicionar o jogador, retorna com o pacote dos personagens
-                
+
                 if (result)
                 {
                     Global.WriteLog(LogType.Database, $"Character {player.Name} added!", ConsoleColor.Green);
 
-                    var personagens = await playerRepo.GetPlayersByAccountIdAsync(player.AccountEntityId);
-                    new SPlayerChars(personagens).Send(connection);
+                    playerAuthenticated.Players = await playerRepo.GetPlayersByAccountIdAsync(player.AccountEntityId);
+                    new SPlayerChars(playerAuthenticated.Players).Send(connection);
                 }
                 else
                 {
@@ -83,8 +82,9 @@ namespace GameServer.Server
                 if (result)
                 {
                     Global.WriteLog(LogType.Database, $"Character {charSlot} deleted!", ConsoleColor.Green);
-                    //new SAlertMsg(ClientMessages.DelChar, ClientMenu.MenuChars).Send(player.Connection);
-                    new SPlayerChars(await playerRepo.GetPlayersByAccountIdAsync(accountId)).Send(player.Connection);
+
+                    player.Players = await playerRepo.GetPlayersByAccountIdAsync(accountId);
+                    new SPlayerChars(player.Players).Send(player.Connection);
                 }
                 else
                 {

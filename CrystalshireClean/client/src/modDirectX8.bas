@@ -264,11 +264,11 @@ End Sub
 
 Public Sub ResetGFX()
 Dim Temp() As TextureDataStruct
-Dim i As Long, N As Long
+Dim i As Long, n As Long
 
-    N = mTextures
-    ReDim Temp(1 To N)
-    For i = 1 To N
+    n = mTextures
+    ReDim Temp(1 To n)
+    For i = 1 To n
         Set mTexture(i).Texture = Nothing
         Temp(i).data = mTexture(i).data
     Next
@@ -287,7 +287,7 @@ Dim i As Long, N As Long
     Call D3DDevice.SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_CURRENT)
     Call D3DDevice.SetTextureStageState(0, D3DTSS_ALPHAARG1, 2)
     
-    For i = 1 To N
+    For i = 1 To n
         Call LoadTexture(Temp(i).data)
     Next
 End Sub
@@ -795,6 +795,7 @@ End Sub
 Public Sub DrawMapTile(ByVal x As Long, ByVal y As Long)
 Dim i As Long, tileSet As Long, sX As Long, sY As Long
 
+Exit Sub
     With map.TileData.Tile(x, y)
         ' draw the map
         For i = MapLayer.Ground To MapLayer.Mask2
@@ -824,6 +825,8 @@ End Sub
 
 Public Sub DrawMapFringeTile(ByVal x As Long, ByVal y As Long)
     Dim i As Long
+
+Exit Sub
 
     With map.TileData.Tile(x, y)
         ' draw the map
@@ -2067,7 +2070,7 @@ Public Sub Render_Graphics()
     Dim x As Long, y As Long, i As Long, bgColour As Long
 
     ' fuck off if we're not doing anything
-    If GettingMap Then Exit Sub
+    'If GettingMap Then Exit Sub
     
     ' update the camera
     UpdateCamera

@@ -1,12 +1,6 @@
 ﻿using GameServer.Network.Interface;
-using GameServer.Server;
-using GameServer.Server.Authentication;
+using GameServer.Server.PlayerData;
 using SharedLibrary.Network;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameServer.Network.PacketList.ClientPacket
 {

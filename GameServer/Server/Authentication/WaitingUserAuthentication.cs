@@ -1,13 +1,9 @@
 ﻿using GameServer.Communication;
 using GameServer.Network.Interface;
 using GameServer.Network.PacketList.ServerPacket;
+using GameServer.Server.PlayerData;
 using SharedLibrary.Client;
 using SharedLibrary.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameServer.Server.Authentication
 {
@@ -56,9 +52,9 @@ namespace GameServer.Server.Authentication
         {
             var character = new Character();
 
-            var chars = await character.GetAccountCharacters(Authentication.Players[Connection.Index].AccountEntityId);
+            Authentication.Players[Connection.Index].Players = await character.GetAccountCharacters(Authentication.Players[Connection.Index].AccountEntityId);
 
-            if (chars == null)
+            if (Authentication.Players[Connection.Index].Players == null)
             {
                 Global.WriteLog(LogType.Player, $"Error loading characters from {Username}", ConsoleColor.Red);
                 var msg = new SAlertMsg(ClientMessages.Connection);
@@ -66,14 +62,13 @@ namespace GameServer.Server.Authentication
                 return;
             }
 
-            var msgPlayerChars = new SPlayerChars(chars);
+            // Envia os chars para o usuário.
+            var msgPlayerChars = new SPlayerChars(Authentication.Players[Connection.Index].Players);
             msgPlayerChars.Send(Authentication.Players[Connection.Index].Connection);
-            
 
-            // Falta criar um carregador de classes, para enviar pro client.
+            // Envia as classes para o usuário.
             var msgClasses = new SClassesData();
             msgClasses.Send(Connection);
-
         }
 
         private bool IsLoginDuplicated()

@@ -1,7 +1,7 @@
 frmMain = 52, 52, 1193, 498, , 78, 78, 965, 520, C
 modText = 52, 52, 1056, 574, 
 modTypes = 78, 78, 1082, 600, C
-modGameLogic = 52, 52, 939, 494, 
+modGameLogic = 52, 52, 939, 494, C
 modClientTCP = 78, 78, 965, 520, 
 frmEditor_MapProperties = 0, 0, 0, 0, C, 130, 130, 1017, 572, C
 frmEditor_Item = 0, 0, 0, 0, C, 156, 156, 1043, 598, C

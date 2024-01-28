@@ -68,9 +68,14 @@ public abstract class SendPacket
         {
             if (players.ContainsKey(i))
             {
-                if (players[i].Position.MapNum == mapId)
+                var charIndex = players[i].Players.FindIndex(p => p.SlotId == players[i].CharSlot);
+
+                if (charIndex >= 0)
                 {
-                    Send(players[i].Connection);
+                    if (players[i].Players[charIndex].Position.MapNum == mapId)
+                    {
+                        Send(players[i].Connection);
+                    }
                 }
             }
         }
@@ -83,11 +88,19 @@ public abstract class SendPacket
 
         for (var i = 1; i <= highIndex; i++)
         {
-            if (players.ContainsKey(i))
+            if (i != index)
             {
-                if (i != index && players[i].Position.MapNum == mapId)
+                if (players.ContainsKey(i))
                 {
-                    Send(players[i].Connection);
+                    var characterData = Authentication.FindCharByIndex(i);
+
+                    if (characterData != null)
+                    {
+                        if (characterData.Position.MapNum == mapId)
+                        {
+                            Send(players[i].Connection);
+                        }
+                    }
                 }
             }
         }

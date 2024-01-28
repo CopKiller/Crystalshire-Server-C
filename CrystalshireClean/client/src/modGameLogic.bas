@@ -64,8 +64,8 @@ Public Sub GameLoop()
             Next
             
             ' appear tile logic
-            AppearTileFadeLogic
-            CheckAppearTiles
+            'AppearTileFadeLogic
+            'CheckAppearTiles
             
             ' handle events
             If inEvent Then

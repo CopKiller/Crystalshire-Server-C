@@ -1,23 +1,27 @@
-﻿using GameServer.Network.Interface;
+﻿using Database.Entities.Account;
+using Database.Entities.Player;
+using GameServer.Network.Interface;
 using GameServer.Network.PacketList.ServerPacket;
 using GameServer.Network.Tcp;
+using GameServer.Server.PlayerData;
+using GameServer.Server.PlayerData.Interface;
 
 namespace GameServer.Server.Authentication
 {
     public static class Authentication
     {
-        public static Dictionary<int, Player> Players { get; set; }
+        public static Dictionary<int, IPlayerData> Players { get; set; }
         public static int HighIndex { get; set; }
 
         static Authentication()
         {
-            Players = new Dictionary<int, Player>();
+            Players = new Dictionary<int, IPlayerData>();
         }
 
         public static void Add(WaitingUserData user, IConnection connection)
         {
             var index = connection.Index;
-            var pData = new Player(connection, user);
+            var pData = new PlayerData.PlayerData(connection, user);
 
             ((Connection)connection).OnDisconnect += OnDisconnect;
             ((Connection)connection).Authenticated = true;
@@ -29,55 +33,29 @@ namespace GameServer.Server.Authentication
             highIndex.SendToAll();
         }
 
-        public static void OnDisconnect(int index)
+        public static IPlayerData FindByAccountId(int accountId)
         {
-            if (Players.ContainsKey(index))
-            {
-
-                Players[index].Save();
-
-                var msg = new SPlayerLeft(index);
-                msg.SendToMapBut(index, Players[index].Position.MapNum);
-            }
-
-            Players.Remove(index);
+            return Players.Values.SingleOrDefault(player => player.AccountEntityId == accountId);
         }
 
-        public static void Clear()
-        {
-            Players.Clear();
-        }
-
-        public static Player FindByAccountId(int accountId)
+        public static IPlayerData FindByUsername(string username)
         {
             var pData = from player in Players.Values
-                        where player.AccountEntityId == accountId
-            select player;
-
-            return pData.FirstOrDefault();
-        }
-
-        public static Player FindByUsername(string username)
-        {
-
-            // Procura pelo nome do usuário na lista de jogadores.
-            var pData = from player in Players.Values
-                        where (string.CompareOrdinal(player.Login, username) == 0)
-            select player;
-
-            return pData.FirstOrDefault();
-        }
-
-        public static Player FindByCharacter(string character)
-        {
-            var pData = from player in Players.Values
-                        where (string.CompareOrdinal(player.Name, character) == 0)
+                        where string.Equals(player.Login, username, StringComparison.OrdinalIgnoreCase)
                         select player;
 
             return pData.FirstOrDefault();
         }
 
-        public static Player FindByIndex(int index)
+        public static IPlayerData FindByCharacter(string character)
+        {
+            var playerWithCharacter = Players.Values
+                .FirstOrDefault(player => player.Players.Any(charInfo => string.Equals(charInfo.Name, character, StringComparison.OrdinalIgnoreCase)));
+
+            return playerWithCharacter;
+        }
+
+        public static IPlayerData FindByIndex(int index)
         {
             if (Players.ContainsKey(index))
             {
@@ -87,12 +65,21 @@ namespace GameServer.Server.Authentication
             return null;
         }
 
-        public static void Quit(int index)
+        public static PlayerEntity FindCharByIndex(int index)
         {
             if (Players.ContainsKey(index))
             {
-                Players[index].Connection.Disconnect();
+                if (Players[index].CharSlot > 0 && Players[index].CharSlot <= AccountEntity.MaxChar)
+                {
+                    var charSlot = Players[index].Players.FindIndex(a => a.SlotId == Players[index].CharSlot);
+                    if (charSlot != -1)
+                    {
+                        return Players[index].Players[charSlot];
+                    }
+                }
             }
+
+            return null;
         }
 
         private static void SavePlayer(int index)
@@ -104,6 +91,45 @@ namespace GameServer.Server.Authentication
                 Players[index].Save();
             }
 
+        }
+
+        public static void OnDisconnect(int index)
+        {
+            if (Players.ContainsKey(index))
+            {
+                if (Players[index].GameState == GameState.Game)
+                {
+                    if (Players[index].CharSlot > 0 && Players[index].CharSlot <= AccountEntity.MaxChar)
+                    {
+                        Players[index].Save();
+
+                        var charSlot = Players[index].Players.FindIndex(a => a.SlotId == Players[index].CharSlot);
+                        if (charSlot != -1)
+                        {
+                            if (Players[index].Players[charSlot].Position.MapNum > 0)
+                            {
+                                var msg = new SPlayerLeft(index);
+                                msg.SendToMapBut(index, Players[index].Players[charSlot].Position.MapNum);
+                            }
+                        }
+                    }
+                }
+            }
+
+            Players.Remove(index);
+        }
+
+        public static void Clear()
+        {
+            Players.Clear();
+        }
+
+        public static void Quit(int index)
+        {
+            if (Players.ContainsKey(index))
+            {
+                Players[index].Connection.Disconnect();
+            }
         }
     }
 }
