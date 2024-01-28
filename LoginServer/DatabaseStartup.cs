@@ -1,14 +1,19 @@
 ﻿
 using Database;
+using Database.Configuration;
 using Database.Entities.Account;
 using Database.Entities.Player;
 using Database.Repositories.Account;
 using Database.Repositories.Interface;
 using Database.Repositories.Player;
 using LoginServer.Communication;
+using LoginServer.Network.GamePacket;
+using LoginServer.Network.ServerPacket;
+using LoginServer.Network.Tcp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SharedLibrary.Client;
+using SharedLibrary.Network.Interface;
 using SharedLibrary.Util;
 
 namespace LoginServer.Database;
@@ -27,8 +32,8 @@ public class DatabaseStartup
         var serviceCollection = new ServiceCollection();
 
         // Configuração do DbContext e outros serviços
-        var connectionString = @"Data Source=DatabaseSqlite.db";
-        serviceCollection.AddDbContext<MeuDbContext>(options => options.UseSqlite(connectionString));
+        var connectionString = DatabaseDirectory.GetDatabaseDirectory();
+        serviceCollection.AddDbContext<MeuDbContext>(options => options.UseSqlite(@connectionString));
 
         // Configuração dos repositórios
         serviceCollection.AddScoped<IRepository<AccountEntity>, AccountRepository>();
@@ -73,7 +78,7 @@ public class DatabaseStartup
         }
     }
 
-    public static async Task<CombinedOperationResult<AccountEntity>> Authenticate(string _Login, string _Password)
+    public static async void Authenticate(IConnection connection,string _Login, string _Password)
     {
         using (var scope = _serviceProvider.CreateScope())
         {
@@ -86,8 +91,26 @@ public class DatabaseStartup
             var contaRecuperada = await accountRepo.AuthenticateAccount(_Login, _Password);
 
             Global.WriteLog(LogType.Database, contaRecuperada.Message, contaRecuperada.Color);
+            
+            if (contaRecuperada.Success)
+            {
+                var msgToGameServer = new SSendUserData()
+                {
+                    AccountId = contaRecuperada.Entity.Id,
+                    Username = contaRecuperada.Entity.Login,
+                    UniqueKey = ((Connection)connection).UniqueKey
+                };
+                msgToGameServer.Send();
 
-            return contaRecuperada;
+                var msgToClient = new SLoginToken(_Login, ((Connection)connection).UniqueKey);
+                msgToClient.Send(connection);
+            } else
+            {
+                new SAlertMsg(ClientMessages.WrongPass).Send(connection);
+            }
+
+            //Desconecta o player
+            connection.Disconnect();
         }
     }
 

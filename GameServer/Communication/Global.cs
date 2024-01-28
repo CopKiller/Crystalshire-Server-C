@@ -7,6 +7,7 @@ using Database;
 using Microsoft.Extensions.DependencyInjection;
 using SharedLibrary.Util;
 using Microsoft.EntityFrameworkCore;
+using Database.Configuration;
 
 namespace GameServer.Communication;
 
@@ -27,8 +28,8 @@ public static class Global
         var serviceCollection = new ServiceCollection();
 
         // Configuração do DbContext e outros serviços
-        var connectionString = @"Data Source=DatabaseSqlite.db";
-        serviceCollection.AddDbContext<MeuDbContext>(options => options.UseSqlite(connectionString));
+        var connectionString = DatabaseDirectory.GetDatabaseDirectory();
+        serviceCollection.AddDbContext<MeuDbContext>(options => options.UseSqlite(@connectionString));
 
         // Configuração dos repositórios
         serviceCollection.AddScoped<IRepository<AccountEntity>, AccountRepository>();

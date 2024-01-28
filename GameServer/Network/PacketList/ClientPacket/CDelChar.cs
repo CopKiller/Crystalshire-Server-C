@@ -17,9 +17,7 @@ namespace GameServer.Network.PacketList.ClientPacket
             var msg = new ByteBuffer(buffer);
             var charSlot = msg.ReadInt32();
 
-            var characterData = Authentication.FindByIndex(connection.Index);
-
-            new Character().Exclude(characterData.Index, charSlot, characterData.AccountEntityId);
+            new Character().Exclude(connection.Index, charSlot);
         }
     }
 }

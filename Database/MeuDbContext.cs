@@ -1,9 +1,9 @@
 
+using Database.Configuration;
 using Database.Entities.Account;
 using Database.Entities.Player;
 using Database.Entities.ValueObjects.Player;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using SQLitePCL;
 
 namespace Database;
@@ -71,7 +71,7 @@ public class MeuDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlite(@"Data Source=DatabaseSqlite.db");
+            optionsBuilder.UseSqlite(@DatabaseDirectory.GetDatabaseDirectory());
         }
 
         base.OnConfiguring(optionsBuilder);

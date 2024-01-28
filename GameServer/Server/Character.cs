@@ -16,21 +16,14 @@ namespace GameServer.Server
     {
         private IServiceProvider _serviceProvider;
 
-        private readonly PlayerEntity player;
         public Character()
         {
             _serviceProvider = Global._serviceProvider;
         }
 
-        public Character(PlayerEntity player)
+        public async void Create(PlayerEntity player)
         {
-            this.player = player;
-            _serviceProvider = Global._serviceProvider;
-        }
-
-        public async Task<List<PlayerEntity>> Create(int accountId)
-        {
-
+            var connection = Authentication.Authentication.FindByAccountId(player.AccountEntityId).Connection;
             using (var scope = _serviceProvider.CreateScope())
             {
                 // Resolvendo o serviço necessário dentro do escopo
@@ -38,15 +31,30 @@ namespace GameServer.Server
 
                 var playerRepo = (PlayerRepository)playerService;
 
-                var result = await playerRepo.AdicionarJogadorAsync(player, accountId);
+                var result = await playerRepo.AdicionarJogadorAsync(player);
 
-                return result;
+                // Caso seja um sucesso adicionar o jogador, retorna com o pacote dos personagens
+                
+                if (result)
+                {
+                    Global.WriteLog(LogType.Database, $"Character {player.Name} added!", ConsoleColor.Green);
+
+                    var personagens = await playerRepo.GetPlayersByAccountIdAsync(player.AccountEntityId);
+                    new SPlayerChars(personagens).Send(connection);
+                }
+                else
+                {
+                    Global.WriteLog(LogType.Database, $"Character {player.Name} not added!", ConsoleColor.Red);
+
+                    new SAlertMsg(ClientMessages.MySql, ClientMenu.MenuChars).Send(connection);
+                }
             }
         }
 
-        public async void Exclude(int index, int charSlot, int accountId)
+        public async void Exclude(int index, int charSlot)
         {
             var player = Authentication.Authentication.Players[index];
+            var accountId = player.AccountEntityId;
 
             if (player.Connection == null || !player.Connected)
             {
@@ -72,10 +80,11 @@ namespace GameServer.Server
 
                 var result = await playerRepo.ExcluirJogadorAsync(charSlot, accountId);
 
-                if (result != null)
+                if (result)
                 {
                     Global.WriteLog(LogType.Database, $"Character {charSlot} deleted!", ConsoleColor.Green);
-                    new SAlertMsg(ClientMessages.DelChar, ClientMenu.MenuChars).Send(player.Connection);
+                    //new SAlertMsg(ClientMessages.DelChar, ClientMenu.MenuChars).Send(player.Connection);
+                    new SPlayerChars(await playerRepo.GetPlayersByAccountIdAsync(accountId)).Send(player.Connection);
                 }
                 else
                 {

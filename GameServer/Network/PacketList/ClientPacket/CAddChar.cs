@@ -1,4 +1,5 @@
-﻿using Database.Entities.Player;
+﻿using Database.Entities.Account;
+using Database.Entities.Player;
 using GameServer.Communication;
 using GameServer.Network.Interface;
 using GameServer.Network.PacketList.ServerPacket;
@@ -14,7 +15,6 @@ namespace GameServer.Network.PacketList.ClientPacket
 {
     public sealed class CAddChar : IRecvPacket
     {
-        private IConnection _connection;
         public void Process(byte[] buffer, IConnection connection)
         {
             var msg = new ByteBuffer(buffer);
@@ -26,10 +26,10 @@ namespace GameServer.Network.PacketList.ClientPacket
 
             var newPlayer = new PlayerEntity();
             newPlayer.Name = name;
-            newPlayer.Sexo = (SexType)genderType;
+            newPlayer.Sexo = (SexType)genderType + 1;
             newPlayer.ClassType = (ClassType)classIndex;
             newPlayer.Sprite = spriteIndex;
-            newPlayer.Id = characterIndex;
+            newPlayer.SlotId = characterIndex;
 
             if (newPlayer.Name == string.Empty)
             {
@@ -49,7 +49,7 @@ namespace GameServer.Network.PacketList.ClientPacket
                 new SAlertMsg(ClientMessages.Connection, ClientMenu.MenuChars).Send(connection);
                 return;
             }
-            if (newPlayer.ClassType > (ClassType)Enum.GetValues(typeof(ClassType)).Length || newPlayer.ClassType < 0)
+            if (newPlayer.ClassType > (ClassType)Enum.GetValues(typeof(ClassType)).Length || newPlayer.ClassType <= 0)
             {
                 Global.WriteLog(LogType.Player, $"Player Class Invalid {newPlayer.ClassType}!", ConsoleColor.Red);
                 new SAlertMsg(ClientMessages.Connection, ClientMenu.MenuChars).Send(connection);
@@ -61,9 +61,9 @@ namespace GameServer.Network.PacketList.ClientPacket
                 new SAlertMsg(ClientMessages.Connection, ClientMenu.MenuChars).Send(connection);
                 return;
             }
-            if (newPlayer.Id < 0)
+            if (newPlayer.SlotId <= 0 || newPlayer.SlotId > AccountEntity.MaxChar)
             {
-                Global.WriteLog(LogType.Player, $"Player Id Invalid {newPlayer.Id}!", ConsoleColor.Red);
+                Global.WriteLog(LogType.Player, $"Player Id Invalid {newPlayer.SlotId}!", ConsoleColor.Red);
                 new SAlertMsg(ClientMessages.Connection, ClientMenu.MenuMain).Send(connection);
                 return;
             }
@@ -74,30 +74,18 @@ namespace GameServer.Network.PacketList.ClientPacket
                 return;
             }
 
-            var Pers = new Character(newPlayer);
-
             var player = Authentication.FindByIndex(connection.Index);
-            _connection = player.Connection;
 
-            var players = Pers.Create(player.AccountEntityId);
+            newPlayer.AccountEntityId = player.AccountEntityId;
 
-            if (players.Result == null)
+            if (player.GameState != GameState.Characters)
             {
-                Global.WriteLog(LogType.Player, $"Erro ao criar o personagem {newPlayer.Name}!", ConsoleColor.Red);
-                var alert = new SAlertMsg(ClientMessages.NameTaken, ClientMenu.MenuChars);
-                alert.Send(_connection);
+                Global.WriteLog(LogType.Player, $"Player {player.Login} is not in the character selection!", ConsoleColor.Red);
+                new SAlertMsg(ClientMessages.Connection, ClientMenu.MenuMain).Send(connection);
+                return;
             }
-            else
-            {
-                Global.WriteLog(LogType.Player, $"Personagem {newPlayer.Name} criado com sucesso!", ConsoleColor.Green);
-                SendChars(players.Result);
-            }
-        }
 
-        public void SendChars(List<PlayerEntity> chars)
-        {
-            var msgPlayerChars = new SPlayerChars(chars);
-            msgPlayerChars.Send(_connection);
+            new Character().Create(newPlayer);
         }
     }
 }

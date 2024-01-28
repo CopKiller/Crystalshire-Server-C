@@ -16,8 +16,11 @@ public sealed class SPlayerChars : SendPacket
     {
         msg.Write((int)OpCode.SendPacket[GetType()]);
 
+        msg.Write(player.Count);
+
         foreach (var p in player)
         {
+            msg.Write(p.SlotId);
             msg.Write(p.Name);
             msg.Write(p.Sprite);
             msg.Write((int)p.AccessType);

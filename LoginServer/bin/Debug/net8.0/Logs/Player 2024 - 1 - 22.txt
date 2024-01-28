@@ -1,2 +1,0 @@
-[22/01/24 - 17:19] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db
-[22/01/24 - 17:20] [Player] [DATABASE] Configurada com sucesso! Data Source=DatabaseSqlite.db

@@ -22,52 +22,8 @@ public sealed class CReceiveLogin : IRecvPacket
 
         var login = msg.ReadString();
 
-        Global.WriteLog(LogType.Player, $"Login: {login}", ConsoleColor.Blue);
-
         var password = msg.ReadString();
 
-        Global.WriteLog(LogType.Player, $"Password: {password}", ConsoleColor.Blue);
-
-        var account = DatabaseStartup.Authenticate(login, password);
-
-        account.Wait();
-        var result = account.Result;
-
-        if (!result.Success)
-        {
-            new SAlertMsg(result.ClientMessages, ClientMenu.MenuLogin).Send(connection);
-        }
-        else
-        {
-
-            // Debug
-            Global.WriteLog(LogType.Player, $"UniqueKey: {((Connection)_Connection).UniqueKey}", ConsoleColor.Blue);
-
-            // Envia os dados do usuario para o game server.
-            SendUserData(result.Entity);
-            // Envia a chave unica para o cliente.
-            SendLoginToken(login);
-        }
-
-        //Desconecta o player
-        connection.Disconnect();
-    }
-
-    private void SendLoginToken(string Login)
-    {
-        var msg = new SLoginToken(Login, ((Connection)_Connection).UniqueKey);
-        msg.Send(_Connection);
-    }
-
-    private void SendUserData(AccountEntity account)
-    {
-        var msg = new SSendUserData()
-        {
-            AccountId = account.Id,
-            Username = account.Login,
-            UniqueKey = ((Connection)_Connection).UniqueKey
-        };
-
-        msg.Send();
+        DatabaseStartup.Authenticate(connection, login, password);
     }
 }

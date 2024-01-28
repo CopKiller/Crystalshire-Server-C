@@ -29,9 +29,9 @@ public class AccountEntity : BaseEntity
 
     public AccountEntity()
     {   
-        for (var i = 0; i < MaxChar; i++)
-        {
-            Players.Add(new PlayerEntity());
-        }
+    //    for (var i = 0; i < MaxChar; i++)
+    //    {
+    //        Players.Add(new PlayerEntity());
+    //    }
     }
 }

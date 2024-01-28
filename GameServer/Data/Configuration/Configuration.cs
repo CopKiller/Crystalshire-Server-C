@@ -1,6 +1,7 @@
 ﻿using Database.Entities.ValueObjects.Player;
 using GameServer.Communication;
 using GameServer.Data.Configuration.Class;
+using Microsoft.Extensions.Configuration;
 using SharedLibrary.Util;
 
 namespace GameServer.Data.Configuration
@@ -18,6 +19,7 @@ namespace GameServer.Data.Configuration
         {
             // Validar diretório de dados
             VerificarECreateDiretorio(PATH_DATA);
+
 
             // Init Configuration
             LoadClassData();

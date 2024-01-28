@@ -1,9 +1,11 @@
 ﻿using Database.Entities.Account;
 using Database.Entities.Player;
+using Database.Extension;
 using Database.Migrations;
 using Database.Repositories.ValidateData;
 using Microsoft.EntityFrameworkCore;
 using SharedLibrary.Client;
+using System.Numerics;
 
 namespace Database.Repositories.Player
 {
@@ -25,13 +27,20 @@ namespace Database.Repositories.Player
                 .ToListAsync();
         }
 
+        //public async Task<List<PlayerEntity>> GetPlayerByAccountIdAsync(int accountId, int charSlot)
+        //{
+        //    return await _dbContext.PlayerEntities
+        //        .Where(p => p.AccountEntityId == accountId && p.SlotId == charSlot)
+        //        .ToListAsync();
+        //}
+
         public async Task<bool> NomeJogadorJaExisteAsync(string nome)
         {
             // Verificar se o nome já existe na tabela de jogadores
-            return await _dbContext.PlayerEntities.AnyAsync(p => p.Name == nome);
+            return await _dbContext.PlayerEntities.AnyAsync(p => p.Name.ToLower() == nome.ToLower());
         }
 
-        public async Task<List<PlayerEntity>> AdicionarJogadorAsync(PlayerEntity jogador, int accountId)
+        public async Task<bool> AdicionarJogadorAsync(PlayerEntity jogador)
         {
             try
             {
@@ -39,103 +48,64 @@ namespace Database.Repositories.Player
                 if (NomeJogadorJaExisteAsync(jogador.Name).Result)
                 {
                     Console.WriteLine($"Jogador com nome {jogador.Name} já existe.");
-                    return null;
-                }   
+                    return false;
+                }
 
+                // Validar a quantidade de chars da conta, para não ultrapassar o limite
+                int quantidadeJogadores = _dbContext.PlayerEntities
+                .Count(p => p.AccountEntityId == jogador.AccountEntityId);
+                if (quantidadeJogadores >= AccountEntity.MaxChar)
+                {
+                    Console.WriteLine($"A conta {jogador.AccountEntityId} já possui 3 personagens.");
+                    return false;
+                }
+
+                // Verificar se o jogador não está tentando criar um char onde já tem um.
                 var playersAccount = await _dbContext.PlayerEntities
-                .Where(p => p.AccountEntityId == accountId).OrderBy(p => p.Id).ToListAsync();
-
-                // Verifique se os chars da conta existe no banco de dados
-                if (playersAccount.Count <= 0)
+                .Where(p => p.AccountEntityId == jogador.AccountEntityId).AnyAsync(a => a.SlotId == jogador.SlotId);
+                if (playersAccount)
                 {
-                    Console.WriteLine($"Jogador com ID {jogador.Id} não existe.");
-                    return null;
+                    Console.WriteLine($"O Slot {jogador.SlotId} já possui um personagem.");
+                    return false;
                 }
 
-                // Procura se o slot que o jogador quer criar já existe um personagem
-                // Caso não, cria o personagem no slot selecionado.
-                foreach (var player in playersAccount)
-                {
-                    var index = playersAccount.IndexOf(player);
+                // Adicionar o jogador no banco de dados
+                await _dbContext.PlayerEntities.AddAsync(jogador);
+                // Salve as alterações no banco de dados
+                var result = await _dbContext.SaveChangesAsync();
 
-                    if (index == jogador.Id - 1)
-                    {
-                        if (string.IsNullOrWhiteSpace(player.Name))
-                        {
-
-                            playersAccount[index].Name = jogador.Name;
-                            playersAccount[index].Sexo = jogador.Sexo;
-                            playersAccount[index].ClassType = jogador.ClassType;
-                            playersAccount[index].Sprite = jogador.Sprite;
-                            // Salve as alterações no banco de dados
-                            var result = await _dbContext.SaveChangesAsync();
-
-                            if (result >= 0)
-                            {
-                                return playersAccount;
-                            } else
-                            {
-                                Console.WriteLine($"Erro ao adicionar jogador: {player.Name}");
-                                return null;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Jogador com nome {jogador.Name} já existe.");
-                            return null;
-                        }
-                    }
-                }
-                return null;
+                return result > 0;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro ao adicionar jogador: {ex.Message}");
-                return null;
+                return false;
             }
         }
 
-        public async Task<List<PlayerEntity>> ExcluirJogadorAsync(int charSlot, int accountId)
+        public async Task<bool> ExcluirJogadorAsync(int charSlot, int accountId)
         {
             try
             {
+                var result = await _dbContext.PlayerEntities
+                .DeleteAsync(p => p.AccountEntityId == accountId && p.SlotId == charSlot) > 0;
 
-                var playersAccount = await _dbContext.PlayerEntities
-                .Where(p => p.AccountEntityId == accountId).OrderBy(p => p.Id).ToListAsync();
-
-                var index = charSlot - 1;
-
-               if (!string.IsNullOrEmpty(playersAccount[index].Name))
+                if (result)
                 {
-                    playersAccount[index].Name = string.Empty;
-                    playersAccount[index].Sexo = SexType.Male;
-                    playersAccount[index].ClassType = ClassType.None;
-                    playersAccount[index].Sprite = 1;
-                    // Salve as alterações no banco de dados
-                    var result = await _dbContext.SaveChangesAsync();
-
-                    if (result > 0)
-                    {
-                        return playersAccount;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Erro ao excluir jogador: {playersAccount[index].Name}");
-                        return null;
-                    }
+                    await _dbContext.SaveChangesAsync();
+                    Console.WriteLine($"Jogador com Slot {charSlot} e AccountId {accountId} foi excluído.");
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine($"Tentativa de excluir um slot já vazio {charSlot}.");
-                    return null;
+                    Console.WriteLine($"Jogador com Slot {charSlot} e AccountId {accountId} não foi excluído.");
+                    return false;
                 }
-
-                return null;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro ao excluir jogador: {ex.Message}");
-                return null;
+                return false;
             }
         }
 

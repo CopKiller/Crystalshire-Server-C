@@ -1,4 +1,0 @@
-[23/01/24 - 22:26] [Player] Index: 1 127.0.0.1:60418 is connected
-[23/01/24 - 22:26] [Player] Index: 1 127.0.0.1:60418 is disconnected
-[23/01/24 - 22:26] [Player] Index: 1 127.0.0.1:60419 is connected
-[23/01/24 - 22:26] [Player] Index: 1 127.0.0.1:60419 is disconnected

@@ -103,8 +103,8 @@ namespace GameServer.Network.Tcp
 
                 var pLength = 0;
 
-                Global.WriteLog(LogType.Debug, $"Receive -> {IpAddress} {GetType().Name} Buffer Size: {msg.Length()}",
-                    ConsoleColor.Black);
+                //Global.WriteLog(LogType.Debug, $"Receive -> {IpAddress} {GetType().Name} Buffer Size: {msg.Length()}",
+                //    ConsoleColor.Yellow);
 
                 if (msg.Length() >= 4)
                 {

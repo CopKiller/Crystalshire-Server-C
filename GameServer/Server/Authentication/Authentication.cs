@@ -50,15 +50,11 @@ namespace GameServer.Server.Authentication
 
         public static Player FindByAccountId(int accountId)
         {
-            // Implementar a busca no banco de dados, pelo Id da conta.
+            var pData = from player in Players.Values
+                        where player.AccountEntityId == accountId
+            select player;
 
-            //var pData = from player in Players.Values
-            //            where player.AccountEntityId == accountId
-            //select player;
-
-            //return pData.FirstOrDefault();
-
-            return null;
+            return pData.FirstOrDefault();
         }
 
         public static Player FindByUsername(string username)

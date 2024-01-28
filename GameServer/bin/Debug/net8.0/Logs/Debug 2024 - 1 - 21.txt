@@ -1,3 +1,0 @@
-21/01/2024 17:55:18: Receive -> 127.0.0.1:64128 Connection Buffer Size: 38
-21/01/2024 18:22:20: Receive -> 127.0.0.1:64251 Connection Buffer Size: 41
-21/01/2024 18:23:43: Receive -> 127.0.0.1:64258 Connection Buffer Size: 49

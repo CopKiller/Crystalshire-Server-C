@@ -89,6 +89,9 @@ namespace Database.Migrations
                     b.Property<int>("Sexo")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("SlotId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Sprite")
                         .HasColumnType("INTEGER");
 
