@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace GameServer.Data.Configuration.Class
+namespace GameServer.Server.Data.Class
 {
     public class ClassData
     {

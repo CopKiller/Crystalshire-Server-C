@@ -1,4 +1,4 @@
-﻿using GameServer.Data.Configuration;
+﻿using GameServer.Server.Data;
 using SharedLibrary.Network;
 
 namespace GameServer.Network.PacketList.ServerPacket;

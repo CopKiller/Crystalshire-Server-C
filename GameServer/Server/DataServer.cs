@@ -1,7 +1,7 @@
 ﻿using GameServer.Communication;
-using GameServer.Data.Configuration;
 using GameServer.Network;
 using GameServer.Network.Tcp;
+using GameServer.Server.Data;
 using SharedLibrary.Util;
 
 namespace GameServer.Server;
@@ -41,7 +41,7 @@ public class DataServer
         };
 
         // Carrega as configurações.
-        Global.WriteLog(LogType.System, "Loading configuration...", ConsoleColor.Green);
+        Global.WriteLog(LogType.System, "Loading configuration...", ConsoleColor.Yellow);
         var configuration = new Configuration();
         configuration.InitConfiguration();
 

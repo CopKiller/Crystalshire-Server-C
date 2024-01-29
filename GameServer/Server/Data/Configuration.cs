@@ -1,19 +1,21 @@
 ﻿using Database.Entities.ValueObjects.Player;
 using GameServer.Communication;
-using GameServer.Data.Configuration.Class;
-using Microsoft.Extensions.Configuration;
+using GameServer.Server.Data.Class;
+using GameServer.Server.Data.Items;
 using SharedLibrary.Util;
 
-namespace GameServer.Data.Configuration
+namespace GameServer.Server.Data
 {
     public class Configuration
     {
         // Path Data
-        private string PATH_DATA = "~/Data/".MyDir();
+        private string PATH_DATA = @"~\Data\".MyDir();
 
         // Archive Class Data
         private const string CLASS_DATA_FILE = "class.json";
         public static ClassData ClassData { get; set; }
+        // Lista de todos os items do jogo.
+        public static List<ItemData> Items = new List<ItemData>();
 
         public void InitConfiguration()
         {
@@ -22,7 +24,10 @@ namespace GameServer.Data.Configuration
 
 
             // Init Configuration
+            Global.WriteLog(LogType.System, "Loading Class...", ConsoleColor.Yellow);
             LoadClassData();
+            Global.WriteLog(LogType.System, "Loading Items...", ConsoleColor.Yellow);
+            ItemData.InitItems(PATH_DATA);
         }
 
         #region Classes
@@ -48,7 +53,7 @@ namespace GameServer.Data.Configuration
         {
             ClassData = GenerateDefaultClassData();
 
-            ReaderWriterJson.Write<ClassData>(PATH_DATA + CLASS_DATA_FILE, ClassData);
+            ReaderWriterJson.Write(PATH_DATA + CLASS_DATA_FILE, ClassData);
         }
         private ClassData GenerateDefaultClassData()
         {
@@ -68,7 +73,7 @@ namespace GameServer.Data.Configuration
                 },
                 MaleSprite = new int[] { 1, 2, 3, 4 },
                 FemaleSprite = new int[] { 2, 1, 5, 7 },
-                StartItem = new ItemData[] { new ItemData() { ItemId = 1, ItemCount = 1 } },
+                StartItem = new ItemClassData[] { new ItemClassData() { ItemId = 1, ItemCount = 1 } },
                 StartSpellId = new int[] { 1 }
             };
 
@@ -86,7 +91,7 @@ namespace GameServer.Data.Configuration
                 },
                 MaleSprite = new int[] { 3, 2, 3 },
                 FemaleSprite = new int[] { 4, 3, 4 },
-                StartItem = new ItemData[] { new ItemData() { ItemId = 1, ItemCount = 1 } },
+                StartItem = new ItemClassData[] { new ItemClassData() { ItemId = 1, ItemCount = 1 } },
                 StartSpellId = new int[] { 1 }
             };
 
@@ -104,7 +109,7 @@ namespace GameServer.Data.Configuration
                 },
                 MaleSprite = new int[] { 1, 4, 3 },
                 FemaleSprite = new int[] { 2, 8, 9 },
-                StartItem = new ItemData[] { new ItemData() { ItemId = 1, ItemCount = 1 } },
+                StartItem = new ItemClassData[] { new ItemClassData() { ItemId = 1, ItemCount = 1 } },
                 StartSpellId = new int[] { 1 }
             };
 

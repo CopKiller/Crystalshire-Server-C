@@ -1,4 +1,5 @@
 ﻿using GameServer.Network.PacketList.ServerPacket;
+using GameServer.Server.Player.JoinGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,10 @@ namespace GameServer.Server.Player
             new SLoginOk(index).Send(searchPlayer.Connection);
 
             // Enviar todos os dados que precisam ser carregado no cliente.
+            CheckEquippedItems.Check(index);
+            //SendClasses.Send(index); --> Não feito, já foi enviado as classes ao logar.
 
+            // Criando a database dos items, que é o próximo item a ser enviado.
 
             // Enviar uma confirmação de que o jogador está no jogo, para abrir a tela do jogo no cliente.
             new SInGame().Send(searchPlayer.Connection);
