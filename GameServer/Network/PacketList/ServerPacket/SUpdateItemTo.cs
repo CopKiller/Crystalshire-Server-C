@@ -1,9 +1,12 @@
-﻿using GameServer.Server.Data;
+﻿using Database.Entities.ValueObjects.Player;
+using GameServer.Server.Data;
 using GameServer.Server.Data.Items;
+using SharedLibrary.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,51 +15,21 @@ namespace GameServer.Network.PacketList.ServerPacket
     public sealed class SUpdateItemTo : SendPacket
     {
         List<ItemData> itemsList = Configuration.Items;
-        ItemData[] itemsArray;
-        public SUpdateItemTo()
-        {
-            itemsArray = itemsList.ToArray();
-        }
-
         public SUpdateItemTo(int itemId)
         {
-            itemsArray = itemsList.ToArray();
+            msg.Write((int)OpCode.SendPacket[GetType()]);
 
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                using (BinaryWriter writer = new BinaryWriter(memoryStream))
-                {
-                    IntPtr itemPtr = Marshal.UnsafeAddrOfPinnedArrayElement(itemsArray, itemId - 1);
-                    byte[] itemData = new byte[Marshal.SizeOf(typeof(ItemData))];
+            Configuration.Items[itemId - 1].Name = "Teste"; // Tamanho 5
+            Configuration.Items[itemId - 1].Description = "TesteDesc"; // Tamanho 9
+            Configuration.Items[itemId - 1].Sound = "testSouund"; // Tamanho 10
+            Configuration.Items[itemId - 1].Pic = 157; // Tamanho 10
+            Configuration.Items[itemId - 1].Type = (ItemType)2; // Tamanho 10
+            Configuration.Items[itemId - 1].StatReq = new Stat { Strength = 10, Endurance = 10, Intelligence = 10, Agility = 10, WillPower = 10 };
+            Configuration.Items[itemId - 1].AddStat = new Stat { Strength = 20, Endurance = 20, Intelligence = 20, Agility = 20, WillPower = 20 };
+            Configuration.Items[itemId - 1].Proficiency = 25;
 
-                    Marshal.Copy(itemPtr, itemData, 0, itemData.Length);
-
-                    writer.Write((int)OpCode.SendPacket[GetType()]);
-                    writer.Write(itemId);
-                    writer.Write(itemData);
-                }
-            }
-        }
-
-        public void ItemAll()
-        {
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                using (BinaryWriter writer = new BinaryWriter(memoryStream))
-                {
-                    for (int i = 0; i < itemsList.Count; i++)
-                    {
-                        byte[] itemData = new byte[Marshal.SizeOf(typeof(ItemData))];
-                        IntPtr itemPtr = Marshal.UnsafeAddrOfPinnedArrayElement(itemsArray, i);
-                        Marshal.Copy(itemPtr, itemData, 0, itemData.Length);
-
-                        writer.Write((int)OpCode.SendPacket[GetType()]);
-                        writer.Write(i + 1); // Use a propriedade Id ou outra propriedade única do item como identificador
-                        writer.Write(itemData);
-                    }
-                }
-                msg.Write(memoryStream.ToArray());
-            }
+            msg.Write(itemId);
+            msg.Write(new ClassSerializer().Serialize(itemsList[itemId - 1]));
         }
     }
 }

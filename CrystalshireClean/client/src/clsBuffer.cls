@@ -62,16 +62,11 @@ End Sub
 Public Sub WriteBytes(ByRef nByte() As Byte)
     Dim nLength As Long
     
-    On Error GoTo ErrClear
-    
     nLength = (UBound(nByte) - LBound(nByte)) + 1
 
     If WriteHead + nLength - 1 > buffersize Then Allocate nLength
     CopyMemory Buffer(WriteHead), nByte(0), nLength
     WriteHead = WriteHead + nLength
-
-ErrClear:
-    Err.Clear
 End Sub
 
 Public Sub WriteInteger(ByVal nInteger As Integer)

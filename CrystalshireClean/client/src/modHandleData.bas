@@ -190,7 +190,7 @@ Sub HandleNewCharClasses(ByVal index As Long, ByRef data() As Byte, ByVal StartA
     For i = 1 To Max_Classes
 
         With Class(i)
-            .name = Buffer.ReadString
+            .Name = Buffer.ReadString
             .Vital(Vitals.HP) = Buffer.ReadLong
             .Vital(Vitals.MP) = Buffer.ReadLong
             ' get array size
@@ -241,7 +241,7 @@ Sub HandleClassesData(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr
     For i = 1 To Max_Classes
 
         With Class(i)
-            .name = Buffer.ReadString 'Trim$(Parse(n))
+            .Name = Buffer.ReadString 'Trim$(Parse(n))
             .Vital(Vitals.HP) = Buffer.ReadLong 'CLng(Parse(n + 1))
             .Vital(Vitals.MP) = Buffer.ReadLong 'CLng(Parse(n + 2))
             ' get array size
@@ -448,7 +448,7 @@ Private Sub HandlePlayerData(ByVal index As Long, ByRef data() As Byte, ByVal St
         ' set form
         With Windows(GetWindowIndex("winCharacter"))
             .Controls(GetControlIndex("winCharacter", "lblName")).text = "Name: " & Trim$(GetPlayerName(MyIndex))
-            .Controls(GetControlIndex("winCharacter", "lblClass")).text = "Class: " & Trim$(Class(GetPlayerClass(MyIndex)).name)
+            .Controls(GetControlIndex("winCharacter", "lblClass")).text = "Class: " & Trim$(Class(GetPlayerClass(MyIndex)).Name)
             .Controls(GetControlIndex("winCharacter", "lblLevel")).text = "Level: " & GetPlayerLevel(MyIndex)
             .Controls(GetControlIndex("winCharacter", "lblGuild")).text = "Guild: " & "None"
             .Controls(GetControlIndex("winCharacter", "lblHealth")).text = "Health: " & GetPlayerVital(MyIndex, HP) & "/" & GetPlayerMaxVital(MyIndex, HP)
@@ -734,7 +734,7 @@ Sub HandleMapData(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As 
     mapNum = Buffer.ReadLong
     
     With map.MapData
-        .name = Buffer.ReadString
+        .Name = Buffer.ReadString
         .Music = Buffer.ReadString
         .Moral = Buffer.ReadByte
         .Up = Buffer.ReadLong
@@ -757,7 +757,7 @@ Sub HandleMapData(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As 
         ReDim Preserve map.TileData.Events(1 To map.TileData.EventCount)
         For i = 1 To map.TileData.EventCount
             With map.TileData.Events(i)
-                .name = Buffer.ReadString
+                .Name = Buffer.ReadString
                 .x = Buffer.ReadLong
                 .y = Buffer.ReadLong
                 .pageCount = Buffer.ReadLong
@@ -1028,7 +1028,7 @@ Private Sub HandleItemEditor()
 
         ' Add the names
         For i = 1 To MAX_ITEMS
-            .lstIndex.AddItem i & ": " & Trim$(Item(i).name)
+            .lstIndex.AddItem i & ": " & Trim$(Item(i).Name)
         Next
 
         .Show
@@ -1047,7 +1047,7 @@ Private Sub HandleAnimationEditor()
 
         ' Add the names
         For i = 1 To MAX_ANIMATIONS
-            .lstIndex.AddItem i & ": " & Trim$(Animation(i).name)
+            .lstIndex.AddItem i & ": " & Trim$(Animation(i).Name)
         Next
 
         .Show
@@ -1058,18 +1058,66 @@ Private Sub HandleAnimationEditor()
 End Sub
 
 Private Sub HandleUpdateItem(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As Long, ByVal ExtraVar As Long)
-    Dim n As Long
+    Dim n As Long, i As Long
     Dim Buffer As clsBuffer
     Dim ItemSize As Long
     Dim ItemData() As Byte
     Set Buffer = New clsBuffer
     Buffer.WriteBytes data()
     n = Buffer.ReadLong
+    
     ' Update the item
-    ItemSize = LenB(Item(n))
-    ReDim ItemData(ItemSize - 1)
-    ItemData = Buffer.ReadBytes(ItemSize)
-    CopyMemory ByVal VarPtr(Item(n)), ByVal VarPtr(ItemData(0)), ItemSize
+    Item(n).Name = Buffer.ReadString
+    Item(n).Desc = Buffer.ReadString
+    Item(n).sound = Buffer.ReadString
+    
+    Item(n).Pic = Buffer.ReadLong
+    Item(n).Type = Buffer.ReadLong
+    Item(n).Data1 = Buffer.ReadLong
+    Item(n).Data2 = Buffer.ReadLong
+    Item(n).Data3 = Buffer.ReadLong
+    Item(n).ClassReq = Buffer.ReadLong
+    Item(n).AccessReq = Buffer.ReadLong
+    Item(n).LevelReq = Buffer.ReadLong
+    Item(n).Mastery = Buffer.ReadByte
+    Item(n).Price = Buffer.ReadLong
+    
+    ' stat add
+    For i = 1 To Stats.Stat_Count - 1
+        Item(n).Add_Stat(i) = Buffer.ReadLong
+    Next i
+    ItemSize = Buffer.ReadInteger ' -> Descard the item id of C# database
+    ItemSize = Buffer.ReadByte ' -> Descard the item id of C# database
+    
+    Item(n).Rarity = Buffer.ReadByte
+    Item(n).speed = Buffer.ReadLong
+    Item(n).Handed = Buffer.ReadLong
+    Item(n).BindType = Buffer.ReadLong
+    
+    ' stat req
+    For i = 1 To Stats.Stat_Count - 1
+        Item(n).Stat_Req(i) = Buffer.ReadLong
+    Next i
+    ItemSize = Buffer.ReadLong ' -> Descard the item id of C# database
+    
+    Item(n).Animation = Buffer.ReadLong
+    Item(n).Paperdoll = Buffer.ReadLong
+    
+    ' consume
+    Item(n).AddHP = Buffer.ReadLong
+    Item(n).AddMP = Buffer.ReadLong
+    Item(n).AddEXP = Buffer.ReadLong
+    Item(n).CastSpell = Buffer.ReadLong
+    Item(n).instaCast = Buffer.ReadByte
+    
+    'food
+    Item(n).HPorSP = Buffer.ReadLong
+    Item(n).FoodPerTick = Buffer.ReadLong
+    Item(n).FoodTickCount = Buffer.ReadLong
+    Item(n).FoodInterval = Buffer.ReadLong
+    
+    Item(n).proficiency = Buffer.ReadLong
+    
     Set Buffer = Nothing
 End Sub
 
@@ -1127,7 +1175,7 @@ Private Sub HandleNpcEditor()
 
         ' Add the names
         For i = 1 To MAX_NPCS
-            .lstIndex.AddItem i & ": " & Trim$(Npc(i).name)
+            .lstIndex.AddItem i & ": " & Trim$(Npc(i).Name)
         Next
 
         .Show
@@ -1161,7 +1209,7 @@ Private Sub HandleResourceEditor()
 
         ' Add the names
         For i = 1 To MAX_RESOURCES
-            .lstIndex.AddItem i & ": " & Trim$(Resource(i).name)
+            .lstIndex.AddItem i & ": " & Trim$(Resource(i).Name)
         Next
 
         .Show
@@ -1216,7 +1264,7 @@ Private Sub HandleShopEditor()
 
         ' Add the names
         For i = 1 To MAX_SHOPS
-            .lstIndex.AddItem i & ": " & Trim$(Shop(i).name)
+            .lstIndex.AddItem i & ": " & Trim$(Shop(i).Name)
         Next
 
         .Show
@@ -1250,7 +1298,7 @@ Private Sub HandleSpellEditor()
 
         ' Add the names
         For i = 1 To MAX_SPELLS
-            .lstIndex.AddItem i & ": " & Trim$(Spell(i).name)
+            .lstIndex.AddItem i & ": " & Trim$(Spell(i).Name)
         Next
 
         .Show
@@ -1467,12 +1515,12 @@ Private Sub HandleClearSpellBuffer(ByVal index As Long, ByRef data() As Byte, By
 End Sub
 
 Private Sub HandleSayMsg(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As Long, ByVal ExtraVar As Long)
-    Dim Buffer As clsBuffer, Access As Long, name As String, message As String, Colour As Long, header As String, PK As Long, saycolour As Long
+    Dim Buffer As clsBuffer, Access As Long, Name As String, message As String, Colour As Long, header As String, PK As Long, saycolour As Long
     Dim channel As Byte, colStr As String
     
     Set Buffer = New clsBuffer
     Buffer.WriteBytes data()
-    name = Buffer.ReadString
+    Name = Buffer.ReadString
     Access = Buffer.ReadLong
     PK = Buffer.ReadLong
     message = Buffer.ReadString
@@ -1498,7 +1546,7 @@ Private Sub HandleSayMsg(ByVal index As Long, ByRef data() As Byte, ByVal StartA
     ' remove the colour char from the message
     message = Replace$(message, ColourChar, vbNullString)
     ' add to the chat box
-    AddText ColourChar & GetColStr(Colour) & header & name & ": " & ColourChar & GetColStr(Grey) & message, Grey, , channel
+    AddText ColourChar & GetColStr(Colour) & header & Name & ": " & ColourChar & GetColStr(Grey) & message, Grey, , channel
 End Sub
 
 Private Sub HandleOpenShop(ByVal index As Long, ByRef data() As Byte, ByVal StartAddr As Long, ByVal ExtraVar As Long)
@@ -1730,7 +1778,7 @@ Private Sub HandleConvEditor(ByVal index As Long, ByRef data() As Byte, ByVal St
 
         ' Add the names
         For i = 1 To MAX_CONVS
-            .lstIndex.AddItem i & ": " & Trim$(Conv(i).name)
+            .lstIndex.AddItem i & ": " & Trim$(Conv(i).Name)
         Next
 
         .Show
@@ -1750,7 +1798,7 @@ Private Sub HandleUpdateConv(ByVal index As Long, ByRef data() As Byte, ByVal St
     Convnum = Buffer.ReadLong
 
     With Conv(Convnum)
-        .name = Buffer.ReadString
+        .Name = Buffer.ReadString
         .chatCount = Buffer.ReadLong
         ReDim Conv(Convnum).Conv(1 To .chatCount)
 

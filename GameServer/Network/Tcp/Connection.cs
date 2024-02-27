@@ -58,45 +58,46 @@ namespace GameServer.Network.Tcp
             // Verifica se há dados disponíveis sem bloquear.
             if (Client.Available > 0)
             {
-                try
+                var size = Client.Available;
+                var buffer = new byte[size];
+
+                if (Client.Poll(Constants.ReceiveTimeOut, SelectMode.SelectRead))
                 {
-                    if (Client.Poll(Constants.ReceiveTimeOut, SelectMode.SelectRead))
+                    try
                     {
-                        var size = Client.Available;
-                        var buffer = new byte[size];
 
                         // Recebe os dados disponíveis.
                         Client.Receive(buffer, size, SocketFlags.None);
-
-                        // Escreve o buffer.
-                        msg.Write(buffer);
-
-                        var pSize = msg.ReadInt32(false);
-
-                        // Enquanto a mensagem não chegar por completo, lê os dados e adiciona no buffer.
-                        while (msg.Count() - 4 < pSize)
-                            if (Client.Available > 0)
-                            {
-                                buffer = new byte[Client.Available];
-
-                                // Recebe os dados disponíveis.
-                                Client.Receive(buffer, Client.Available, SocketFlags.None);
-
-                                // Escreve o buffer.
-                                msg.Write(buffer);
-                            }
                     }
-                    else
+                    catch (SocketException ex)
                     {
-                        // Cliente desconectado ou sem dados disponíveis
+                        Global.WriteLog(LogType.System, $"Receive Data Error: Class {GetType().Name}", ConsoleColor.Red);
+                        Global.WriteLog(LogType.System, $"Message: {ex.Message}", ConsoleColor.Red);
                         Disconnect();
                         return;
                     }
+
+                    // Escreve o buffer.
+                    msg.Write(buffer);
+
+                    var pSize = msg.ReadInt32(false);
+
+                    // Enquanto a mensagem não chegar por completo, lê os dados e adiciona no buffer.
+                    while (msg.Count() - 4 < pSize)
+                        if (Client.Available > 0)
+                        {
+                            buffer = new byte[Client.Available];
+
+                            // Recebe os dados disponíveis.
+                            Client.Receive(buffer, Client.Available, SocketFlags.None);
+
+                            // Escreve o buffer.
+                            msg.Write(buffer);
+                        }
                 }
-                catch (SocketException ex)
+                else
                 {
-                    Global.WriteLog(LogType.System, $"Receive Data Error: Class {GetType().Name}", ConsoleColor.Red);
-                    Global.WriteLog(LogType.System, $"Message: {ex.Message}", ConsoleColor.Red);
+                    // Cliente desconectado ou sem dados disponíveis
                     Disconnect();
                     return;
                 }

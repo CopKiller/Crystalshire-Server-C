@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿using System.Runtime.InteropServices;
+using System.Text;
 
 namespace SharedLibrary.Network;
 
-public sealed class ByteBuffer
+public class ByteBuffer
 {
-    private readonly List<byte> buffer;
+    public readonly List<byte> buffer;
     private int readpos;
 
     public ByteBuffer()
@@ -14,8 +15,9 @@ public sealed class ByteBuffer
 
     public ByteBuffer(byte[] arr)
     {
-        buffer = new List<byte>();
-        buffer.AddRange(arr);
+        buffer = [.. arr];
+        //buffer = new List<byte>();
+        //buffer.AddRange(arr);
     }
 
     public byte[] ToArray()
@@ -67,7 +69,7 @@ public sealed class ByteBuffer
     public void Write(string value)
     {
         buffer.AddRange(BitConverter.GetBytes(value.Length));
-        buffer.AddRange(Encoding.ASCII.GetBytes(value));
+        buffer.AddRange(Encoding.UTF8.GetBytes(value));
     }
 
     public byte[] ReadBytes(int length, bool peek = true)

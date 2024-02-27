@@ -40,6 +40,8 @@ public static class OpCode
 
         SendPacket.Add(typeof(SInGame), ServerPacketEnum.SInGame);
 
+        SendPacket.Add(typeof(SUpdateItemTo), ServerPacketEnum.SUpdateItem);
+
         // Ping para verificar conexão.
         SendPacket.Add(typeof(SPing), ServerPacketEnum.SSendPing);
     }

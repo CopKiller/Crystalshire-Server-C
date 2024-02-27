@@ -125,6 +125,7 @@ Public Const GAME_NAME As String = "Crystalshire"
 Public Const GAME_WEBSITE As String = "http://www.crystalshire.com"
 ' String constants
 Public Const NAME_LENGTH As Byte = 20
+Public Const DESC_LENGTH As Byte = 255
 ' Sex constants
 Public Const SEX_MALE As Byte = 0
 Public Const SEX_FEMALE As Byte = 1

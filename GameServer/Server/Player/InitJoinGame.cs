@@ -1,4 +1,5 @@
 ﻿using GameServer.Network.PacketList.ServerPacket;
+using GameServer.Server.Data;
 using GameServer.Server.Player.JoinGame;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace GameServer.Server.Player
 
             // Enviar todos os dados que precisam ser carregado no cliente.
             CheckEquippedItems.Check(index);
+            new SUpdateItemTo(1).Send(searchPlayer.Connection);
             //SendClasses.Send(index); --> Não feito, já foi enviado as classes ao logar.
 
             // Criando a database dos items, que é o próximo item a ser enviado.

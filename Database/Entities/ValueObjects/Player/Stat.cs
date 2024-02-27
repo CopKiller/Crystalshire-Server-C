@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Database.Entities.ValueObjects.Player.Interface;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Database.Entities.ValueObjects.Player
 {
-    public class Stat : BaseEntity
+    public class Stat : BaseEntity, IStat
     {
         public int Strength { get; set; } = 3;
         public int Endurance { get; set; } = 3;

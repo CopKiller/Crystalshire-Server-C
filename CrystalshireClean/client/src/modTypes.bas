@@ -66,7 +66,7 @@ End Type
 
 Private Type PlayerRec
     ' General
-    name As String
+    Name As String
     Class As Long
     sprite As Long
     Level As Byte
@@ -144,7 +144,7 @@ Public Type EventPageRec
 End Type
 
 Public Type EventRec
-    name As String
+    Name As String
     x As Long
     y As Long
     pageCount As Long
@@ -152,7 +152,7 @@ Public Type EventRec
 End Type
 
 Private Type MapDataRec
-    name As String
+    Name As String
     Music As String
     Moral As Byte
     
@@ -204,7 +204,7 @@ Private Type MapRec
 End Type
 
 Private Type ClassRec
-    name As String * NAME_LENGTH
+    Name As String * NAME_LENGTH
     Stat(1 To Stats.Stat_Count - 1) As Byte
     MaleSprite() As Long
     FemaleSprite() As Long
@@ -213,12 +213,12 @@ Private Type ClassRec
 End Type
 
 Public Type ItemRec
-    name As String * NAME_LENGTH
-    Desc As String * 255
+    Name As String * NAME_LENGTH
+    Desc As String * DESC_LENGTH
     sound As String * NAME_LENGTH
+    
     Pic As Long
-
-    Type As Byte
+    Type As Long
     Data1 As Long
     Data2 As Long
     Data3 As Long
@@ -227,12 +227,14 @@ Public Type ItemRec
     LevelReq As Long
     Mastery As Byte
     Price As Long
-    Add_Stat(1 To Stats.Stat_Count - 1) As Byte
+    Id1 As Long
+    Add_Stat(1 To Stats.Stat_Count - 1) As Long
     Rarity As Byte
     speed As Long
     Handed As Long
-    BindType As Byte
-    Stat_Req(1 To Stats.Stat_Count - 1) As Byte
+    BindType As Long
+    Id2 As Long
+    Stat_Req(1 To Stats.Stat_Count - 1) As Long
     Animation As Long
     Paperdoll As Long
     ' consume
@@ -261,7 +263,7 @@ Private Type MapItemRec
 End Type
 
 Public Type NpcRec
-    name As String * NAME_LENGTH
+    Name As String * NAME_LENGTH
     AttackSay As String * 100
     sound As String * NAME_LENGTH
     sprite As Long
@@ -312,13 +314,13 @@ Public Type TradeItemRec
 End Type
 
 Private Type ShopRec
-    name As String * NAME_LENGTH
+    Name As String * NAME_LENGTH
     BuyRate As Long
     TradeItem(1 To MAX_TRADES) As TradeItemRec
 End Type
 
 Public Type SpellRec
-    name As String * NAME_LENGTH
+    Name As String * NAME_LENGTH
     Desc As String * 255
     sound As String * NAME_LENGTH
 
@@ -370,7 +372,7 @@ Public Type MapResourceRec
 End Type
 
 Private Type ResourceRec
-    name As String * NAME_LENGTH
+    Name As String * NAME_LENGTH
     SuccessMessage As String * NAME_LENGTH
     EmptyMessage As String * NAME_LENGTH
     sound As String * NAME_LENGTH
@@ -406,7 +408,7 @@ Private Type BloodRec
 End Type
 
 Private Type AnimationRec
-    name As String * NAME_LENGTH
+    Name As String * NAME_LENGTH
     sound As String * NAME_LENGTH
     sprite(0 To 1) As Long
     Frames(0 To 1) As Long
@@ -463,7 +465,7 @@ Public Type ConvRec
 End Type
 
 Private Type ConvWrapperRec
-    name As String * NAME_LENGTH
+    Name As String * NAME_LENGTH
     chatCount As Long
     Conv() As ConvRec
 End Type
